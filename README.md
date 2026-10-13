@@ -44,6 +44,7 @@ Rscript analysis/07_study_level_moderators.R      # study-level moderators and v
 .venv/bin/python analysis/05_figures.py           # Figs 4 and 6
 .venv/bin/python analysis/08_fig_practice.py      # Fig. 3
 .venv/bin/python analysis/09_figures_v2.py        # Figs 2, 5, 7 and 8
+.venv/bin/python analysis/10_graphical_abstract.py # graphical abstract
 ```
 Figs 1 and 9 are TikZ diagrams (`figures/prisma_flow.tex`, `figures/Fig9_decision_guide.tex`).
 
