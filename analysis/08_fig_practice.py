@@ -1,4 +1,4 @@
-"""Fig. 9 — validation practice in the included studies and study-level moderators (600 dpi).
+"""Fig. 3 — validation practice in the included studies and study-level moderators (600 dpi).
 Run after 07_study_level_moderators.R:  .venv/bin/python analysis/08_fig_practice.py
 """
 from pathlib import Path
@@ -105,5 +105,5 @@ ax.tick_params(axis="y", length=0); ax.set_ylim(len(rows) - 0.4, -0.7); ax.set_x
 ax.set_xlabel("$\\Delta R^2$ (random − spatial CV); grey band: pooled estimate and 95% CI")
 panel(ax, "c", x=-0.38, y=1.01)
 for ext, kw in (("png", {}), ("pdf", {}), ("tiff", {"pil_kwargs": {"compression": "tiff_lzw"}})):
-    fig.savefig(OUT / f"Fig9_validation_practice.{ext}", bbox_inches="tight", dpi=600, facecolor="white", **kw)
-print("saved Fig9_validation_practice")
+    fig.savefig(OUT / f"Fig3_validation_practice.{ext}", bbox_inches="tight", dpi=600, facecolor="white", **kw)
+print("saved Fig3_validation_practice")

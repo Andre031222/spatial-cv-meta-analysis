@@ -36,8 +36,16 @@ Rscript analysis/04_additional_analyses.R    # independent test sets, calibratio
 mkdir -p data_external/naturalearth
 curl -L -o data_external/naturalearth/ne_110m_admin_0_countries.zip \
   https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip
-.venv/bin/python analysis/05_figures.py
+# country flags for Fig. 2 (optional; flagcdn.com, public domain)
+mkdir -p data_external/flags
+for c in cn:CHN us:USA de:DEU ca:CAN au:AUS br:BRA es:ESP fr:FRA pe:PER in:IND tw:TWN jp:JPN id:IDN at:AUT vn:VNM; do
+  curl -sL -o data_external/flags/${c#*:}.png https://flagcdn.com/w80/${c%%:*}.png; done
+Rscript analysis/07_study_level_moderators.R      # study-level moderators and validation-practice profile
+.venv/bin/python analysis/05_figures.py           # Figs 4 and 6
+.venv/bin/python analysis/08_fig_practice.py      # Fig. 3
+.venv/bin/python analysis/09_figures_v2.py        # Figs 2, 5, 7 and 8
 ```
+Figs 1 and 9 are TikZ diagrams (`figures/prisma_flow.tex`, `figures/Fig9_decision_guide.tex`).
 
 Tested with R 4.6.1 (metafor 5.2.1, clubSandwich 0.7.0) and the Python versions in `requirements.txt`.
 
