@@ -22,6 +22,7 @@ d$n_imputed <- is.na(d$n) | d$n < 10
 d$n[d$n_imputed] <- median(d$n[!d$n_imputed], na.rm = TRUE)   # sensitivity analysis drops these
 d$study <- d$record_id
 d$es_id <- seq_len(nrow(d))
+d$digitised_flag <- !is.na(d$digitised) & d$digitised == "yes"
 
 # ---- harmonise moderators -------------------------------------------------------------
 dom <- tolower(d$domain)
@@ -91,12 +92,19 @@ for (nm in names(es)) {
   pr <- predict(m)
   un <- rma.mv(yi, 1, random = ~ 1 | study / es_id, data = x, method = "REML")       # unweighted
   sens_n <- if (sum(!x$n_imputed) > 5 && length(unique(x$study[!x$n_imputed])) >= 3) fit_ml(x[!x$n_imputed, ]) else NULL
+  xd <- x[!x$digitised_flag, ]
+  sens_d <- if (length(unique(xd$study)) >= 3) fit_ml(xd) else NULL
   overall[[nm]] <- data.frame(effect = nm, k_effects = m$k, k_studies = length(unique(x$study)),
     estimate = m$b[1], ci_lb = m$ci.lb, ci_ub = m$ci.ub, pi_lb = pr$pi.lb, pi_ub = pr$pi.ub,
     p = m$pval, robust_se = rob$SE, robust_p = rob$p_Satt,
     tau2_between = m$sigma2[1], tau2_within = m$sigma2[2], t(i2_ml(m, x)),
     share_positive = mean(x$yi > 0), unweighted_estimate = un$b[1],
-    estimate_without_imputed_n = if (is.null(sens_n)) NA else sens_n$b[1])
+    estimate_without_imputed_n = if (is.null(sens_n)) NA else sens_n$b[1],
+    estimate_without_digitised = if (is.null(sens_d)) NA else sens_d$b[1],
+    ci_lb_without_digitised = if (is.null(sens_d)) NA else sens_d$ci.lb,
+    ci_ub_without_digitised = if (is.null(sens_d)) NA else sens_d$ci.ub,
+    k_studies_without_digitised = length(unique(xd$study)), k_effects_without_digitised = nrow(xd),
+    share_effects_digitised = mean(x$digitised_flag))
   for (mv in c("sampling_h", "domain_h", "model_h", "cv_h", "task")) {
     xx <- x[!is.na(x[[mv]]), ]
     if (length(unique(xx[[mv]])) < 2) next
