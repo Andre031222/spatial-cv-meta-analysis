@@ -21,11 +21,12 @@ sl$scale_h <- ifelse(sl$spatial_scale %in% c("field", "local"), "Field/local",
               ifelse(sl$spatial_scale == "regional", "Regional",
               ifelse(sl$spatial_scale == "national", "National", ifelse(sl$spatial_scale %in% c("continental", "global"), "Continental/global", NA))))
 sl$geom_h <- ifelse(sl$data_geometry %in% c("points", "raster_pixels", "polygons"), sl$data_geometry, NA)
+sl$continent_h <- ifelse(sl$continent %in% c("Asia", "Europe", "North America", "South America", "Africa", "Oceania"), sl$continent, ifelse(sl$continent %in% c("Global", "Multiple"), "Global/multiple", NA))
 sl$block_just <- ifelse(sl$block_size_justified %in% c("autocorrelation_range", "expert_choice", "not_justified"), sl$block_size_justified, NA)
 
 mods <- c(source_h = "Data source", geom_h = "Data geometry", scale_h = "Spatial scale", random_h = "Random-CV scheme",
           split_h = "Hold-out proportion", k_h = "Number of folds", random_stratified = "Stratified random CV",
-          block_just = "Block size justified by", n_class = "Number of observations")
+          block_just = "Block size justified by", n_class = "Number of observations", continent_h = "Continent")
 out <- list()
 for (eff in c("dR2", "lnRR_RMSE", "dAUC", "dAccuracy")) {
   e <- read.csv(sprintf("analysis/results/effects_%s.csv", eff))
@@ -51,7 +52,7 @@ write.csv(res, "analysis/results/study_level_moderators.csv", row.names = FALSE)
 # descriptive profile of validation practice (study level)
 tab <- function(v, name) { t <- table(v, useNA = "no"); data.frame(variable = name, level = names(t), studies = as.vector(t), share = as.vector(t) / sum(t)) }
 desc <- rbind(tab(sl$task, "Task"), tab(sl$source_h, "Data source"), tab(sl$data_geometry, "Data geometry"), tab(sl$spatial_scale, "Spatial scale"),
-              tab(sl$continent, "Continent"), tab(sl$random_cv_scheme, "Random-CV scheme"), tab(sl$random_k, "Random k"),
+              tab(sl$continent, "Continent"), tab(unlist(strsplit(gsub(",", ";", sl$country_iso3[!is.na(sl$country_iso3) & !grepl("GLOBAL|MULTI", sl$country_iso3)]), ";")), "Country (ISO3)"), tab(sl$random_cv_scheme, "Random-CV scheme"), tab(sl$random_k, "Random k"),
               tab(ifelse(is.na(num(sl$random_train_pct)), NA, paste0(num(sl$random_train_pct), "/", 100 - num(sl$random_train_pct))), "Hold-out split"),
               tab(sl$random_stratified, "Stratified"), tab(sl$spatial_cv_scheme, "Spatial-CV scheme"), tab(sl$block_size_justified, "Block size justified"),
               tab(sl$independent_test, "Independent test"), tab(sl$class_balance, "Class balance"), tab(as.character(sl$n_class), "Observations"))

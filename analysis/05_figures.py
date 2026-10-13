@@ -100,8 +100,12 @@ def countries_of(s):
     return found
 
 
-cnt = pd.Series([c for s in st.country for c in countries_of(s)]).value_counts()
-world["studies"] = world.ADMIN.map(cnt).fillna(0)
+sl_iso = pd.read_csv(ROOT / "extraction/study_level.csv", dtype=str).country_iso3.fillna("")
+codes = [c.strip() for v in sl_iso if not any(k in v for k in ("GLOBAL", "MULTI")) for c in v.replace(",", ";").split(";") if c.strip()]
+scope["global"] = int(sum(any(k in v for k in ("GLOBAL", "MULTI")) for v in sl_iso))
+cnt = pd.Series(codes).value_counts()
+world["studies"] = world.ADM0_A3.map(cnt).fillna(world.ISO_A3.map(cnt)).fillna(0)
+top = ", ".join(f"{n} {k}" for k, n in cnt.head(6).items())
 
 fig = plt.figure(figsize=(180 * MM, 118 * MM))
 gs = fig.add_gridspec(2, 2, height_ratios=[1.35, 1], width_ratios=[1.25, 1], hspace=0.32, wspace=0.62)
@@ -116,7 +120,7 @@ for b, col in zip(world["bin"].cat.categories, pal):
 ax.set_axis_off(); ax.set_xlim(-170, 180); ax.set_ylim(-58, 84)
 ax.legend(handles=[mpl.patches.Patch(color=c, label=l) for c, l in zip(pal, world["bin"].cat.categories)],
           title="Studies per country", loc="lower left", frameon=False, ncol=1, title_fontsize=6.5)
-ax.text(0.99, 0.02, f"+ {scope['global']} global/continental studies", transform=ax.transAxes, ha="right", fontsize=6.5, color="#444")
+ax.set_title(f"{len(cnt)} countries; most studied: {top}; + {scope['global']} global or multi-continent studies", loc="center", fontsize=6.5, color="#444")
 panel(ax, "a", x=0.0, y=0.98)
 
 ax = fig.add_subplot(gs[1, 0])
