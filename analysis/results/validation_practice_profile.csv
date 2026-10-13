@@ -1,0 +1,81 @@
+"variable","level","studies","share"
+"Task","both",5,0.018796992481203
+"Task","classification",100,0.37593984962406
+"Task","regression",161,0.605263157894737
+"Data source","Compiled databases",19,0.0714285714285714
+"Data source","Field samples",68,0.255639097744361
+"Data source","Gridded products",24,0.0902255639097744
+"Data source","Mixed",14,0.0526315789473684
+"Data source","Monitoring stations",41,0.154135338345865
+"Data source","Occurrence records",12,0.0451127819548872
+"Data source","Remote-sensing labels",49,0.184210526315789
+"Data source","Simulated",6,0.0225563909774436
+"Data source","Surveys/inventories",33,0.12406015037594
+"Data geometry","mixed",5,0.018796992481203
+"Data geometry","points",168,0.631578947368421
+"Data geometry","polygons",38,0.142857142857143
+"Data geometry","raster_pixels",55,0.206766917293233
+"Spatial scale","continental",20,0.0757575757575758
+"Spatial scale","field",21,0.0795454545454545
+"Spatial scale","global",16,0.0606060606060606
+"Spatial scale","local",37,0.140151515151515
+"Spatial scale","national",84,0.318181818181818
+"Spatial scale","regional",86,0.325757575757576
+"Continent","Africa",17,0.0641509433962264
+"Continent","Antarctica",3,0.0113207547169811
+"Continent","Asia",88,0.332075471698113
+"Continent","Europe",52,0.19622641509434
+"Continent","Global",13,0.0490566037735849
+"Continent","Multiple",11,0.0415094339622641
+"Continent","North America",52,0.19622641509434
+"Continent","Oceania",10,0.0377358490566038
+"Continent","South America",19,0.0716981132075472
+"Random-CV scheme","holdout_split",103,0.387218045112782
+"Random-CV scheme","kfold",115,0.432330827067669
+"Random-CV scheme","LOO",6,0.0225563909774436
+"Random-CV scheme","nested_kfold",7,0.0263157894736842
+"Random-CV scheme","OOB",6,0.0225563909774436
+"Random-CV scheme","other",2,0.0075187969924812
+"Random-CV scheme","repeated_kfold",27,0.101503759398496
+"Random k","2",1,0.00680272108843537
+"Random k","3",1,0.00680272108843537
+"Random k","4",4,0.0272108843537415
+"Random k","5",64,0.435374149659864
+"Random k","7",1,0.00680272108843537
+"Random k","10",71,0.482993197278912
+"Random k","15",3,0.0204081632653061
+"Random k","20",1,0.00680272108843537
+"Random k","50",1,0.00680272108843537
+"Hold-out split","50/50",2,0.0170940170940171
+"Hold-out split","60/40",11,0.094017094017094
+"Hold-out split","70/30",41,0.35042735042735
+"Hold-out split","75/25",13,0.111111111111111
+"Hold-out split","80/20",42,0.358974358974359
+"Hold-out split","83.3/16.7",1,0.00854700854700855
+"Hold-out split","84/16",1,0.00854700854700855
+"Hold-out split","85/15",2,0.0170940170940171
+"Hold-out split","90/10",4,0.0341880341880342
+"Stratified","no",158,0.738317757009346
+"Stratified","yes",56,0.261682242990654
+"Spatial-CV scheme","blocks",79,0.296992481203008
+"Spatial-CV scheme","buffered_LOO",10,0.037593984962406
+"Spatial-CV scheme","kmeans_clusters",39,0.146616541353383
+"Spatial-CV scheme","leave_location_out",111,0.417293233082707
+"Spatial-CV scheme","NNDM_kNNDM",3,0.0112781954887218
+"Spatial-CV scheme","other",24,0.0902255639097744
+"Block size justified","autocorrelation_range",26,0.106995884773663
+"Block size justified","expert_choice",63,0.259259259259259
+"Block size justified","not_justified",154,0.633744855967078
+"Independent test","later_period",22,0.0827067669172932
+"Independent test","none",181,0.680451127819549
+"Independent test","other",10,0.037593984962406
+"Independent test","other_region",17,0.0639097744360902
+"Independent test","probability_sample",5,0.018796992481203
+"Independent test","separate_holdout",31,0.116541353383459
+"Class balance","balanced",35,0.388888888888889
+"Class balance","imbalanced",55,0.611111111111111
+"Observations","<200",19,0.0974358974358974
+"Observations",">50k",31,0.158974358974359
+"Observations","1k-5k",52,0.266666666666667
+"Observations","200-1k",49,0.251282051282051
+"Observations","5k-50k",44,0.225641025641026

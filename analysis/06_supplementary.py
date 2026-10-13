@@ -49,8 +49,8 @@ prisma = [
     ("", "14", "Methods used to assess risk of bias due to missing results (reporting biases).", "Section 2.10"),
     ("", "15", "Methods used to assess certainty (or confidence) in the body of evidence.", "Not assessed with GRADE (methodological outcomes); confidence discussed in Section 4.5"),
     ("Results", "16a", "Results of the search and selection process, with a flow diagram.", "Section 3.1; Fig. 1"),
-    ("", "16b", "Studies that appeared to meet the criteria but were excluded, and why.", "Table S8"),
-    ("", "17", "Cite each included study and present its characteristics.", "Table 1; Table S7"),
+    ("", "16b", "Studies that appeared to meet the criteria but were excluded, and why.", "Table S10"),
+    ("", "17", "Cite each included study and present its characteristics.", "Table 1; Tables S7 and S9"),
     ("", "18", "Risk of bias for each included study.", "Section S5; file TableS5\\_risk\\_of\\_bias.csv"),
     ("", "19", "For all outcomes, summary statistics and effect estimates for each study.", "Fig. 3; files effects\\_*.csv in repository"),
     ("", "20a", "Characteristics and risk of bias among contributing studies for each synthesis.", "Table 2; Section S5"),
@@ -198,6 +198,18 @@ for e in ["dR2", "lnRR_RMSE", "dAUC", "dAccuracy"]:
     A(r"\includegraphics[width=0.45\textwidth]{../../analysis/results/figures/funnel_" + e + r".png}")
 A(r"\caption{Funnel plots for (top left to bottom right) $\Delta R^2$, lnRR RMSE, $\Delta$AUC and $\Delta$accuracy.}\end{figure}")
 
+A(r"\section{Validation practice and study-level moderators}")
+prof = pd.read_csv(ROOT / "analysis/results/validation_practice_profile.csv")
+A(r"\small\begin{longtable}{p{4cm}p{6cm}rr}\caption{Validation practice in the 266 included studies (second, study-level extraction).}\\\toprule Variable & Level & Studies & \% \\\midrule\endfirsthead\toprule Variable & Level & Studies & \% \\\midrule\endhead")
+for v, g in prof.groupby("variable", sort=False):
+    for _, r in g.sort_values("studies", ascending=False).iterrows():
+        A(f"{tex(v)} & {tex(r.level)} & {int(r.studies)} & {100*r.share:.0f} \\\\")
+A(r"\bottomrule\end{longtable}")
+slm = pd.read_csv(ROOT / "analysis/results/study_level_moderators.csv")
+A(r"\begin{longtable}{p{2cm}p{3.6cm}p{3.6cm}rrr}\caption{Study-level moderators (three-level meta-regression; subgroups with at least three studies).}\\\toprule Effect & Moderator & Level & Estimate (95\% CI) & Studies & $p$ \\\midrule\endfirsthead\toprule Effect & Moderator & Level & Estimate (95\% CI) & Studies & $p$ \\\midrule\endhead")
+for _, r in slm.iterrows():
+    A(f"{tex(r.effect)} & {tex(r.moderator)} & {tex(r.level)} & {r.estimate:.2f} ({r.ci_lb:.2f}, {r.ci_ub:.2f}) & {int(r.k_studies)} & {r.p_between:.3f} \\\\")
+A(r"\bottomrule\end{longtable}\normalsize")
 A(r"\clearpage\section{Included studies}")
 A(r"\begin{landscape}\scriptsize\begin{longtable}{p{0.9cm}p{2.6cm}p{0.7cm}p{4.2cm}p{2.6cm}p{2cm}p{3.6cm}p{3.6cm}}\caption{Included studies (n = " + str(len(st)) + r"). DOIs are given in the data repository.}\\\toprule ID & First author & Year & Journal & Domain & Sampling & Models & Spatial CV \\\midrule\endfirsthead\toprule ID & First author & Year & Journal & Domain & Sampling & Models & Spatial CV \\\midrule\endhead")
 for _, r in st.iterrows():

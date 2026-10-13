@@ -41,3 +41,18 @@
 11. **Preprints:** extract from the peer-reviewed published version when available (`published_doi`); a preprint may be used if numbers are identical — note it.
 12. `study_id`: S + 4-digit record number (S0001); several independent datasets in one paper → S0005a, S0005b.
 13. **Exclusion codes (full text):** E1 not original research; E2 only one CV type / not same model and data; E3 no ML; E4 off-domain; E5 metrics not extractable (after checking supplements/repository and contacting authors); E6 duplicate publication of same data.
+
+## Codebook v3 — study-level sheet (`extraction/study_level.csv`, one row per study; added 2026-10-13)
+| Field | Values |
+|---|---|
+| country_iso3 / continent | ISO3 codes (`;`-separated), GLOBAL, MULTI_CONTINENT / Africa, Asia, Europe, North America, South America, Oceania, Antarctica, Global, Multiple |
+| spatial_scale, study_area_km2 | field (<10 km²), local (10–1,000), regional (1,000–100,000), national, continental, global |
+| data_source | in_situ_samples, monitoring_stations, remote_sensing_labels, occurrence_records, survey_inventory, gridded_product, compiled_database, simulated, mixed |
+| data_geometry | points, polygons, raster_pixels, mixed |
+| response_variable, predictor_sources | free text (e.g. "Sentinel-2; climate; DEM") |
+| n_observations, n_sites_or_clusters, temporal_span_years | numbers |
+| task, n_classes, class_balance | regression / classification / both; number of classes; balanced / imbalanced |
+| random_cv_scheme, random_k, random_repeats, random_train_pct, random_test_pct, random_stratified | kfold, repeated_kfold, holdout_split (e.g. 70/30, 80/20), LOO, OOB, bootstrap, nested_kfold |
+| spatial_cv_scheme, spatial_k, block_or_buffer_size, block_size_unit, block_size_justified | blocks, kmeans_clusters, leave_location_out, buffered_LOO, NNDM_kNNDM, target_oriented; justification: autocorrelation_range, expert_choice, not_justified |
+| data_quality_controls | reported QA/QC (outliers, duplicates, cloud masking, thinning) or none_reported |
+| independent_test | none, probability_sample, other_region, later_period, separate_holdout |
