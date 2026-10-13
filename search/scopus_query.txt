@@ -1,0 +1,18 @@
+TITLE-ABS-KEY (
+  ( "spatial cross-validation" OR "spatial cross validation" OR "spatial block*" OR "block cross-validation"
+    OR "blocked cross-validation" OR "buffered cross-validation" OR "leave-location-out" OR "spatial k-fold"
+    OR "spatially blocked" OR "target-oriented validation" OR "spatial leave-one-out" OR "spatial partition*" )
+  AND
+  ( "random cross-validation" OR "random k-fold" OR "random split*" OR "random partition*" OR "random sampling"
+    OR "conventional cross-validation" OR "non-spatial cross-validation" OR "standard cross-validation"
+    OR overoptimis* OR "over-optimistic" OR "overly optimistic" OR "spatial autocorrelation" )
+  AND
+  ( "machine learning" OR "random forest*" OR "deep learning" OR "gradient boosting" OR xgboost
+    OR "support vector" OR "neural network*" OR "boosted regression tree*" OR cubist )
+  AND
+  ( soil* OR crop* OR yield* OR climat* OR "remote sensing" OR satellite OR "species distribution"
+    OR "land cover" OR "land use" OR vegetation OR forest* OR hydrolog* OR precipitation OR environment* )
+)
+AND DOCTYPE ( ar )
+AND PUBYEAR > 2009
+AND LANGUAGE ( english )

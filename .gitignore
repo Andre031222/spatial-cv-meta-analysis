@@ -1,0 +1,36 @@
+# copyrighted / licensed / personal material — not redistributed
+fulltext/pdfs/
+search/exports/
+screening/screening_title_abstract.csv
+screening/*backup*.csv
+screening/_batch*
+fulltext/missing_fulltexts_contact.csv
+fulltext/missing_targets.json
+fulltext/opened_links.txt
+fulltext/PDFs_pendientes.html
+extraction/*backup*.csv
+extraction/batches/
+fulltext/batches/
+data_external/
+# environments / build
+.venv/
+__pycache__/
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.blg
+*.spl
+.DS_Store
+.claude/
+fulltext/*backup*.csv
+# not part of the reproducible repository
+manuscript/
+MEMORIA.md
+protocol/
+screening/ta_proposals_*.csv
+fulltext/email_request_template.txt
+fulltext/zotero_import_447.ris
+extraction/extraction_pilot_v1_backup.csv
+README_proyecto_interno.md

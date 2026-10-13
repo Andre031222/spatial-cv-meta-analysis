@@ -1,0 +1,393 @@
+record_id,ft_decision,ft_reason,n_rows_extracted,notes
+R0001,include,,4,Random 10-fold vs spatial 44-cluster and buffered LOO; RF AGB central Africa.
+R0002,include,,4,Nested random vs k-means spatial repeated 5-fold CV; 4 ML models plus GLM/GAM (not extracted). Preprint.
+R0005,include,,4,Random vs block (LULC) and leave-cluster-out (LAI) CV; RF. Preprint.
+R0006,exclude,E2,0,Virtual-species SDMs; only random split CV vs true performance; no spatial CV.
+R0009,include,,3,CNN tree species; random tile split vs site-block hold-out; F1 read from Fig. 3 boxplots.
+R0013,include,,3,"Global Ksat RF; random vs 5-degree block 5-fold CV, Table 2."
+R0036,include,,2,RF oak dieback; LOO vs 10 km buffered SLOO; values read from Fig. 10.
+R0037,exclude,E5,0,Fold-mean CV AUC per scheme not in main text; only CV-test MAE and test AUC. Check supplement S4/GitHub.
+R0059,include,,3,RF SOC; random repeated 10-fold vs spatial CV (Table 4); spatial CV poorly described.
+R0093,include,,2,RF/GBR delta18O; LOOCV vs 4 longitude blocks; R2 only; n=96.
+R0025,include,NA,1,"Random 80/20 split vs leave-one-sub-basin-out (9 sub-basins), RF metamodel of drainage fraction."
+R0063,include,NA,6,"Borderline domain (farmer-perceived agricultural vulnerability). Standard vs 50 km spatial block CV, Table 1 macro-F1; accuracy and other block sizes only in supplement."
+R0069,include,NA,72,Random repeated 70/30 vs region-grouped CV for 4 crop yields x 3 models; with/without Year variants.
+R0111,include,NA,8,"Borderline domain (Fasciola infection risk from drone environmental indices). Stratified 5-fold vs 3 spatial cluster folds, accuracy Table 3."
+R0113,include,NA,2,"Random 5-fold vs leave-one-district-out, GB only (Table 4). Article in press; internal inconsistencies noted."
+R0122,exclude,E2,0,Only spatial (block GroupKFold and block-based 70/30 test); no random CV.
+R0136,include,NA,1,Preprint (arXiv) of Meyer & Pebesma 2021 MEE; simulated response; random 10-fold vs leave-cluster-out RMSE from text. Check published version.
+R0158,include,NA,24,"LOO (h=0, digitised from Fig. 3) vs h-block CV at variogram range (Table 3); pollen-climate calibration, NA and Europe."
+R0174,exclude,E3,0,No ML model and no CV comparison (temporal adjustment of short-term air pollution observations).
+R0200,include,NA,8,5-fold vs spatial block CV MAE of best algorithm per pigment (Table 4); best-model identity under 5-fold in Suppl. S4.
+R0201,include,,30,"Random 10-fold vs station-grouped 10-fold CV, PCNN-DNN, Table 1 per year (RMSE, MAE; R in notes)."
+R0208,include,,3,arXiv preprint of IJGIS 2023 paper; RF values digitised from Figs 2 and 4 (Meuse RMSE; Maipo accuracy = 1-error rate). Geostatistical/linear models not extracted.
+R0218,exclude,E2,0,"Only spatial block CV (blockCV, 100 km, 13 folds) reported; AUC comparisons are across thinning datasets, not random vs spatial CV. Supplement (Fig. S4) not checked."
+R0232,include,,16,"Spatial k-means CV vs non-spatial CV, RF land cover (Table 2) and foliar cover (Table 5)."
+R0245,include,,6,"Sea-ice DeepLabV3: benchmark held-out test (random-like, not stated random) vs 2-region spatial CV (Fig. 13 digitised). Borderline random comparator; flagged."
+R0270,include,,6,RF pasture biomass: 75/25 random split vs leave-location-out; values printed in Fig. 9.
+R0408,include,,6,"Country-level FAOSTAT panel, RF/XGB 10-fold vs 10-block spatial CV (Table 2). Scope borderline; flagged for second reviewer."
+R0453,exclude,E2,0,Barn-filter RF evaluated only with spatial block CV (buffers 500-5000 m); farm-type and population RFs only random split. No same model with both. Also borderline E4 (livestock infrastructure).
+R0473,include,,12,"4 tree models: random 105/46 test split vs 4-block spatial CV (Table 3, Fig. 3)."
+R0603,include,,12,"4 boosting/RF models, random 80/20 vs 5-fold spatial block CV (Table 3); LR not extracted."
+R0672,exclude,E2,0,"Only spatial CV (k-means 5-block GroupKFold) on the training set; the 70/30 hold-out of positive sites is not described as random and is evaluated with the final model, so no matched random CV. RF spatial-CV AUC 0.883 vs hold-out AUC 0.883. Also borderline domain (urban illegal dumping, PU learning)."
+R0676,exclude,E2,0,"QC reconciliation 2026-10-12: first decision kept. Global AUC is resubstitution, not random CV: the public notebook (github.com/RelativelyBurberry/wildfire-wuipi) fits on the balanced sample and scores predict_proba on all pixels. Spatial = west/east half hold-out. RF global AUC 0.948 vs spatial AUC 0.547 (Tables 6, 9); not usable as random-vs-spatial comparison."
+R0715,exclude,E2,0,In-domain evaluation trains and tests on the same pixels (no random CV); only 4-fold spatial quadrant block holdout. Train vs test-block R2 in Table 4. EarthArXiv preprint of RSE paper (10.1016/j.rse.2026.115610).
+R0722,exclude,E2,0,Only random 70:30 and 80:20 splits; spatial validation on other rice plots mentioned but not quantified.
+R0757,include,,16,"RF (+CV predictors, full season): random 70/30 test (dashed lines Fig. 7) vs leave-one-field-out (10 fields); 8 fibre traits x R2/RMSE. LOFO means partly from text, rest digitised from Fig. 7."
+R0976,include,,9,"Three GFMs (Prithvi 2.0, Clay, DOFA) x 3 sensors; random 75/10/15 split (Table III) vs leave-one-region-out over 5 regions (Table IV). F1 extracted (mIoU in notes); PlanetScope primary."
+R0980,include,,6,"RF digital soil mapping; leave-one-country-out reconstructed from four 3-country donor models (Table 6) vs their 10-fold random CV (Table 4); clay, OC, pH x RMSE/MEC."
+R0986,include,,8,Multitask LSTM soil moisture; random 5-fold over sites vs 7-region leave-one-region-out (Table 1b/c). RMSE global (primary) + 7 regional subsets (primary=no); Pearson R in notes.
+R1001,exclude,E5,0,"GBM (xgboost) with random 5-fold CV vs data-driven spatiotemporal CV (Table 1), but the only metric is the EVA 2021 challenge score (weighted squared exceedance-probability errors), not in the codebook metric list. E.g. dGPD 2896 (random) vs 3215 (spatial) vs 3068 true test score. Usable only if metric list is expanded."
+R1016,include,,10,"RF and LightGBM, 5 feature sets; random 5-fold (Fig. 3A) vs leave-one-site-out over 10 sites (Fig. 5A); R2 digitised (LGBM F4 random exact 0.844). F4 primary. LOSO RMSE only in supplement."
+R1047,include,NA,18,XGB/DT/RF; random 5-fold vs 1-deg spatial block 5-fold; 2 soil depths (S1047a/b).
+R1170,include,NA,12,RF/HGBR/SVR; random 10-fold vs pasture-block and ecosite LOGO; values digitised from Fig. 4. Linear models not extracted.
+R1206,include,NA,1,RF only; random 70/30 split vs station-grouped CV; only R2 available for both.
+R1265,exclude,E1,0,Methodological overview + simulations (arXiv preprint of Stat Sci 2026 paper); simulations explicitly not done for spatial data; no empirical random vs spatial CV comparison.
+R1378,include,NA,5,LightGBM per species; tree-grouped random 5-fold vs plot-grouped 5-fold; journal pre-proof PDF.
+R1440,include,NA,6,"XGBoost; random hold-out vs leave-one-dataset-out (and spatiotemporal variant, primary=no)."
+R1489,exclude,E2,0,Forest fire classification (Algerian/Canadian/Portugal datasets) with random 80/20 split and 5-fold tuning only; no spatial CV. arXiv preprint version read.
+R1592,include,NA,6,RF/SVM; stratified random 50:50 split vs train-one-site/test-other-site; WCM not extracted.
+R1609,include,NA,2,RF only; random 10-fold x100 (buffer non-landslides) vs k-means spatial CV (10 clusters); other ML only random.
+R1892,exclude,E2,0,"Crop phenology LightGBM; nested random 10-fold CV only, spatial CV explicitly not used."
+R1895,include,NA,1,"Borderline: random 10-fold CV (internal testing) vs hold-out of 30% of tree-ring sites, TS model only; R2 definitions differ. Author manuscript (ORCA) of J Ecol 2025."
+R2055,exclude,E2,0,"Landform classification Poland (RF/XGBoost/LightGBM/U-Net): only random 30% holdout and random 5-fold CV per sheet; spatial validation only discussed, country-wide extrapolation reported qualitatively."
+R2080,include,NA,4,10-fold random CV vs leave-block-out and leave-site-out (Table 3); leave-year-out not extracted.
+R2118,exclude,E2,0,"Only leave-one-experiment-out CV (21 N strip trials, Australia) with data thinning; no random CV comparator."
+R2127,exclude,E2,0,Tree species classification (arXiv 2408.08887): only plot-level stratified 10-fold CV; no random vs spatial comparison.
+R2130,include,NA,64,"LOOCV vs leave-site-out and leave-zone-out, 4 ML models x 4 targets (Table 2)."
+R2211,exclude,E2,0,Black-grass density: within-field 5-fold CV of single-field RF vs leave-one-field-out of weighted ensemble (different models); metric GMS per class only in Fig. 3 (~0.7 vs ~0.1). Data/code Dryad.
+R2289,include,NA,6,"Random vs k-means spatial 4-fold CV, 3 datasets (Table 2); independent other-region test for LSF-21 model (Table 3)."
+R2433,include,NA,4,"50-fold random vs 50-fold spatial k-means CV for RRF, 2 eel species (Tables 1-2); VAST/GRaF not ML. Accepted manuscript version."
+R2484,exclude,E2,0,"PhD thesis (Guelph): ML gully susceptibility with random 70/30 local validation vs transfer of single-watershed models to other watersheds (external other-region test, not spatial CV). Chapter published as Mohebzadeh et al. 2024 Natural Hazards; transfer matrices (Tables 2.5-2.9) could serve a sensitivity analysis."
+R2506,include,NA,22,"Software paper (stressor R package) with original agricultural applications. Corn yield: random 10-fold vs k-means lat/lon SCV (primary) and feature-space SCV. Crop suitability: only feature-space SCV, extracted as primary=no."
+R2541,include,NA,7,Random 80/10/10 split within north vs transfer to south region (single regional hold-out). Macro-F1 computed from per-class F1 tables A1-A7 and Table 7. Borderline: spatial design is one region transfer.
+R2596,exclude,E5,0,"Lynx habitat (Maxent, RF, GAMM). Internal CV = held-out individuals within sites (not random observation CV); external = leave-one-site-out (14 folds). Main text only reports a combined normalized AUC/CBI score (Fig. 3); absolute AUC per level in Appendix S7 (supplement not available). Also questionable as random comparator (E2)."
+R2613,exclude,E5,0,"Global wood density (RF, XGB, LightGBM, etc.). Random 5-fold R2 0.50-0.56 in text; spatial block 10-fold (5 deg) and other cluster CVs only in Supplementary Fig. S2b. Check supplement / Zenodo 10.5281/zenodo.10692059."
+R2615,include,NA,6,Soil moisture from geophysics: 1000 random 60/40 splits vs two spatial half-transect hold-outs (Table 2). R2 only.
+R2906,not_retrieved,NA,0,"PDF is only the supplementary figures (S1-S18 residual maps) of Stock et al. fisheries bycatch SDM paper, not the article."
+R2907,exclude,E2,0,"Soil pH NL (QRF): OOB vs location-grouped 10-fold CV (grouping depth observations of the same profile, authors call it random k-fold grouped by location; not spatial CV) plus independent probability sample. Numbers: RMSE OOB 0.47, grouped CV 0.71, LSK 0.79; MEC 0.88/0.72/0.68. Could be reconsidered as leave_location_out if team accepts point-location grouping."
+R2934,include,NA,10,GEDI canopy height CNN ensemble: random 10-fold vs leave-one-continental-region-out (Table 1). Spatial RMSE lower than random. arXiv v2 used; published RSE 2022.
+R3051,include,NA,8,"Mushroom productivity: k-fold vs spatial 10-fold vs environmental CV, MSE in Table 2, converted to RMSE."
+R3094,exclude,E2,0,Simulation study of sampling designs (random/systematic/clustered) with hyperspectral simulated data; no comparison of random vs spatial CV of same model (10-fold CV only for tuning; validation on other realizations).
+R3124,exclude,E2,0,"Gregr 2021 PLOS ONE marine substrate RF: random 67/33 split and OOB vs independent datasets (dive, ROV, camera); no spatial CV."
+R3145,exclude,E5,0,"Lyons 2018 RSE: random vs block hold-out (survey blocks) resampling, but main figures only for maximum likelihood (discriminant analysis); RF results only in Supplementary Figs S3-S4 (not in PDF), shown as violins. Code/data on GitHub/Zenodo (doi 10.5281/zenodo.1146099) could allow recomputation."
+R3149,exclude,E2,0,Rocha 2018 Remote Sensing: simulated landscapes (PROSAIL); random 10-fold CV vs test/independent sets; no spatial CV.
+R3167,include,,1,Gavish 2018 MEE (accepted ms): RF per-site land-cover models; within-site kappa 0.780 vs transferred to other sites 0.360. Within-site validation method only in Appendix S1 - verify (possible OOB/resubstitution). Borderline: site-transfer rather than pooled spatial CV.
+R3209,include,,1,Karasiak 2022 Machine Learning: RF forest type; object LOO 90.76% vs SLOO (19.74 km buffer) 82.08% OA; 2-fold k-fold as alt; independent other-region tests.
+R3219,include,,9,Chen 2021 ESSD: RF daily air temperature China; random 1/5 test split vs leave-location-out (7 station clusters); 3 weather-condition models x R2/MAE/RMSE.
+R3221,exclude,E5,0,"Merckx thesis chapter (published as Merckx et al. 2011 Ecol Model 222:588-597): Maxent for 223 nematode species, random 5-fold vs 5/10 km separated 5-fold CV. Only per-species AUC scatter plots and mean AUC decrease (0.046 at 5 km, 0.110 at 10 km) reported; no paired mean AUC values. Check published version."
+R3226,include,,6,Shah 2026 Folia Oecologica: GEDI + FIA tree diversity; random 5-fold vs leave-one-latitude-band-out; RF and GBM x 3 diversity metrics (R2). Shannon/Simpson spatial from Fig. 5 labels; exact in Suppl. Table S5.
+R3229,include,,24,"Ruther 2026 EGUsphere preprint: landslide release, GBM and GPBoost; random vs k-means cluster, large and small block CV; nested (test AUC) and simple CV; full and forest-only data. Primary = full/nested/small block. Check for peer-reviewed version (published_doi)."
+R3232,exclude,E2,0,Zhang 2026 Sci Data: CNN-Transformer Greenland SMB; spatial (station) 5-fold CV vs training fit (Best model) only; random 80/20 tuning split metrics not reported.
+R0014,include,NA,4,"Killeen 2024 Remote Sens: UAV corn yield; RF random 10-fold vs k-means spatial 10-fold (field-level, same data). Only Pearson CC reported (metric outside v2 list, kept native as Pearson_r); 1 value pair from abstract, 3 digitised from Fig. 4. LOFO not same data."
+R0015,include,NA,48,"Mushagalusa 2024 ESR: simulation study, RF species abundance; random 5-fold vs spatial block (random/systematic/checkerboard) and buffered LOO. MEC (=R2) medians digitised from Fig. 7 boxplots (12 scenarios). Other metrics (RMSE, bias, Spearman r2) only in boxplots/supplement."
+R0016,include,NA,10,"Kumar 2025 Remote Sens: landslide susceptibility Arequipa; R-CV vs k-means S-CV 10-fold x5; Table 4 AUC and OA for kNN, SVM, ANN, RF, C5.0. Fold/variable/training-size series in Supplementary S1-S3."
+R0017,include,NA,20,"Misiuk 2019 Geosciences: seabed sediment RF; LOO vs spatial buffered LOO (1500 m grain size, 200 m coarse). Tables 4, 5, A15. Domain marine habitat (not geology/mining)."
+R0018,include,NA,10,"Stock 2025 Front Remote Sens: synthetic Chl a, Baltic; RF and RFXY; 10-fold vs subbasin/latitudinal/blockCV blocks; ""true"" error on probability sample of pixels (Table 1). blockCV size series in Fig. 5 not extracted."
+R0019,include,NA,6,Dai 2023 Remote Sens: landslide susceptibility Liangshan; RF and GRF; random 10-fold vs k-means spatial 10-fold (Table 5).
+R0032,include,NA,10,"Karasiak 2019 Remote Sens: tree species SVM, Formosat-2; LOO vs spatial LOO (340 m); OA per year (Table 2). Primary year arbitrary (2013)."
+R0035,include,NA,54,Radocaj 2025 Eng: maize yield 3 parcels; RF regular vs k-means spatial 10-fold x5 (Table 3). BGLM not extracted.
+R0041,include,NA,27,"Bueno 2023 Water: glacier mapping 9 Peruvian Cordilleras; GBM, kNN, RF (LR excluded); non-spatial vs k-means spatial 5-fold x50; independent SRS test. Only MCC reported (outside v2 metric list, kept native); per-model medians digitised from Fig. 4."
+R0056,include,NA,24,"Koehler 2025 Front Earth Sci: periglacial block/talus slopes (cryosphere; borderline geomorphology, not mining/geology); RF random 10-fold vs leave-one-key-site-out; AUC/accuracy from Fig. 6 and text."
+R0057,include,NA,12,Random 70/30 stratified test vs leave-one-district-out (6) for RF/XGB/GBM gully susceptibility; Tables 8-9.
+R0077,include,NA,10,"CNN-Transformer soil class: random 7:3 split vs 5-fold 10 km spatial-block CV (OA only, Discussion); plus buffer-filtered and distance-band test subsets (primary=no)."
+R0086,include,NA,20,RF per LCZ type x day/night LST: random 7:3 split vs k-means spatial block CV (2-5 folds); Tables 9-10. Borderline urban LST domain.
+R0089,include,NA,18,Six models SOC: 100x random 80:20 holdout vs 20x repeated 5-fold spatial-cluster CV; Tables 5-6.
+R0098,include,NA,5,HGB maize yield: random record-level 5-fold vs parish/canton-grouped nested CV; random values only for HGB; Tables 6-7.
+R0100,include,NA,2,RF land cover from embeddings: random stratified 5-fold vs 5 deg block 5-fold; OA only in text (F1/kappa random in supplement Table S2).
+R0101,include,NA,3,"Avalanche susceptibility: random 70/30 vs 25-cluster 5-fold spatial CV, AUC for SVM/RF/GBDT (Table 4); other spatial metrics in supplement."
+R0102,include,NA,3,Landslide susceptibility LMT-based models: random split validation AUC vs 5-block spatial CV (Table 7); highlight vs table inconsistency noted.
+R0105,include,NA,3,"Stacked ensemble wheat yield: 70:30 random split vs 1 km spatial block CV (R2, RMSE in text); base learners in supplement only."
+R0107,include,NA,6,"LightGBM FIRMS wildfire classification: random stratified split vs spatial-block holdout (2.5/5/10 deg), with/without coordinates; Tables 5 and 7. Borderline domain (fire hazard)."
+R0124,include,NA,3,"Hyperspectral vegetation classification (Matiwan); SSRN CNN with 3 losses; random pixel partition vs leakage-free block partition (Table 6), OA only allowed metric. Primary = CAMP-CL."
+R0125,include,NA,6,"Oilseed rape yield, 8 fields; RF/XGB/DNN random 80/20 vs field-wise GroupSplit (Table 3). OLS not extracted. Repeated GroupShuffleSplit results not numeric in text (maybe supplement)."
+R0127,include,NA,20,Landslide susceptibility (domain other per precedent); RF/XGB/LGBM/CatBoost/ensemble stratified 70/30 vs 10 km block 5-fold (Table 3); block 5/15 km and sensitivity variants as primary=no.
+R0166,include,NA,6,"Crop type RF, 7 German sites; within-site parcel-disjoint random holdout (reference system) vs leave-site-out (target system); medians digitised from Fig. 6."
+R0249,exclude,E5,0,"Block-CV vs random 70/30 hold-out RF LULC (eThekwini, Nelson Mandela Bay); main text gives only deltas (OA delta EM S1 -3.22, S2 -1.31; NMBM S1 -2.43, S2 -0.08; NMBM macro-F1 -5.60/-3.30). Absolute values in Supplementary Tables C5/C6 (not in PDF) - retrieve supplement to include."
+R0310,include,NA,3,"Mass movement susceptibility China; TBMM (GPBoost) only ML model; 3 datasets (debris flow, rockfall, landslide) S0310a-c; median AUROC 10x10-fold CV vs SCV (Table 4). GLMM/GAMM not extracted."
+R0317,exclude,E2,0,Oilseed flax county yield CNN-Informer; chronological split and county-based spatial 5-fold CV (combined with temporal holdout); no random CV.
+R0353,include,NA,2,Wheat yield Kazakhstan district-year; XGBoost random 5-fold vs district leave-group-out (Fig. 6). Other models spatial CV only.
+R0382,include,NA,6,"Crop classification Donggang; prior-guided CNN, XGBoost, unguided CNN; random 7:3 vs 0.02 deg block 5-fold (Table 6)."
+R0396,include,NA,1,"Impervious surface RF on AlphaEarth embeddings; random 70/30 vs leave-one-city-out F1 (Tables 3, 9). Repeated random vs 0.05 deg block holdouts only as IoU (in notes)."
+R0407,include,,1,"RF flood intensity; standard 5-fold vs spatial contiguous 5-block CV (R2 only, Table 2)."
+R0409,exclude,E2,10,"QC reconciliation 2026-10-12: random CV on 63 training wells vs single hold-out of 24 different wells -> not same data. Borderline: nested random 5-fold CV on training wells vs single geology/fishnet spatial block hold-out (24 wells); 5 ML models, AUC and F1_high."
+R0448,include,,10,Grassland AGB; random 5-fold vs KMeans (10 groups) GroupKFold spatial CV for 5 ML models (Table 6); pooled OOF R2 as primary=no.
+R0470,include,,20,"Wildfire occurrence Saudi dataset; random stratified 5-fold vs 5 geographic groups; accuracy and weighted F1, with/without oversampling (Tables 6, 12)."
+R0524,include,,24,"Borderline: random 80/20 hold-out vs two geographically separate unseen areas; RF and TabNet, 3 feature sets, OA and kappa (Tables 3-5)."
+R0578,exclude,E2,0,PM2.5 downscaling: Stage 1 XGBoost/TabICL random k-fold against CHAP 1 km target; Stage 2 calibration only site-based (0 km) and buffered site CV against station data. No random CV of the same model/data as the spatial CV.
+R0581,include,,3,SERF-XCH4 stacked ensemble; random 10-fold vs 1x1 deg spatial block CV (Fig. 4 panels); base learners only on hold-out test.
+R0597,include,,10,Rockfall REUs; random 70/30 vs leave-one-road-corridor-out (Table 7) for 10 ML/DL models; pixel-scale Table 6 random only.
+R0599,include,,6,Geohazard slope units; random 70/30 vs repeated buffered spatial block CV; random and spatial AUC identical to 4 decimals (authors state coincidence).
+R0612,exclude,E2,0,"Coastal multi-hazard: no random CV; all designs spatial (5 km blocked hold-out, interleaved 5 km block CV, contiguous-zone CV with 5 km buffer)."
+R0621,include,NA,9,RF; random 80/20 holdout vs 5-fold buffered 1 km block CV (pooled OOF); overall (primary) + HH/LL zone subsets; R2/RMSE/MAE. LR not extracted.
+R0627,include,NA,6,BP-NN; within-sensor random split benchmark vs Leave-One-Basin-Out (8 basins); 3 sensor datasets; OA and kappa. Labels from K-means of same spectra (near-ceiling accuracy).
+R0631,include,NA,4,XGBoost; stratified 80/20 test AUC vs 3 km block CV (15 folds); full set primary + 3 ablation variants (2 spatial values derived from reported deltas).
+R0636,exclude,E2,0,"GRACE TWS downscaling with RF: grouped year x spatial-block CV, spatiotemporal outer tests and temporal holdout only; no random CV comparator."
+R0637,include,NA,2,RF SDM; sdm random 30% subsampling AUC (Table 1) vs blockCV 200 km k=5. Spatial AUCs derived from reported drops for 2 species; other 2 species only in Table S2 (supplement) - verify.
+R0641,include,NA,1,XGBoost; 300 repeated stratified 80/20 holdouts vs 5-fold 15 km block CV; AUC. RF/SVM spatial not reported.
+R0644,include,NA,2,"RF and GBM SDM; 5-fold random vs 1-degree spatial block CV, AUC with SD (Table 2). GLM not extracted."
+R0711,include,NA,1,"RF landslide susceptibility; 7:3 random split vs 5 k-means spatial blocks; AUC. Geohazard domain coded other (consistent with R1609, R3229)."
+R0714,exclude,E2,0,"Soil DSM Kazakhstan: all strategies spatial (Field-LOFO, Farm-LOFO, spatial split; GroupKFold); no random CV metrics reported for same models."
+R0720,include,NA,2,RF and GBM trail degradation; stratified 70/30 split AUC vs 5-block spatial CV mean AUC (Table 3). LR not extracted.
+R0726,include,NA,4,"MLP only with spatial CV (leave-one-town-out, 5 towns) vs random 5-fold; two non-landslide sampling strategies (Strategy I primary)."
+R0744,include,NA,4,UAV object detection of larch casebearer damage; random 60/20/20 split (5 seeds) vs 5-fold leave-one-block-out; F1 for DROMAL-Net (primary) and 3 ablations.
+R0756,include,NA,12,Tidal-flat DEM U-Net; random 20% Val (used for early stopping) vs contiguous spatial hold-out strip; RAPS-UNet primary + 5 ablations; field DEM as independent reference.
+R0769,exclude,E4,0,"Macroseismic intensity imputation for historical earthquakes (seismology, off-domain like geology). Linear, KNN, kriging; random vs k-means spatial-block 5-fold; main text reports only success rates within +/-1 intensity unit (Table 4); MSE in Tables S1-S2."
+R0822,include,NA,3,FiLM-U-Net landslide susceptibility; random stratified 80/20 test (alt: 5-fold) vs administrative hold-out (Emin County); only FiLM-U-Net evaluated spatially.
+R0849,include,NA,1,MaxEnt SDM; random 10-fold vs 4 spatial blocks (median lon/lat); AUC.
+R0872,include,NA,16,"River turbidity RF/XGB/SVM/ANN, 2 predictor scenarios; 30 random splits (medians digitised from Fig. 2) vs leave-one-site-out (10 sites, medians in text)."
+R0906,include,NA,4,LULC GEOBIA RF/GBM/XGB/stack; repeated random 10x5 vs k-means LLO-CV; OA digitised from Fig. 4; independent random validation set in Table 2.
+R0929,exclude,E2,0,"UAV LiDAR tree diameter/volume RF: site-specific models with random 80/20 splits (per-site) vs a generalised pooled model with leave-one-site-out; different models, training data and predictor sets, no matched random CV of the pooled model."
+R0947,include,NA,3,Macadamia planting year GRU; leave-one-region-out (pooled) vs block-level random 80/10/10 split of final model; MAE/RMSE/R2.
+R0961,exclude,E2,0,"Tziachris 2023 Water (groundwater EC, QRF/RF/GBM). Random 5-fold CV and spatial block CV (1400 m blocks, 6 folds) were used only to select the best fold-model per algorithm; the CV performance estimates themselves are not reported. Both selected models are evaluated on the same random 20% hold-out (Atest) and external datasets B (other year) and C (Italy), Table 9 (e.g. mean RMSE Atest 2027 vs 2238). No random-vs-spatial CV estimate comparison available."
+R0988,include,,18,Random 80/20 split vs K-fold leave-one-station-out (LOGO); XGB and DNN for ERA5 daily/hourly and CMIP6 daily Ta downscaling (Table 3b). ERA5 daily primary.
+R1010,include,,32,"Mila 2024 GMD case studies: random 10-fold vs kNNDM CV, RF with/without spatial proxies, naive/complete predictor sets; temperature (S1010a) and PM2.5 (S1010b), Tables 2-3. Complete baseline primary. Simulation results not extracted."
+R1014,include,,12,"RF canopy height from Landsat products; random 80/20 vs 16/4 lidar-transect split. R2 from Fig. 3 printed values (single run), RMSE digitised from Fig. 4 (median of 300 runs, 50% sample)."
+R1108,include,,5,"Quinoa ABV: random 10-fold CV (Table 6) vs leave-one-plot-out (5 plots, per-plot RMSE in Fig. 6, averaged here). RMSE only (LOPO R2 not reported). RF, GB, XGB, stacking, CNN."
+R1349,exclude,E4,0,"Seed morphometric phenotyping of Genipa americana (germination classification from seed images); random split vs leave-one-locality-out reported, but target is not a spatially distributed environmental/agricultural variable being mapped."
+R1504,exclude,E2,0,Groundwater NH4+-N at a chemical park: ML models by random 10-fold CV and hybrids by LOO-CV only; authors explicitly did not run leave-one-well-out or spatial block CV.
+R1574,include,,2,"Borderline (domain: DTM/terrain reconstruction; random split units are areas before tiling). Residual U-Net: random 70/15/15 study-region test split vs held-out state (Arkansas), Table 7."
+R1613,include,,6,"NO2 Marmara: S5P-CatBoost random 70/10/20 split vs LOSO (74) and LOPO (11 provinces), Table 5; temporal split noted only. LOPO primary."
+R1617,exclude,E2,0,Land cover U-Net/SegFormer (Munich/Berlin): in-city evaluation uses a row-based spatial split (not random) and cross-city transfer; no random CV/split comparator.
+R1687,exclude,E2,0,"Deep learning cotton segmentation (Xinjiang); only fixed test set plus cross-year and cross-region transfer (train Wei-Ku, test Manasi; mIoU 74.56% cross-region vs 82.81% cross-year). Transfer is an other-region test, not a spatial CV paired with random CV on the same data."
+R1709,exclude,E5,0,"Soil trace metals VIS-NIR-SWIR (ANN, SVR). Nested random 10-fold CV and 5-zone block CV both described, but main text reports only pooled Table 2 metrics (nested CV) and external validation; block-CV metrics not given. Per-element results in Supplementary Tables S4-S7 (not checked); may contain block-CV values."
+R1774,include,,48,"Cereal leaf beetle damage (UAV RGB), RF and LightGBM; random 70/30 split vs field(-section) holdout; Table 9 for 3 surveys x 2 feature sets x 4 metrics."
+R1918,exclude,E2,0,"Pasture biomass (RF etc.); random 70/30 split + 10-fold CV within pasture; spatial evaluation only as transfer of MGP model to other pastures (HGP R2 0.65, CWP R2 0.37 vs within-MGP test R2 0.83) = other-region independent test, no spatial CV."
+R1971,exclude,E2,0,"Wheat yield (ranger RF), NSW. Compares LOSOCV, leave-one-field-season-out CV (Exp 3: 30 m LCCC 0.80, RMSE 1.16, R2 0.66) and per-field 2-fold CV (Exp 4: LCCC 0.97, RMSE 0.45, R2 0.95), but Exp 4 fits separate per-field models on that field only and 2FCV fold design (random vs strips) not specified -> not same model/data with a random CV. Borderline; candidate for sensitivity analysis."
+R1989,include,,2,Pasture biomass XGBoost; random 80/20 test vs leave-one-farm-out (augmented data); sixth-paddock and temporal independent sets.
+R2025,exclude,E2,0,"Debris-flow susceptibility (RF, SVM, XGBoost); 70/30 split with 10-fold k-means spatial cluster CV used only for tuning; no random-vs-spatial comparison; transfer to Mao County is other-region test."
+R2088,include,,1,Bathymetry (Sentinel-2 XGBoost); 4-area spatial CV vs random split; random MAE derived from reported 36.7% relative reduction (flagged). Other models only spatial.
+R2274,exclude,E2,0,"Mountain lion RSF (RF vs GLM); internal validation = AUC on fitted data (RF 0.94), no random CV/split; leave-one-site-out external validation reported as Spearman rank correlation (mean 0.93 RF). No random CV and metrics not comparable."
+R2325,include,,12,"Hourly SAT from FY-4A LST, RF with 4 predictor sets; sample-based (random) 10-fold vs site-based 10-fold CV; Figs. 2-3 printed metrics."
+R2391,exclude,E2,0,"Kim 2024 Remote Sens: U-Net burned-area mapping from PlanetScope; random 60/20/20 patch split only, plus transfer of site A/B models to site C (other-region test). No spatial CV; authors acknowledge random sampling may overestimate accuracy."
+R2459,include,NA,40,"Luo 2024 Forests: forest AGB, CatBoost/LightGBM/RF/XGBoost + entropy-weighted hybrid; random vs spatial 5-fold CV in two regions (JL, GX) x two predictor sets (Tables 5-6). Spatial CV construction poorly described."
+R2491,include,NA,6,Schadauer 2024 Remote Sens: Austria tree species CNN (ResNet-MLP); random holdout 99% vs clustered spatial split 74% NFI-weighted OA (Table 4); NFI probability-sample validation as independent. Split-distance series in Fig. 3a not digitised.
+R2495,include,NA,12,"Smith 2023 Remote Sens: pasture AGB and %N; nested random k-fold vs LOGOCV grouped by plot (Tables 3-4); RF/SVR/XGB extracted, linear models not. Date/year/location structures not used."
+R2555,exclude,E2,0,"Broeg 2023 Remote Sens: SOC in cropland (RF), 6x10-fold random CV within each state vs transfer of models to the other German state (other-region test); no spatial CV on same data."
+R2641,include,NA,6,"Ni-Meister 2024 Remote Sens: hyperspectral tree species (NEON NIWO), random pixel split vs plot-divide split; RF and transformer DL; values digitised from Fig. 9 (bar chart). Grouped-by-tree split noted only."
+R2667,include,NA,12,Jurayj 2024 Remote Sens: RF vegetation vertical complexity (LVIS) ABoVE; random 20% holdout (and 5-fold CV) vs 6 held-out flightlines (Table 4). Borderline: spatial = single held-out flightline set.
+R2730,include,NA,2,"Hu & Shean 2022 Remote Sens: RF snow/land cover from WorldView; random 10-fold CV >99% vs distance-separated test polygons ~94% (North Cascades) / ~82% (Grand Mesa), text only; exact random values in Supplementary Table S2 (not seen). Borderline/approximate values."
+R2759,include,NA,24,"Perez Chaves 2020 Remote Sens: RF floristic NMDS axes, Peruvian Amazonia (157 plots); random 10-fold vs latitudinal 5-fold block CV (Table 2), 4 predictor sets x 3 axes."
+R2887,exclude,E2,0,"Eischeid 2021 Remote Sens: drone RF ground-cover (Svalbard); within-site stratified random 70/30 split (x30) vs transfer of each site model to the other two sites (Fig. 10, macro-F1 <50%); other-site transfer test, not spatial CV (cf. R1918/R1687). Fig. 10 matrix could serve sensitivity analysis."
+R3102,include,NA,20,"Alazmi 2022 IJERPH: BC and PN mobile-monitoring LUR, best of 9 ML algorithms; random 10-fold vs 17 k-means clusters on land-use/transport predictors (feature-space 'spatial' CV, coded other); MAE/RMSE for daily, hourly and one-second models (Tables 3, 5). Primary = daily average. Per-algorithm values only in supplement (S1-S12)."
+R3162,include,NA,50,"Urbazaev 2018 Remote Sensing: RF vegetation height from PALSAR-2; stratified random 70/30 vs k-means coordinate-cluster 70/30 split; R2/RMSE printed in Fig. 6 (primary = 24 filtered ScanSAR), plus digitised Fig. 9 (number of scenes, filtering) and Fig. 10 (training size) medians as non-primary."
+R3182,include,NA,24,Zhang 2024 ESSD AIGD-PFT: deep ensemble (100 ResNets) for 8 phytoplankton functional types; random vs 20-deg hexagon spatial-block 5-fold CV (and temporal-block); R2/MAE/RMSE in Table 3. n of matchups not reported in main text.
+R3234,include,NA,3,"Hu 2026 Applied Sciences: urban ground collapse susceptibility, LightGBM; random 75/25 vs leave-one-district-out (plus temporal hold-out); AUC/BA/F1 in Table 2. Geohazard coded other; borderline domain (urban infrastructure-driven hazard)."
+R0003,include,NA,36,"Meyer 2018 EMS: RF spatio-temporal; random 10-fold vs LLO and LLTO CV; Tair Antarctica (S0003a) and VW Cookfarm (S0003b); Table 2 incl. RFE/FFS variants. Primary = no feature selection, LLO."
+R0004,include,NA,8,"Hao 2020 Ecography: SDM 14 eucalypts; internal repeated random 75/25 split vs spatial block CV; AUC medians vector-digitised from Figs. 2-3 for BRT, ANN, RF, CTA (checkerboard primary, latitudinal secondary). Statistical models and ensembles not extracted."
+R0007,include,NA,6,"Wadoux 2021 Ecol Model: simulation on Baccini AGB map, RF; random K-fold vs spatial K-fold and B-LOO (350 km), 3 sampling designs. Only RMSE estimation errors (CV - population RMSE) reported, vector-digitised from Fig. 1; absolute RMSE not available (ratio effect sizes not computable)."
+R0011,include,NA,20,"Mila 2022 MEE: NNDM LOO; simulation 2 (virtual species on WorldClim, Iberia) RF; LOO vs bLOO/NNDM (outcome/residual range), 5 sampling patterns; only CV - true RMSE differences (Fig. 8, visually digitised). Simulation 1 (synthetic Gaussian fields) not extracted."
+R0012,include,NA,20,"de Bruin 2022 Ecol Inform: simulation on AGB and OCS maps (W Europe), RF; conventional 10-fold vs k-means spatial 10-fold, 5 sampling designs; RMSE and MEC derived from Fig. 9 relative deviations x Fig. 4 reference metrics (approximate, digitised)."
+R0021,include,NA,6,"Mayr 2018 Ecol Indic: Namibia fire regime (burned area, fire occurrence) at 0.1 deg, n=3700; RF, SVR, RPART (+GLM, MARS not extracted); 5x10-fold random vs k-means coordinate-cluster spatial CV; RMSE only (Table 2)."
+R0022,include,NA,8,"Guillaumot 2019 Prog Oceanogr: BRT SDM for Odontaster validus (Southern Ocean), random 75/25 split vs BLOCK and 2/3/4-fold CLOCK spatial designs, 100 replicates; AUC/TSS mean+-SD (Table 2). Primary = 2-fold CLOCK (authors' choice)."
+R0024,include,NA,6,"QC reconciliation 2026-10-12: first decision kept. Stiller 2024 ISPRS Open J: UAV RGB CNN (ResNet18, baseline CNN) crop yield for soy/maize/sunflower small fields; 4-fold random vs spatial block CV plus external field; Pearson r only (kept as Pearson_r, precedent R0014). Primary = ResNet18; RCV with overlap = matched comparator."
+R0027,exclude,E5,0,"Stock 2022 ISPRS J: semi-synthetic Baltic Sea Chl a (2000 subsets of cruise matchups), MBR, RF, RFXY, ANN validated with 80/20 split, 10-fold CV, spatial block (HELCOM regions), SLOOCV (100 km), temporal/seasonal/environmental blocks. Estimated errors reported only as % difference from true error (violin means, Figs 7/10); absolute CV estimates not reported (true errors Tables 1/5 only). Approx visual readings Fig 7 (real locations), RMSE % diff CV10 vs SBLCV: RF ~-15 vs ~+7, RFXY ~-37 vs ~-12, ANN ~-10 vs ~+5; Fig 10 (random locations): CV10 ~0 vs SBLCV ~+35-45. Could be included if relative-bias effect sizes are accepted."
+R0008,include,NA,28,"Ren 2020 Env Int: ozone CONUS; 13 algorithms, 10-fold random CV vs 10-cluster spatial CV (+75% criterion external validation); ML models KNN, SVR, BPNN, DNN, RT, RF, XGB extracted for spatiotemporal DM8HA (S0008a, Table 1) and spatial DVm (S0008b, Table 2); linear models not extracted."
+R0028,include,NA,12,Wu 2022 Env Pollut: on-road PM2.5 (cyclists) Taipei/Osaka/Seoul (S0028a-c); RF LURF 50-fold CV vs 50-fold CV with 100 m distance restriction (Table 1). Two-stage hybrid as primary=no.
+R0031,include,NA,6,"QC reconciliation 2026-10-12: first decision kept. Wang 2025 Ecol Inform (DA-CV): RF, RDM-CV vs SP-CV 5-fold on real AGB and synthetic species abundance under varying clustering; no tables, RMSE visually digitised from Fig. 8 zoomed subplots (3 clustering ranges x 2 datasets, S0031a-f) with actual RMSE as value_independent. Approximate."
+R0038,include,NA,32,"Samodra 2024 AIIG: landslide susceptibility RF, random 10-fold (nonspatial tuning) vs LLO spatial 10-fold (spatial tuning) for 8 inventory-handling scenarios; accuracy and kappa (Table 2). 15 m grid primary; FFS variant primary=no. AUROC on common 25% hold-out not extracted."
+R0039,include,NA,42,"Bussalleu 2024 STOTEN: Europe daily air temperature RF, 10-fold random vs 10-fold 125 km x 30 d spatiotemporal block CV (Table 2; Tmean/Tmin/Tmax S0039a-c) and stage-1 MODIS LST random external vs 500 km x 10 d block CV (Table 1; S0039d-g). Global primary, local primary=no."
+R0043,exclude,E5,0,"Zhao 2025 Sust Cities Soc: urban LST SVM/RF/XGB; repeated random 5-fold CV metrics reported (Fig. 4) but k-means spatial block CV reported only as residual maps and Moran I (Fig. 5), no performance metrics; supplement not available."
+R0045,exclude,E5,0,"Yu 2026 J Hydrol Reg Stud: Wenzhou Bay water quality (DeepSeaWQ, ML, empirical); random split vs 4-subregion spatial CV, but spatial CV metrics only in Supplementary Table S2 (not available); main text gives only ~10-16% decline and approximate R2 (>0.8 vs ~0.7)."
+R0053,include,NA,12,"Biswas 2025 Geomatica: California wildfire susceptibility; random 75:25 split (Table 3) vs 5-fold k-means spatial CV (Table 4) for RF, LightGBM, XGB, SVM, DT, ML-ensemble; accuracy and AUC. DL models only random (not extracted)."
+R0054,include,NA,20,"Mekonnen 2026 Environ Challenges: gully erosion susceptibility; RF, GBM, NB, ANN, SVM; random 5-fold vs kNNDM 5-fold (Tables 3-4): accuracy, kappa, AUC, F1. Text/table AUC inconsistency noted."
+R0055,exclude,E2,0,"Mallie 2025 Environ Challenges: desert locust breeding SDM ensemble (GLM, MARS, Bioclim, MaxEnt, RF, SVM); only one CV scheme (10-fold CV with spatial partitioning); no random vs spatial comparison."
+R0058,include,NA,8,"Kouassi 2026 ISWCR: SOC Cote d'Ivoire cocoa landscapes, RF with repeated random 10-fold CV vs LLOCV, 2 sites x 2 depths (S0058a-d); RMSE and CCC visually digitised from Fig. 3 stacked bars (calibration=CV; hold-out validation in notes). Interpretation of 'Train' as CV uncertain."
+R0062,include,NA,24,"Delaney 2024 Ecosphere: reed canarygrass presence/absence; RF, XGBoost, BART, ensemble; random 10-fold vs spatial block 10-fold (4254 m) and spatial+EDF; accuracy, AUC, TSS visually digitised from Fig. 2. Spatial+EDF primary=no."
+R0066,include,NA,15,"Kumar 2026 Environ Challenges: soil available N (160 samples, Assam); RF, Cubist, SVM, XGB, KNN; random 80:20 validation vs 5-fold spatial block CV (Table 4): R2, CCC, RMSE."
+R0072,include,NA,2,Wang 2026 Geosci Front: global flood (S0072a) and landslide (S0072b) susceptibility XGBoost; repeated random 10-fold vs sub-basin (62 units) 10-fold spatial CV x25; median AUC (Table 6).
+R0082,exclude,E2,0,"Nguyen 2026 RSASE: Mekong estuarine salinity RF; only spatial/temporal blocked protocols (LOSO, LOYO, forward split); no random CV of own model (random-split R2 only cited from literature)."
+R0085,include,NA,6,Random split CV vs k-means 10-cluster leave-one-block-out spatial CV; RF and GBR; R2/RMSE/MAE (Table 2). Random scheme not detailed.
+R0087,include,NA,6,"Multi-species SDM (canga flora); random 75/25 x10 vs blockCV spatial block CV; RF, MaxEnt, SVM AUC/TSS (Table 3). GLM, Bioclim not extracted."
+R0088,include,NA,14,"Germany NO2 (S0088a) and PM2.5 (S0088b) RF/GBM; random CV vs 0.25 deg spatial block CV (text, Table 2 road-density sensitivity primary=no). Table S1/S2 (other models) not available. PM2.5 Table 2 RMSE scale inconsistency flagged."
+R0092,include,NA,8,"Borderline domain (urban park green-space land cover). Random 70/30 x5 vs 5-fold spatial block GroupKFold; XGB, RF, DT, GBM ROC-AUC and F1 (Table 5). LR not extracted."
+R0095,exclude,E5,0,"Bohai Sea TROPOMI NO2 gap-filling; Random-Test vs per-year 10-fold spatial CV, but paired per-model values only in Supplementary Table S5 (not available); main text gives only ranges, and Fig. 3 (labelled spatial CV) shows R2 matching the Random-Test range. Re-check if supplement obtained."
+R0099,include,NA,12,"Sidewalk PM2.5/PM1 (mobile monitoring); repeated random 5-fold vs 100 m grid-block 5-fold (primary, 10 s) and 3-zone route-based CV; XGB, LightGBM R2 (% converted). MSE not extracted."
+R0103,exclude,E5,0,EnMAP Pinus wood volume; random repeated CV/test reported (Table II-III) but cluster-based spatial CV metrics reported as NA ('all R2 negative'); no numeric spatial values.
+R0104,exclude,E4,0,"Hybrid solar-wind site suitability (energy planning); ML surrogate of rule-based GIS-MCDM labels, not an observed environmental/agricultural variable. RF random split acc 0.97 vs N-S holdout 0.76."
+R0106,include,NA,4,UCMR5 PFAS detection (borderline environmental domain); LightGBM grouped random 10-fold vs 16 state-block leave-one-block-out; AUROC for 3 geography specs + HUC-2 sensitivity. RF/LR comparators in supplement only.
+R0109,include,NA,43,"Cerrado LULC/encroaching species, 43 DL time-series models; stratified random split x5 vs 5-fold k-means spatial CV; macro F1 (Table 2, % converted)."
+R0115,include,NA,2,CCV land subsidence (InSAR); stacking ensemble random 70/30 vs 10 km block 5-fold GroupKFold; R2/RMSE. Base learners spatial values in Table S2 only.
+R0118,include,NA,2,Landslide susceptibility Altai; 8:2 random split vs k-means GroupKFold spatial CV; RF and Deep Forest AUC (Table 5). LR not extracted.
+R0120,include,NA,8,Tehran PM2.5 (S0120a) / PM10 (S0120b); random 5-fold vs spatial block CV (primary) and LOSO; only XGBoost pairs matched across tables extracted. Full model comparison in Table S18 (not available).
+R0121,exclude,E4,0,"Mining-impacted soils: XGBoost predicting PMF source-factor contributions from co-measured metal concentrations (source apportionment, not spatial mapping from covariates); mining region per protocol E4. Random partitions vs leave-one-cluster-out (spatial values Table S6). Borderline - could be revisited as soil domain."
+R0128,include,NA,18,"Beech crown defoliation (WZE grid); random 80/20 split vs leave-one-30 km grid cell out (median across folds); FT-Transformer, XGB, RF, 3 ensembles R2/RMSE/MAE (Table 3). GLM/GAM not extracted."
+R0130,include,NA,12,"Li 2026 Ecol Indic: UAV-LiDAR SDM of endangered conifer; MaxEnt/RF/XGB, 2 predictor schemes; 10 repeated stratified random splits vs 4 k-means block LOBO; AUC and TSS (Table 3). Scheme 2 primary."
+R0140,include,NA,1,Hengl 2018 PeerJ: global PNV; only biomes RF compared random repeated 5-fold (acc 0.68) vs mlr spatial repeated CV (0.33). Spatial kappa only weighted kappa -> not paired. Tree taxa/FAPAR no random-vs-spatial pair.
+R0141,include,NA,8,"Steger 2016 Geomorphology: landslide susceptibility Lower Austria; RF and SVM, 2 inventories x 2 predictor sets; single random holdout vs spatial CV (10 subregions x 50) AUROC digitised from Fig. 6 (SCV medians). GLM/GAM not extracted."
+R0149,include,NA,3,"Just 2020 Atmos Environ: PM2.5 XGBoost NE USA 2009; random 10-fold vs 31-km cluster spatial 10-fold (RMSE unweighted/weighted, R2); site-wise CV in random_cv_alt."
+R0151,exclude,E2,0,Xue 2022 IEEE JSTARS: HSI classification transformer; spatially disjoint samples used only for Indian Pines/Pavia and random samples only for Houston/YRD/Xiongan -> no random vs spatial comparison on same data.
+R0156,include,NA,10,"Muro 2022 RSE: grassland biomass and species richness, DNN and RF; plot-grouped random 5-fold x10 (Tables 4-5) vs leave-one-region-out (Figs. 8, 10 digitised, mean of 3 regions). R2 and RRMSE."
+R0164,include,NA,12,"Valavi 2023 GEB: SDM 171 species; random vs 75-km block 5-fold partitioning; mean AUC and COR per method digitised from Fig. 3 (MaxEnt, BRT, RF x2, SVM, Ensemble). GLM/GAM/MARS not extracted."
+R0165,include,NA,6,Yu 2021 Ecol Indic: Tibetan Plateau grassland AGB RF; random CV vs LLO-CV with all and FFS predictors (Table 5) R2/RMSE/MAE.
+R0176,include,NA,32,"Zhang 2023 RSE: global phytoplankton groups, STEE ensemble (RF/GBM/CNN + ridge); standard (Kennard-Stone, non-spatial) 5-fold vs basin/hexagon spatial block 5-fold; R2, MAE from Fig. 6 labels for 8 PGs. Hexagonal values identical to temporal CV (possible mislabel)."
+R0178,include,NA,12,"Bao 2023 RSE: Himawari-8 AOD/AE retrieval with RF (DORF); sample-based vs site-based 10-CV; R2/RMSE/MAE for AOD 0.50/0.46/0.64 um and AE (abstract, Fig. 5)."
+R0189,include,NA,36,"Zhang 2021 J Hydrol: grassland ET RF at flux towers; random k-fold vs leave-one-site-out, 4 temporal resolutions x 2 strategies (Table 3). Daily Strategy 1 primary."
+R0192,include,NA,2,Nguyen Van 2024 Ecol Inform: wildfire severity RF (Uljin); random 60/40 split vs ninefold spatial CV; OA and kappa (mean of SCV folds from text). Predictor set used in SCV assumed final 12-predictor model.
+R0198,exclude,E2,0,Stock & Subramaniam 2022 GIScience RS: marine diagnostic pigments; all errors from iterative spatial LOO CV (0.1-200 km); no random CV of the same models.
+R0204,include,NA,8,"Huang 2023 GeoHealth: China monthly NO2; RF, XGB, GBM and GAM-stacked ensemble; sample-based vs site-based 10-fold CV R2/RMSE (Table 1)."
+R0205,include,NA,3,"Ghahremanloo 2023 Environ Pollut: CONUS MDA8 ozone Deep-CNN; random 10-CV vs station-based spatial CV; RMSE, MAB(MAE), R (Table 1)."
+R0212,include,,4,"Random 5-fold x20 vs 6-cluster spatial CV; median R2 for XGB, GB, RF, BMA ensemble."
+R0214,include,,3,"RF SOC Russia; random CV vs 150 km block 5-fold CV; R2, CCC, RMSE."
+R0222,include,,8,"RF irrigation; OOB vs leave-one-half-out spatial CV; two datasets (Colorado fields, Kansas sections)."
+R0226,include,,2,"XGB ultrafine particles; random 10-fold vs leave-one-site-out (6 sites); R2, nRMSE."
+R0229,exclude,E2,0,"RF+GEOS-CF O3/NO2 forecasting; overall validation is a rolling temporal forecast evaluation, not random CV; only spatial 10-fold CV - no random comparator."
+R0233,include,,3,STRF snow density; random 10-fold vs station-grouped spatial CV + independent snow-pit validation.
+R0234,exclude,E2,0,"Maxent SDMs; partitions block, checkerboard2 and n-1 jackknife (only when <25 occurrences), each selecting different models; no matched random vs spatial CV on same model/data in main text."
+R0236,include,,8,RF SAV classification; random 5-fold vs block CV and leave-one-site-out; kappa per feature set.
+R0246,exclude,E2,0,Maize AGB; random 7:3 split and random LOOCV with metrics stratified by sub-region; no spatial CV (no region held out).
+R0256,include,,6,"XGB O3 Taiwan; random 10-fold vs 25 km block CV, LOSO and 25 km buffered LOO."
+R0278,include,,3,RF ESP 3D; cLHS site-level independent test split vs leave-one-cluster-out (40 k-means clusters).
+R0288,include,,5,ML SDM Cytospora; random test split vs 5-fold spatial block CV; RF AUC/TSS/kappa + 5-model means.
+R0297,include,,6,RF hourly PM2.5 California; OOB vs 10-fold monitor-grouped spatial CV; 3 model versions.
+R0304,include,,12,"Stacking XCO2 global; random 10-fold vs 3 regional holdouts; RMSE, MAE, r."
+R0325,include,,3,Weighted ensemble LST Chongqing; random split vs 10 km spatial-block split.
+R0333,include,NA,2,Random 5-fold CV vs single held-out flux-tower site (Baker's Fen). Borderline: spatial = one held-out site.
+R0337,include,NA,7,"Weighted F1, stratified random 80/20 split vs leave-one-basin-out (9 basins), Table 2. Borderline: class is rule-based function of measured indicators."
+R0346,exclude,E2,0,PM2.5 forecasting RF: 10-fold spatial (station) CV compared only with out-of-sample temporal forecast validation; no random CV of the same model.
+R0347,include,NA,5,BTEX RF: random 10-fold CV vs station-held-out CV (5 folds of 2 of 10 stations); R2 only (nRMSE in notes).
+R0364,include,NA,40,"GVI: 10-fold random vs 10-fold block CV, Table 4 (15 m buffer); 25 m buffer in Table S9 not available."
+R0388,include,NA,2,LFM RF: OOB vs leave-one-county-out CV.
+R0420,include,NA,14,Heartwood rot/timber volume RF: random vs spatial clustering 10-fold CV; most spatial values digitised from Fig. 4.
+R0440,exclude,E2,0,Urban LST XGBoost: only district-grouped holdout and GroupKFold CV reported; no random CV metrics.
+R0449,include,NA,4,"Xylella RF/XGB: stratified random split vs leave-one-region-out (3 regions), AUC Tables B.5-B.6."
+R0450,include,NA,6,"Canopy height SwinUNet: random split vs 5 km block split (single hold-outs), Tables II-III."
+R0455,include,NA,3,Parasite abundance: random 5-fold vs leave-one-pond-out; R2 from text. Borderline domain.
+R0504,include,NA,12,"LULC: 7-fold random vs 7-fold spatial block (1500 m) CV, median OA and F1; accepted manuscript."
+R0513,include,NA,17,"Forest AGB XGBoost: random 10% hold-out vs 100 m spatial block CV and leave-one-survey-area-out, Table 2."
+R0519,include,NA,3,"Coffee systems RF: stratified 5-fold CV vs spatial block CV (10/15/20 km), coffee-subclass macro F1."
+R0545,exclude,E5,0,River turbidity RF: LORO and new-site results only in Supplementary Fig. S4 (not available); main text gives only random 2:1 split metrics. Re-check if supplement obtained.
+R0577,include,NA,18,Random 5-fold vs 5x5 spatial block and buffered block CV; CatBoost/RF/MLP; Table 2.
+R0592,include,NA,1,MaxEnt: ENMeval spatial block CV AUC vs MaxEnt 5 random CV replicates AUC (same final model).
+R0605,exclude,E5,0,Random 70:30 split metrics reported (Table 5) but spatial block CV results only described qualitatively ('slightly lower'); no numeric spatial metrics.
+R0618,exclude,E2,0,"Both CV schemes station-grouped ('spatial random CV' keeps same-location data together, plus spatial CV and LOSO); no non-spatial random CV matched; random-ness of fixed hold-out split not stated; spatial values only in figures."
+R0633,include,NA,8,Stratified 3-fold vs 3-zone spatial block CV; 4 tree models; accuracy and AUC (percent converted).
+R0640,exclude,E2,0,"Site-grouped 5-fold, 15-km spatial block 5-fold and LOYO only; no random CV."
+R0642,include,NA,5,10-fold CV AUC vs 5-fold spatial CV with 50 km buffer (Table 4); LR not extracted.
+R0655,include,NA,10,"Random 8:2 split vs 1000 m buffered spatial validation, R2 only (Table 4), two feature sets."
+R0656,exclude,E2,0,Only spatial block split and 10-fold spatial CV; no random CV comparison.
+R0660,exclude,E2,0,Temporal (LOYO) vs spatial (LODO/LOZO) CV only; no random CV.
+R0670,include,NA,7,Random vs 5-deg spatial block 10-fold CV (Table 1) for NO2 VCD CNN and AK 1D-CNN (two targets).
+R0671,exclude,E2,0,Within-city random 5-fold CV (city-specific models) vs leave-one-city-out with pooled model trained on other cities: different models/training data.
+R0675,include,NA,3,Repeated random 80:20 vs 200 km block CV; only means across 16 PAH models in main text (per-compound in supplement).
+R0678,include,NA,2,Random 30% hold-out OA/kappa vs 20 km spatial block 5-fold OA/kappa (RF).
+R0683,exclude,E2,0,Only leave-one-location-out CV and external test; no random CV.
+R0701,include,NA,2,"RF subsidence susceptibility (InSAR); stratified 70/30 random pixel split vs 5-fold spatial block CV x3 (5 km primary, 2.5 km); AUC. Spatial 61-block hold-out AUC 0.591 as value_independent."
+R0702,exclude,E2,0,"DINOv3 + MLP surrogate of MCDA DACCS suitability: random 75/25 token split on full MCDA target (R2 0.8945, RMSE 0.0276) vs 50 km spatial-block CV on a different, satellite-observable-only MCDA target (R2 0.5047, RMSE 0.0394; Appendix S7). Not same data/target; also borderline E4 (siting index)."
+R0703,exclude,E2,0,CSTFSeg tidal-flat segmentation: only geographic region hold-out (validation regions) and cross-year test set; no random split/CV of the same data.
+R0724,include,NA,8,Ozone MDA8 Yunnan; XGBoost and 3-D CNN; sample-based 5-fold vs K-means (10 clusters) and station-based 5-fold spatial CV; R2/RMSE from text/Figs. 5-6. LightGBM only spatial.
+R0728,exclude,E2,0,"SDB bathymetry (ANN, C-S): within-site random 70/10/20 split vs transfer of Cala Millor model to Son Bou (single other-site test, Table 6). Other-region transfer, not spatial CV of same data (precedent R1687/R2484). Values: ANN Son Bou 2019 random R2 0.95/RMSE 0.63 vs transfer 0.86/1.07."
+R0758,include,NA,8,Cropland ET (41 EC sites); responsibility-XGBoost and direct XGBoost; LOSO (pooled) vs matched pooled random split x30 (Table 3); ablations primary=no.
+R0761,include,NA,4,CatBoost COP30 DEM error correction (Antarctica); random 5-fold OOF per-region RMSE vs leave-one-region-out (4 regions); LORO RMSE derived from Fig. 11 % improvements. Domain other.
+R0762,exclude,E4,0,Piped water / sewage presence across African enumeration areas (infrastructure/socioeconomic target). Random 5-fold AUROC 0.913/0.925 vs LORO 0.755/0.787 (DINOv2 embeddings).
+R0772,include,NA,8,"Grass vs legume UAV classification (RF, CNN); random 80:20 vs repeated paddock hold-out (primary) and 20x20 px grid blocking; accuracy and macro F1 (Tables 3-4). Biomass MLR not ML/no spatial CV."
+R0784,include,NA,1,Landfill crop toxicity (ANN): 5-fold nested CV grouped by site-month vs LOSO (5 sites); accuracy only for ANN. Low reporting quality; random comparator partially grouped.
+R0788,include,NA,2,"Seagrass RF (Sentinel-2): 50 repeated 60/40 random splits vs LOSO (7 sites, pooled); OA and kappa; single split as random_cv_alt. Very small n."
+R0790,include,NA,10,USDM drought state (California stations); single-stage RF and two-stage DT+RF; stratified 4:1 random split vs 5-fold station-grouped CV (primary) and latitude-region hold-out (primary=no); accuracy and macro F1.
+R0806,exclude,E2,0,"MaxEnt waterbird habitat + InVEST ecosystem services; only spatial block 5-fold CV described (AUC>0.85, TSS>0.60 summary; values in Supplementary Table S4, not available); no random CV comparison reported."
+R0808,include,NA,12,"PASTIS-R crop mapping, S1 SLC features; official 5-fold CV vs leave-one-region-out (4 tiles) for parcel classification (PSE+Transformer) and semantic segmentation (U-TAE); S2, S2+S1, S2+S1+Coh; OA and macro F1 (Tables 2, 4, 5, 7)."
+R0812,exclude,E2,0,MaxEnt Ageratina adenophora: V_AUC from ENMevaluate block partitioning and separate block CV AUC - both spatial; no random CV.
+R0817,include,,6,Random = stratified random 127-sample holdout vs 5-fold k-means spatial CV (pooled); spatial CV only for 1D-CNN and two 1D-CNN stacks.
+R0824,include,,12,100 random 80/20 splits (median) vs leave-one-cluster-out (target + 3 nearest neighbours); RF/XGB/MLP/GNN; lat/lon added only in spatial setting.
+R0826,exclude,E5,0,"PM2.5 DeepResKriging/XGB_OK; nested random 10-fold CV in main text, but nested 500 km spatial-block CV results only in Supplementary Section S4 / Table S3 (not available). Eligible if supplement retrieved."
+R0835,include,,72,"RF 5-fold vs LOGO for site-specific models (4 sites x 6 nutrients); LOGO grouping undefined - spatial_cv_type unspecified, flag for sensitivity."
+R0843,include,,18,"Cotton Verticillium wilt; repeated 5-fold (Fig. 5, partly digitised) vs leave-one-field-out (Table 3); RF/SVM/XGB x 3 data configs."
+R0860,exclude,E5,0,"Gully erosion susceptibility RF; random 5-fold CV reported only as Average Precision for tuning, spatial holdout (3 sub-watersheds) only as Spatial Overlay Ratio - no common performance metric under both schemes."
+R0884,include,,5,"SOC stocks at 5 Austrian long-term experiments; repeated 5-fold vs leave-one-site-out, RMSE only, mostly digitised from Figs 1A and 3."
+R0886,exclude,E4,0,"Leaf-level hyperspectral nitrogen estimation (lab spectral library); LOGO groups are species/year/environment experiments, not spatial mapping; off-domain (also no spatial CV). Preprint format."
+R0889,include,,2,Spatial+ CV method paper; Amazon AGB simulation only reports |CV RMSE - true RMSE| (metric RMSE_absdiff_vs_true); random vs block vs SP-CV. California house prices not extracted.
+R0891,include,,8,"RF and RF-IDW climate interpolation, 10-fold vs leave-one-terrain-ladder-out (Table 4), MAE/RMSE for precipitation and temperature."
+R0903,include,,2,CanOSSEM RF PM2.5; 10-fold CV vs leave-one-region-out (mean over 5 regions computed by extractor); secondary model LORO only in SI.
+R0909,exclude,E2,0,"Crop yield OOD benchmark (GNN-RNN, MMST-ViT): temporal year-ahead vs spatio-temporal leave-one-region-out; no random CV."
+R0910,include,,15,Wheat Zadoks stage XGB/RF; 70:30 random split of year-site groups vs leave-one-site-out; CCC/R2/RMSE.
+R0914,include,,6,Grassland LUI CNN; cLHS 70/30 plot split vs leave-one-observatory-out (Fig. 7 digitised); max-OA based comparison.
+R0922,include,,15,"Soil EC China; 10-fold CV vs leave-one-region-out (4 regions, mean computed by extractor) for RF/MLP/RNN/Transformer/HW-Transformer."
+R0925,include,NA,28,"EU-27 LUCAS land cover (L1) and crop type (L2); 7 models (SVM, RF, XGB, 3 deep tabular, BRIDGE-LC MLP); random 75/25 split (Table 6) vs leave-one-bioregion-out over 8 regions (Table 9); weighted F1 and accuracy converted from %."
+R0928,include,NA,12,"Cover crop biomass (ACS-214 sensor), RF; global random split vs leave-one-region-out (Table 3) for grasses/legumes/brassicas, untransformed and log; LORO values averaged by reviewer over held-out regions."
+R0935,exclude,E2,0,Amazonian soil base cations RF; both CV schemes are random 10-fold (all data vs testing only on soil-measured points); no spatial CV.
+R0965,include,NA,9,"SOC density (n=150), RF/BRT/XGB; repeated nested 5-fold vs nested NNDM-CV (Table 2)."
+R0979,include,NA,3,MDB crop type RF; random holdout 80/10/10 vs leave-one-cluster-out (6 sites); LOCOCV per-site values averaged by reviewer; leave-one-season-out (temporal) not extracted.
+R0987,exclude,E2,0,"Maize yield forecasting SSA, RF; only spatio-temporal out-of-sample (country holdout) validation, no random CV; MAPE only."
+R0995,not_retrieved,NA,0,"PDF contains only the first 2 pages of the article (JHM 2019, QRF precipitation blending; K-fold vs leave-one-region-out). Full text needed; potentially eligible."
+R0999,include,NA,8,"Ludwig et al. 2023 re-analysis of 3 global datasets (nematodes, SLA, tree cover), RF; random 10-fold vs spatial block 10-fold (6/9/1 deg) (Table 1-2, text). Feature-space CV not extracted."
+R1013,include,NA,36,"Soybean yield UAV; RF/XGB/stacking x 3 feature subsets; random 5-fold vs cluster spatial CV (H=100 m, 22 clusters) and leave-one-field-out (Table 4); independent Field 7 (Table 5). LASSO not extracted."
+R1042,exclude,E2,0,Cover crop biomass UAV-ML; random 70/30 split (2023-2025 data) vs grouped leave-one-year/species/treatment-out on 2023-2024 subset; leave-one-species-out is confounded with site (rye Lamesa vs wheat Chillicothe) and data differ from random split -> no proper spatial CV on same data. Borderline.
+R1071,exclude,E5,0,"NSW air pollution (PM2.5, PM10, NO2) RF/XGB/GBM + DEML; random 10-fold CV values in Table 2 but spatial CV results only in Supporting Information Table S7 (not available). Reconsider if SI obtained."
+R1111,include,NA,21,MODIS LST downscaling Cairo (n=3340 1 km cells); 6 ML models; random 5-fold vs spatial blocks 3/5/8 km (Table 5 R2) plus RF RMSE and buffered 3 km from text.
+R1151,exclude,E2,0,Intra-slum air temperature RF; only spatially disjoint (>=163 m) stratified 80/20 split and cross-city transfer; no random CV comparator with metrics.
+R1176,exclude,E2,0,"Firefly habitat; ML comparators (RF, BRT) evaluated only under 72 m spatial block CV; random-block CV only for statistical hurdle models (glmmTMB/sdmTMB, not ML)."
+R1181,include,NA,6,"Swedish lake DOC, XGBoost; random 25% holdout vs spatial block CV (Table 1) for full, E+RS and coordinate-only feature sets."
+R1182,include,NA,6,"XGB/RF/LGBM LST GBA; random stratified CV vs 5x5 spatial block CV (plus temporal); R2 printed in Fig. 3c, RMSE digitised from Fig. 3b."
+R1219,include,NA,1,UAV plant species classification (stacked SVM/RF/GBC ensemble); random 75/25 split weighted F1 0.915 vs leave-one-site-out (14 sites) mean F1 0.548 computed from Fig. 5 per-site labels. Borderline: F1 averaging may differ.
+R1244,exclude,E5,0,"MIR soil carbon fractions (PLSR, Cubist, RF); site-wise vs point-wise random 75/25 split x10 compared, but main text gives only site-wise metrics and a range of RMSE reduction (-3 to 39%); random-split metrics in Supplementary Tables S2/S3 (not available)."
+R1267,exclude,E2,0,Fish density XGBoost etc.; random 80/20 split plus chronological validation only; spatial CV only suggested for future work.
+R1333,include,NA,10,Hybrid APSIM+RF summer maize yield; random 75/25 vs leave-counties-out (25% counties) vs leave-years-out; RF RMSE and r digitised from Fig. 6 for 5 stages; other algorithms only in Suppl. Fig. S3.
+R1493,exclude,E2,0,"CarbonFormer forest carbon density (Rwanda); random 70/15/15 split plus zero-shot transfer to other regions (Amazon, Gabon, Siberia) = other-region test, no spatial CV."
+R1508,exclude,E2,0,Wetland RF classification with elevation; independent CEO validation set only; no random vs spatial CV comparison.
+R1550,exclude,E2,0,"SAR building damage (RF); per-event models with random 80/20 split vs leave-one-event-out global model: different models/training data per scenario; also borderline off-domain (infrastructure damage, E4)."
+R1621,exclude,E2,0,Crop yield RF Bundelkhand/Germany; random vs hydrologically balanced year splits plus cross-region transfer; no spatial CV.
+R1623,exclude,E2,0,isoGDGT lake proxies; RF/XGBoost classification of k-means clusters with random splits/k-fold only.
+R1633,exclude,E2,0,"NEON hyperspectral cottonwood SVM; per-site models with random 70/30 split tested on other sites (site-transfer matrix), not spatial CV of a pooled model (cf. R2887)."
+R1658,exclude,E2,0,Water-quality virtual sensing ensemble; random CV vs TimeSeriesSplit (temporal) and cross-site transfer; no spatial CV.
+R1662,exclude,E5,0,"DL vs Maxent/RF SDMs North America; random, stripe-spatial, cluster-spatial and ecoregion-block splits described, but main text reports only cluster-spatial vs ecoregion-block (Fig. 2); random-split results presumably in Data S1/Fig. S11 (not available)."
+R1666,exclude,E2,0,AGB transferability (Xijiang to Simao); random 80/20 split plus cross-region transfer/fine-tuning; no spatial CV.
+R1694,include,NA,30,"Baltic fish abundance imputation; XGB-noSD random hold-out CV (p=0.10-0.99, Fig. 4 digitised) vs spatial extrapolation south of 57.5N (Table 2); R2 and nRMSE for 3 survey datasets."
+R1796,include,NA,16,"Borderline: NDVI forecasting (GloSeaN); OOD-t (held-out locations within training K-means blocks) vs OOD-st (spatially separate block pool), same 2023/2024 horizon; LightGBM, ConvLSTM, PredRNN, SeasonalViT; MAE and R2 (Table VI). Spatial better than random (pool composition imbalance)."
+R1858,include,NA,1,EBM landslide occurrence; random 10-fold x10 (AUC 0.86) vs k-means 5-cluster spatial CV x10 (AUC 0.60); domain other.
+R1868,include,NA,6,"Grassland forage traits from field spectroscopy; random 5-fold vs leave-one-climate-region-out (3 regions); RF and 1D-CNN R2 for ME, AGB, MEY (PLS not extracted)."
+R1878,exclude,E2,0,"Spatial RF variants for groundwater nitrate: only spatial prediction error profiles (buffered LOO-CV at prediction distances, smallest ~5-25 m, Fig. 3); no explicitly non-spatial/random CV reported; values only in figure."
+R1907,include,NA,2,"Streamflow permanence RF; random 5-fold x20 (proximal) vs HUC12-grouped spatial CV (distal); accuracy from text (MCC in notes, not allowed metric)."
+R1929,include,NA,3,"Lake CHL-a RF (GLORIA); random 70/30 split vs 30% of lakes held out; R2, MAE, RMSE."
+R1947,include,NA,2,Groundwater quality index ANN; random 10-fold vs 10 k-means spatial folds; separately tuned models and oversampled validation data (flagged).
+R2038,include,NA,4,HNV grassland category RF; random 10-fold vs LLO (5 biogeographic regions) CV accuracy and kappa (Table 2); two predictor sets.
+R2066,exclude,E5,0,"PTF soil hydraulic properties: RF evaluated by leave-region-out spatial CV (main figures); RF Plateau (OOB, non-spatial) results only in Supplementary Figs. S5-S6, not available in retrieved PDF. Check supplement; re-assess if obtained."
+R2073,exclude,E4,0,Close-range time-lapse image segmentation of water ponding on rainfall-simulation plots (CNNs); random vs spatially separated patch splits but not geographic mapping of an environmental variable; metrics are class-wise ACC/IoU and the two datasets use different patch sets.
+R2078,exclude,E2,0,Catch crop RF: training used 5-fold spatial CV but CV scores not reported; 70/30 test split not stated as random; other results are temporal/other-state transfer only. No random vs spatial comparison.
+R2090,exclude,E2,0,3D DSM leave-sample-out vs leave-profile-out CV (vertical leakage); profile-grouped CV is not a spatial CV (precedent R2907).
+R2126,exclude,E2,0,"Soil moisture nowcasting: LOSO, LOPO, LOSOPO, gap-filling and LORO CV only; no random CV."
+R2136,exclude,E2,0,Chub mackerel density stacking: only spatiotemporal block CV/test; no random CV results.
+R2147,include,NA,8,"Maize production/yield XGB, Burkina Faso and Somalia (S2147a/b); random K-fold vs leave-district-out; median annual R2 from Fig. 4 vector coordinates; combined and time-varying feature sets."
+R2178,exclude,E2,0,Subedi 2024 For Ecol Manage: forest site index (CSI) RF evaluated only with target-oriented leave-location-out 10-fold CV (adj R2 0.81); no random CV of the same model.
+R2192,exclude,E4,0,"Hafner DisasterAdaptiveNet (IJAEOG): building damage detection on xBD; original random split vs event-based split - infrastructure/disaster damage, off-domain."
+R2228,exclude,E2,0,"Correa 2025 Comput Electron Agric: soil NIR data-leakage scenarios (PCA, kriging) with 10-fold/nested random CV only; no spatial CV; model is PCR (linear, also E3)."
+R2230,exclude,E5,0,Kim & Lim 2025 Environ Res: PM2.5/O3 exposure ML with propensity-score stratified (spatial-block-like) test sets; random vs proper CV comparison mentioned only as Online Appendix S1.2.1 (not available); no extractable random vs spatial metrics in main text. Check supplement.
+R2244,include,NA,2,Kanda & Fletcher 2025 ERC: RF bias correction of ERA5-Land SWE; random 80/20 split vs site-group (5x 80/20 sites) spatial transfer; R2 and RMSE from text/Fig. 10. Temporal and ecozone transfer not extracted (ecozone only RMB).
+R2250,exclude,E2,0,Piaser 2023 IJAEOG: aquatic vegetation classification; spatially thinned subsamples with random 50/50 splits and repeated 10-fold CV; no spatial CV.
+R2278,include,NA,1,Torra 2023 Environ Res: badland susceptibility RF; random 10-fold vs spatial CV (spatial subregions) AUC 0.972 vs 0.959 on 630 training points (text Section 3.2).
+R2279,exclude,E2,0,Sotomayor 2023 Comput Electron Agric: plantation productivity ML with 10-fold random CV only (Moran I on residuals); no spatial CV.
+R2281,exclude,E2,0,Erickson 2023 J Hydrol X: headwater stream presence GBM with multi-scale k-means spatial CV only (Table 2); no random CV comparator reported.
+R2344,include,NA,2,"Bravo-Diaz 2024 Ecol Inform: CNN regression of P. radiata cover from UAV; multi-site random 60/20/20 test vs leave-one-site-out transfer R2 (Table 2), primary = mean of 5 experiments; mono-site transfer as non-primary."
+R2365,exclude,E2,0,Li et al. multitask LSTM hydrological forecasting (ERA5-Land): temporal train/test evaluation only; no random vs spatial CV.
+R2416,exclude,E2,0,"Nasiri 2023 IJAEOG: tree-cutting detection; 70/30 split + repeated 10-fold CV; site-2 generalization only reported as map agreement with sample-based map (Kappa/DC), not accuracy vs reference; no spatial CV."
+R2455,include,NA,20,"Mila 2023 Environ Pollut: RF gap-filling of 10 daily remote sensing products; OOB vs spatial block split (Table 1, 2019) RMSE and R2. Exposure QRF models only leave-station-out (not extracted)."
+R2462,include,NA,6,"Misiuk & Brown 2023 Ecol Inform: simulation on Bay of Fundy rasters, RF; OOB vs spatial LOO; only median bias (true - estimate) of VE and RMSE reported (Table 3) -> metrics VE_bias_vs_true / RMSE_bias_vs_true; 3 response variables."
+R2469,include,NA,7,"Zhao 2024 Earths Future: grassland species richness RF; random 10-fold vs spatial cluster CV (Ploton) R2 for 7 predictor sets (Fig. 4 labels, percent converted); all-variables primary."
+R2498,include,NA,7,"Bathymetry (coded other). RF random vs 1600-m blocked 60/20/20 split, 7 calibration sizes x5 iterations; MAE digitised from Fig. 5. Primary = 30,000 calibration points."
+R2530,exclude,E2,0,UAS-SfM canopy fuels: all-sites models evaluated only with spatially-blocked CV; individual-site models only with non-spatial CV (different data); no random-vs-spatial comparison on same model/data.
+R2570,include,NA,2,PM2.5 Bay Area; AutoGluon ensemble (other); random hold-out CV vs site-based CV (34 sites); RMSE and NSE (Fig. 4). Linear LME+GWR not extracted.
+R2580,exclude,E3,0,SOC from VNIR/MIR spectra; only LASSO and PLS models (no ML per codebook); k-fold vs leave-soil-profile-out CV.
+R2591,exclude,E2,0,Tree-species competition: plot-level train/test split within sites vs untrained-site transfer (independent other-site test); no random vs spatial CV of same model.
+R2611,exclude,E2,0,Silver shiner RF: random 70/30 split vs transfer of full model to neighbouring creek (independent region); no spatial CV.
+R2655,include,NA,16,"Methodological paper; extracted real-data case study (CA 2008 ozone S2655a, PM2.5 S2655b): RF naive 10-fold vs LOLO and LLO10; MSE medians digitised from Fig. 4 and converted to RMSE. Simulations not extracted."
+R2660,include,NA,11,Amazon AGB; XGB random 80/20 test vs leave-one-disc-out CV with 0-500 km buffers (Fig. 9 digitised). RF/GBM spatial values only in unavailable appendix.
+R2692,include,NA,6,"Soil depth (Argentina); RF OOB vs leave-one-field-out CV (Table 2); all fields primary, two soil-type subsets primary=no."
+R2706,include,NA,12,"Sugarcane yield; BRT/RF/SVR random vs k-means-cluster hold-out validation (whole pipeline), datasets A/B, with/without RReliefF (Table 2); independent far set as value_independent."
+R2716,include,NA,24,Cameroon soil pH/clay/logSOC; RF LOOCV vs leave-cluster-out (primary) and leave-site-out; two measurement-error scenarios (Table 2). RK not extracted.
+R2747,include,NA,6,"Near-road UFP (Toronto); XGB random 10-fold vs location-blocked 10-fold (Table 1); entire data primary, 2 site clusters primary=no."
+R2840,include,NA,18,"Ulaanbaatar PM2.5 (author manuscript); RF/GBM/SVM 15% hold-out vs LOLO CV (9 sites), 3 periods (Table 2). MARS/GLMNET/GAM not extracted."
+R2848,include,NA,9,"Bioclimatic envelope models (100 species x 3 taxa); RF/GBM/MaxEnt random 80/20 vs biome/catchment spatial split; mean TSS digitised from Fig. 1 (pSp, 10,000 PA)."
+R2855,include,NA,10,N California wildfire ozone; GBM/RF/SVM/kNN/ANN 10-fold vs LOLO CV (Fig. 2; GBM exact). Non-ML models not extracted.
+R2880,exclude,E2,0,Jha 2021 RSEC: RF AGB from L8/S2/WV3 vs LiDAR AGB (Thailand); only leave-one-block-out spatial CV (plus null model); no random CV.
+R2923,include,NA,8,"Arowosegbe 2022 Env Pollut: daily PM10 South Africa; RF, XGBoost, SVR and RF-stacked ensemble; random 10-fold vs 10-fold leave-location-out (Table 2), R2/RMSE. Temporal CV not extracted."
+R2955,include,NA,4,"Xu 2021 JAG: LCZ classification 8 US metros; RF and ResNet; random pixel 70/30 split vs polygon-grouped 70/30 split x10; OA digitised from Fig. 7 (crowdsourced vs refined TAs). Borderline spatial scheme (polygon holdout, no buffer)."
+R2962,include,NA,3,Helmstetter 2021 DDI: MaxEnt SDM ground squirrel; random 5-fold vs spatial 2/3/5-fold; optimal AUC digitised from Fig. 3; configurations selected separately per CV.
+R2993,include,NA,8,Zhang & Du 2022 ISPRS: RF hourly SAT CONUS; 5-fold sample-based vs site-based CV; RMSE for 4 predictor schemes x global/monthly fitting (Table 2).
+R3047,include,NA,2,Zanetti 2022 J Hydrol: pluvial flood Venice; inner random 4-fold vs leave-location-and-time-out CV within nested CV; NN and RF validation AUC (Table 2); outer LLTO test AUC in notes; LR not extracted.
+R3129,exclude,E2,0,"Habibzadeh & Ludwig 2019 Ornis Fenn: ensemble of small models (GBM, MaxEnt) Caucasian grouse; only spatial block CV (blockCV, 2.2 km) plus independent presences; no random CV."
+R3173,include,NA,7,Nikolov 2026 IJITS: Sofia LST; RF and GBR; random 5-fold vs 5 spatial blocks (Tables 4-5) + 2023 GBR R2 check (Table 6). MLR not extracted.
+R3177,include,NA,20,"Song 2026 IJGIS: species richness SWAFR (n=958); RF, Cubist, KNN, XGB, SVM, baseline vs GCF features; random 5-fold vs 132 km spatial-block 5-fold (Table 5). Simulation (Table 2), LM/GLMNET not extracted."
+R3197,include,NA,8,"Putra 2026 IEEE Access: paddy yield UAV, 514 plots; SVR and RF; standard 5-fold vs leave-one-block-out (8 farm blocks), R2/MAE (Table 7)."
+R3198,include,NA,2,Misiuk 2019 ICES JMS: BRT Mya clam abundance; gbm.step 10-fold vs 60 m buffered LOO (Table 3); MAE and VE (as R2). Presence-absence only SLOO.
+R3206,include,NA,1,Nauman 2024 SSSAJ SOLUS: RF soil properties CONUS; random 10-fold vs 10-fold spatial block CV; only summary mean R2 across 128 models extracted (per-model values in Table S1 not available / Fig. 4 not digitised).
+R3210,exclude,E5,0,"Zhang 2026 bioRxiv preprint (published ACS ES&T Air 10.1021/acsestair.6c00218, not seen): pollen RF/XGB/GAM, random 10-fold CV vs LOSO-CV (8 sites); random R2 only in Fig. 3A/Supp. Tables S6-S8 and LOSO only as site-specific colour heatmap (Fig. 3B); no paired numeric metrics extractable. Recheck published version/supplement."
+R3216,include,NA,2,Lozado 2026 JVS: Caatinga AGB RF (301 plots); random 15-fold vs coordinate-based spatial CV; R2 and RMSE from text.

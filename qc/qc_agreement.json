@@ -1,0 +1,56 @@
+{
+ "n_records": 39,
+ "decision_agreement": 0.8974358974358975,
+ "cohen_kappa": 0.7699115044247788,
+ "decision_disagreements": [
+  [
+   "R0031",
+   "include",
+   "exclude"
+  ],
+  [
+   "R0024",
+   "include",
+   "exclude"
+  ],
+  [
+   "R0409",
+   "include",
+   "exclude"
+  ],
+  [
+   "R0676",
+   "exclude",
+   "include"
+  ]
+ ],
+ "value_pairs_checked": 66,
+ "value_pairs_matching": 63,
+ "value_agreement": 0.9545454545454546,
+ "value_mismatches": [
+  [
+   "R0005",
+   "R2",
+   0.87,
+   0.07,
+   false,
+   1
+  ],
+  [
+   "R0200",
+   "MAE_pct_null",
+   63.4,
+   80.1,
+   false,
+   8
+  ],
+  [
+   "R0676",
+   "AUC",
+   0.948,
+   0.547,
+   false,
+   0
+  ]
+ ]
+}

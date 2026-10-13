@@ -1,0 +1,448 @@
+record_id,DOI,ta_decision,is_oa,oa_status,pdf_url,got_pdf,source,note
+R0001,10.1038/s41467-020-18321-y,include,True,gold,https://www.nature.com/articles/s41467-020-18321-y.pdf,yes,www.nature.com,
+R0002,10.1016/j.ecolmodel.2019.06.002,include,True,green,https://arxiv.org/pdf/1803.11266,yes,arxiv.org,
+R0003,10.1016/j.envsoft.2017.12.001,include,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R0004,10.1111/ecog.04890,include,True,gold,,yes,manual,not a PDF at hdl.handle.net
+R0005,10.1016/j.ecolmodel.2019.108815,include,True,green,https://arxiv.org/pdf/1908.07805,yes,arxiv.org,
+R0006,10.1111/ddi.13252,include,True,gold,https://www.biorxiv.org/content/biorxiv/early/2020/09/09/2020.06.10.143917.full.pdf,yes,www.biorxiv.org,HTTPError at onlinelibrary.wiley.com
+R0007,10.1016/j.ecolmodel.2021.109692,include,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R0008,10.1016/j.envint.2020.105827,maybe,True,gold,,yes,manual,HTTPError at www.sciencedirect.com
+R0009,10.1016/j.ophoto.2022.100018,include,True,gold,https://publikationen.bibliothek.kit.edu/1000156879/150437966,yes,publikationen.bibliothek.kit.edu,HTTPError at www.sciencedirect.com
+R0011,10.1111/2041-210X.13851,include,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R0012,10.1016/j.ecoinf.2022.101665,include,True,hybrid,,yes,manual,HTTPError at www.sciencedirect.com
+R0013,10.1029/2020MS002242,include,True,gold,https://edepot.wur.nl/547588,yes,edepot.wur.nl,HTTPError at onlinelibrary.wiley.com
+R0014,10.3390/rs16040683,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0015,10.1186/s40068-024-00352-9,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0016,10.3390/rs17020213,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0017,10.3390/geosciences9060254,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0018,10.3389/frsen.2025.1531097,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0019,10.3390/rs15061513,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0021,10.1016/j.ecolind.2018.04.022,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0022,10.1016/j.pocean.2019.04.007,include,True,hybrid,,yes,manual,HTTPError at www.sciencedirect.com
+R0024,10.1016/j.ophoto.2024.100064,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0025,10.1016/j.jhydrol.2022.128177,include,True,hybrid,https://curis.ku.dk/ws/files/318196381/Assessing_spatial_transferability_of_a_random.pdf,yes,curis.ku.dk,HTTPError at www.sciencedirect.com
+R0027,10.1016/j.isprsjprs.2022.02.023,include,True,hybrid,,yes,manual,HTTPError at www.sciencedirect.com
+R0028,10.1016/j.envpol.2021.118597,include,True,bronze,,yes,manual,no OA pdf_url in OpenAlex
+R0031,10.1016/j.ecoinf.2025.103287,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0032,10.3390/rs11212512,include,True,gold,,yes,manual,HTTPError at www.preprints.org
+R0035,10.3390/eng6100270,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0036,10.1109/JSTARS.2023.3332420,include,True,gold,https://ieeexplore.ieee.org/ielx7/4609443/4609444/10316578.pdf,yes,ieeexplore.ieee.org,
+R0037,10.1016/j.ecoinf.2025.103521,include,True,gold,https://arxiv.org/pdf/2502.03480,yes,arxiv.org,
+R0038,10.1016/j.aiig.2024.100093,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0039,10.1016/j.scitotenv.2024.172454,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0041,10.3390/w15244214,include,True,gold,,yes,manual,HTTPError at www.preprints.org
+R0043,10.1016/j.scs.2025.106783,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0045,10.1016/j.ejrh.2025.103101,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0053,10.1016/j.geomat.2025.100081,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0054,10.1016/j.envc.2026.101418,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0055,10.1016/j.envc.2025.101365,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0056,10.3389/feart.2025.1534410,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0057,10.3390/rs18111844,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0058,10.1016/j.iswcr.2025.09.002,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0059,10.1038/s41598-026-39496-2,include,True,gold,https://www.nature.com/articles/s41598-026-39496-2_reference.pdf,yes,www.nature.com,
+R0061,10.1021/acsestair.5c00251,maybe,True,hybrid,,no,,not a PDF at pmc.ncbi.nlm.nih.gov
+R0062,10.1002/ecs2.70138,include,True,gold,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R0063,10.1007/s10584-026-04160-1,maybe,True,hybrid,https://link.springer.com/content/pdf/10.1007/s10584-026-04160-1.pdf,yes,link.springer.com,
+R0066,10.1016/j.envc.2025.101375,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0067,10.1108/ARCH-03-2026-0213,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0068,10.1007/s12145-026-02215-6,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0069,10.1016/j.jafr.2026.102662,include,True,gold,https://publications.cuni.cz/bitstream/20.500.14178/3857/1/1_s2.0_S2666154326000323_main.pdf,yes,publications.cuni.cz,
+R0071,10.1007/s41742-026-01112-6,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0072,10.1016/j.gsf.2026.102363,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0075,10.1007/s41976-026-00302-2,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0077,10.3390/land15091657,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0079,10.1007/s11119-026-10443-5,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0080,10.1007/s11069-026-08374-5,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0082,10.1016/j.rsase.2026.102297,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0085,10.1016/j.apsoil.2026.107358,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0086,10.3390/su18189430,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0087,10.1016/j.envc.2026.101526,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0088,10.1016/j.envpol.2026.127898,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0089,10.3390/agronomy16161562,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0090,10.1111/ejss.70295,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0092,10.1016/j.ecolind.2026.115371,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0093,10.1038/s41598-026-57131-y,include,True,gold,https://www.nature.com/articles/s41598-026-57131-y.pdf,yes,www.nature.com,
+R0095,10.1016/j.atmosenv.2026.122243,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0096,10.1080/13658816.2026.2693888,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0098,10.3390/agriculture16171932,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0099,10.1021/acs.est.6c03195,include,True,hybrid,,yes,manual,not a PDF at pmc.ncbi.nlm.nih.gov
+R0100,10.3390/rs18183163,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0101,10.3390/app16189271,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0102,10.3390/rs18142424,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0103,10.1109/JSTARS.2026.3727104,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0104,10.1016/j.egyai.2026.100782,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0105,10.1016/j.isprsjprs.2026.08.037,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0106,10.1016/j.watres.2026.126759,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0107,10.3390/geohazards7030090,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0109,10.1111/tgis.70250,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0111,10.1186/s40249-026-01420-1,maybe,True,gold,https://link.springer.com/content/pdf/10.1186/s40249-026-01420-1.pdf,yes,link.springer.com,
+R0112,10.1007/s00704-025-05838-9,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0113,10.1038/s41598-026-57382-9,include,True,gold,https://www.nature.com/articles/s41598-026-57382-9_reference.pdf,yes,www.nature.com,
+R0114,10.1109/LGRS.2026.3703879,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0115,10.1080/15481603.2026.2706911,include,True,gold,,yes,manual,HTTPError at www.tandfonline.com
+R0116,10.1007/s11069-026-08395-0,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0118,10.1080/19475705.2026.2717839,maybe,True,gold,,yes,manual,HTTPError at www.tandfonline.com
+R0120,10.1016/j.rsase.2026.102285,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0121,10.1016/j.envpol.2026.129080,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0122,10.1007/s43762-026-00291-4,include,True,diamond,https://link.springer.com/content/pdf/10.1007/s43762-026-00291-4.pdf,yes,link.springer.com,
+R0124,10.3390/app16073543,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0125,10.3390/agronomy16070763,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0127,10.3390/su18189522,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0128,10.1016/j.agrformet.2026.111328,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0130,10.1016/j.ecolind.2026.115486,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0131,10.1007/s41976-026-00308-w,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0133,10.1007/s11629-026-0785-3,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0136,10.1111/2041-210X.13650,maybe,True,hybrid,https://arxiv.org/pdf/2005.07939,yes,arxiv.org,
+R0140,10.7717/peerj.5457,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0141,10.1016/j.geomorph.2016.03.015,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0143,10.1021/acsestair.3c00054,maybe,True,hybrid,,no,,not a PDF at pmc.ncbi.nlm.nih.gov
+R0147,10.1007/s11119-022-09897-0,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0149,10.1016/j.atmosenv.2020.117649,include,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R0151,10.1109/JSTARS.2022.3174135,include,True,gold,,yes,manual,HTTPError at ieeexplore.ieee.org
+R0155,10.1021/acs.est.1c05578,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0156,10.1016/j.rse.2022.113262,maybe,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R0158,10.1038/s41598-019-52293-4,maybe,True,gold,https://www.nature.com/articles/s41598-019-52293-4.pdf,yes,www.nature.com,
+R0164,10.1111/geb.13639,include,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R0165,10.1016/j.ecolind.2021.107450,maybe,True,gold,,yes,manual,HTTPError at www.sciencedirect.com
+R0166,10.3390/rs14061493,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0174,10.1016/j.atmosenv.2020.117479,include,True,green,https://utoronto.scholaris.ca/bitstreams/e141c16c-c6d2-407b-95ae-144c42eed8eb/download,yes,utoronto.scholaris.ca,
+R0176,10.1016/j.rse.2023.113596,include,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R0178,10.1016/j.rse.2022.113426,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0187,10.1021/acs.est.8b01921,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0189,10.1016/j.jhydrol.2021.127047,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0192,10.1016/j.ecoinf.2024.102601,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0198,10.1080/15481603.2022.2107113,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0200,10.3389/fmars.2020.00599,include,True,gold,https://www.frontiersin.org/articles/10.3389/fmars.2020.00599/pdf,yes,www.frontiersin.org,
+R0201,10.1029/2022JD037010,maybe,True,bronze,https://www.osti.gov/servlets/purl/1909187,yes,www.osti.gov,HTTPError at onlinelibrary.wiley.com
+R0204,10.1029/2023GH000798,include,True,gold,,yes,manual,not a PDF at pmc.ncbi.nlm.nih.gov
+R0205,10.1016/j.envpol.2023.121508,maybe,True,bronze,,yes,manual,no OA pdf_url in OpenAlex
+R0208,10.1080/13658816.2022.2131789,maybe,True,green,https://arxiv.org/pdf/2111.08478,yes,arxiv.org,
+R0212,10.1016/j.jhydrol.2025.132691,include,True,bronze,,yes,manual,no OA pdf_url in OpenAlex
+R0214,10.1016/j.ejrs.2023.07.007,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0218,10.1038/s41598-022-09953-9,maybe,True,gold,https://www.nature.com/articles/s41598-022-09953-9.pdf,yes,www.nature.com,
+R0222,10.1016/j.agwat.2022.107764,maybe,True,bronze,,yes,manual,no OA pdf_url in OpenAlex
+R0226,10.1016/j.envint.2023.107937,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0229,10.1016/j.envint.2024.109249,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0232,10.3389/fenvs.2022.684589,include,True,gold,https://epub.uni-bayreuth.de/id/eprint/6888/1/fenvs-10-684589.pdf,yes,epub.uni-bayreuth.de,
+R0233,10.1029/2023WR036942,include,True,gold,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R0234,10.1016/j.ecoinf.2023.102189,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0236,10.1016/j.isprsjprs.2024.02.015,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0245,10.1016/j.rsase.2025.101538,maybe,True,gold,https://eartharxiv.org/repository/object/9036/download/16905/,yes,eartharxiv.org,
+R0246,10.1016/j.agwat.2025.109551,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0249,10.3389/frsen.2025.1697897,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0256,10.1016/j.atmosenv.2024.120587,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0270,10.3390/s20247192,include,True,gold,https://edepot.wur.nl/537319,yes,edepot.wur.nl,HTTPError at www.mdpi.com
+R0278,10.1016/j.geoderma.2022.116181,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0288,10.1016/j.foreco.2025.123031,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0297,10.1021/acs.est.4c03795,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0298,10.1021/acs.est.5c08371,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0304,10.1016/j.jag.2026.105092,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0310,10.3390/rs14236068,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0311,10.1109/TGRS.2025.3600898,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0317,10.3390/rs18010181,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0325,10.1016/j.uclim.2026.103009,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0333,10.1016/j.rsase.2025.101728,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0337,10.1016/j.jhydrol.2025.134634,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0346,10.1016/j.jclepro.2025.146759,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0347,10.1016/j.jhazmat.2025.137599,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0353,10.3390/agriculture16070782,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0364,10.1016/j.ufug.2026.129412,include,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R0382,10.3390/app16094194,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0388,10.1016/j.rse.2026.115546,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0396,10.3390/earth7030076,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0407,10.3390/sym18071231,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0408,10.1007/s43621-025-01475-4,maybe,True,gold,https://link.springer.com/content/pdf/10.1007/s43621-025-01475-4.pdf,yes,link.springer.com,
+R0409,10.3390/su18073328,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0411,10.1109/TGRS.2026.3690719,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0420,10.1080/22797254.2023.2229501,include,True,gold,,yes,manual,HTTPError at openpub.fmach.it
+R0440,10.1016/j.scs.2026.107876,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0448,10.3390/rs18142348,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0449,10.1016/j.spasta.2026.101009,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0450,10.1109/JSTARS.2026.3702756,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0453,10.1016/j.prevetmed.2026.106963,maybe,True,hybrid,https://arxiv.org/pdf/2511.00132,yes,arxiv.org,HTTPError at www.sciencedirect.com
+R0455,10.1016/j.rsma.2026.105304,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0470,10.3390/a19090751,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0473,10.1007/s12665-026-13102-0,include,True,hybrid,https://link.springer.com/content/pdf/10.1007/s12665-026-13102-0.pdf,yes,link.springer.com,
+R0476,10.1007/s11069-026-08307-2,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0482,10.1002/gj.70491,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0503,10.1007/s11269-026-04786-x,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0504,10.1109/JSTARS.2026.3736240,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0513,10.1016/j.ecolind.2026.115530,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0519,10.1016/j.rsase.2026.102264,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0524,10.3390/rs18183086,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0525,10.1007/s10668-026-08133-3,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0545,10.1016/j.isprsjprs.2026.09.007,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0577,10.1016/j.aeaoa.2026.100507,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0578,10.3390/rs18172876,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0581,10.3390/rs18071036,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0592,10.1016/j.toxicon.2026.109212,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0597,10.3390/rs18152562,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0599,10.3390/su18179058,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0603,10.1038/s41598-026-45557-3,maybe,True,gold,https://www.nature.com/articles/s41598-026-45557-3_reference.pdf,yes,www.nature.com,
+R0604,10.1111/sum.70310,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0605,10.1016/j.pce.2026.104655,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0612,10.3390/ijgi15080346,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0618,10.1016/j.rse.2026.115700,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0621,10.3390/plants15172561,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0627,10.3390/rs18091437,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0631,10.3390/f17070829,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0633,10.1016/j.envsoft.2026.107039,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0636,10.3390/rs18172909,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0637,10.3390/plants15091348,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0640,10.1016/j.ecolind.2026.115475,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0641,10.3390/w18151796,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0642,10.1016/j.pce.2026.104685,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0644,10.3390/ani16142169,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0646,10.1109/JSTARS.2026.3736997,include,True,gold,,no,,no OA pdf_url in OpenAlex
+R0655,10.1016/j.asr.2026.04.119,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0656,10.1016/j.uclim.2026.103058,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0660,10.1016/j.jafr.2026.103170,maybe,True,gold,,yes,manual,HTTPError at www.sciencedirect.com
+R0670,10.1080/15481603.2026.2732650,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0671,10.1016/j.rsase.2026.102236,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0672,10.1371/journal.pone.0345178,maybe,True,gold,https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0345178&type=printable,yes,journals.plos.org,
+R0675,10.1016/j.jhazmat.2026.143737,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0676,10.3389/ffgc.2026.1857505,maybe,True,gold,https://www.frontiersin.org/journals/forests-and-global-change/articles/10.3389/ffgc.2026.1857505/pdf,yes,www.frontiersin.org,
+R0678,10.1080/15481603.2026.2613558,include,True,gold,,yes,manual,HTTPError at www.tandfonline.com
+R0683,10.1016/j.jag.2026.105321,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0691,10.1002/gj.70470,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0701,10.1016/j.trgeo.2026.102325,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0702,10.1016/j.ccst.2026.100647,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0703,10.1016/j.srs.2026.100392,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0711,10.3390/app16178820,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0714,10.3390/agriculture16111239,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0715,10.1016/j.rse.2026.115610,maybe,True,gold,https://eartharxiv.org/repository/object/13059/download/23139/,yes,eartharxiv.org,
+R0720,10.3390/f16071074,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0722,10.47738/jads.v7i1.1108,maybe,True,diamond,https://bright-journal.org/Journal/index.php/JADS/article/download/1108/599,yes,bright-journal.org,
+R0724,10.1016/j.envres.2024.118609,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0726,10.3390/rs18030408,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0728,10.1016/j.ecoinf.2025.103328,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0740,10.1109/TGRS.2026.3668935,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0744,10.3390/rs18172916,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0756,10.3390/rs18122017,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0757,10.1007/s11119-026-10332-x,maybe,True,hybrid,https://link.springer.com/content/pdf/10.1007/s11119-026-10332-x.pdf,yes,link.springer.com,
+R0758,10.1016/j.agwat.2026.110801,include,True,gold,,yes,manual,HTTPError at www.sciencedirect.com
+R0761,10.1016/j.jag.2026.105291,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0762,10.1016/j.wroa.2026.100600,maybe,True,gold,,yes,manual,HTTPError at www.sciencedirect.com
+R0769,10.3390/ijgi15080355,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0772,10.1002/csc2.70253,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0784,10.46488/NEPT.2026.v25i02.B4376,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0788,10.1016/j.scitotenv.2026.182300,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0790,10.1016/j.cacaie.2026.100166,include,True,hybrid,,yes,manual,HTTPError at www.sciencedirect.com
+R0806,10.1016/j.envc.2026.101515,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0808,10.1016/j.jag.2026.105357,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0812,10.1016/j.ecolind.2026.115103,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0817,10.1016/j.catena.2026.110587,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0822,10.3390/rs18152436,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0824,10.1016/j.mlwa.2026.100878,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0826,10.1016/j.apr.2026.103208,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0827,10.1111/ejss.70309,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0831,10.1007/s00704-026-06583-3,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0835,10.1016/j.atech.2026.102360,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0843,10.1002/agj2.70485,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0849,10.3390/biology15151268,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0860,10.1016/j.catena.2026.110481,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0872,10.3390/rs18173057,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0875,10.1111/tgis.70224,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R0884,10.1016/j.nbt.2024.03.001,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0886,10.1109/JSTARS.2026.3720556,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0889,10.1016/j.jag.2023.103364,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0891,10.1016/j.jhydrol.2021.126270,include,True,bronze,,yes,manual,HTTPError at www.sciencedirect.com
+R0903,10.1016/j.scitotenv.2022.157956,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0904,10.1029/2024GL109870,include,True,gold,,no,,no OA pdf_url in OpenAlex
+R0906,10.3390/rs16152778,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0909,,maybe,,,,yes,manual,OpenAlex lookup failed: HTTPError
+R0910,10.1016/j.fcr.2025.110237,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0914,10.1016/j.rse.2022.112888,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R0922,10.1080/15481603.2026.2700119,include,True,gold,,yes,manual,HTTPError at www.tandfonline.com
+R0925,10.1016/j.srs.2025.100315,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0928,10.1016/j.atech.2025.101201,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0929,10.3390/rs17081456,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0935,10.1016/j.geodrs.2023.e00645,maybe,True,hybrid,,yes,manual,HTTPError at www.utupub.fi
+R0947,10.3390/agriculture15222346,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0961,10.3390/w15122278,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0965,10.7717/peerj.21704,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0976,10.1109/JSTARS.2026.3656855,maybe,True,gold,https://arxiv.org/pdf/2511.01990,yes,arxiv.org,
+R0979,10.1016/j.rsase.2024.101200,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R0980,10.1016/j.geoderma.2023.116740,include,True,gold,https://edepot.wur.nl/646917,yes,edepot.wur.nl,
+R0986,10.5194/gmd-16-1553-2023,include,True,gold,https://gmd.copernicus.org/articles/16/1553/2023/gmd-16-1553-2023.pdf,yes,gmd.copernicus.org,
+R0987,10.1088/1748-9326/ad845e,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R0988,10.3390/rs16081314,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R0995,10.1175/JHM-D-19-0073.1,include,True,bronze,,yes,manual,not a PDF at journals.ametsoc.org
+R0997,10.1109/TGRS.2020.3038343,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R0999,10.1111/geb.13635,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1001,10.1007/s10687-022-00454-6,include,True,hybrid,https://link.springer.com/content/pdf/10.1007/s10687-022-00454-6.pdf,yes,link.springer.com,
+R1010,10.5194/gmd-17-6007-2024,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1013,10.1016/j.jafr.2024.101096,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1014,10.3390/rs16142571,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1016,10.3389/fpls.2026.1915306,include,True,gold,https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2026.1915306/pdf,yes,www.frontiersin.org,
+R1017,10.1111/geb.12684,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R1027,10.2136/sssaj2012.0054,include,True,green,,no,,no OA pdf_url in OpenAlex
+R1042,10.1016/j.atech.2026.102350,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1047,10.1007/s10661-026-15630-5,maybe,True,hybrid,https://link.springer.com/content/pdf/10.1007/s10661-026-15630-5.pdf,yes,link.springer.com,
+R1067,10.1002/agj2.70463,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R1071,10.1021/acs.est.6c02076,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1108,10.3390/rs18173017,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1111,10.1016/j.scs.2026.107878,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R1151,10.1016/j.uclim.2026.103118,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1170,10.1038/s41598-026-39866-w,include,True,gold,https://www.nature.com/articles/s41598-026-39866-w_reference.pdf,yes,www.nature.com,
+R1176,10.1016/j.ecolind.2026.115534,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1181,10.1016/j.jag.2026.105488,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1182,10.1016/j.uclim.2026.103145,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1206,10.1016/j.marpolbul.2026.120004,include,True,hybrid,https://researchonline.ljmu.ac.uk/id/eprint/29107/1/Monitoring%20network%20design%20limits%20detection%20of%20sediment%20mediated%20contaminant%20mobilisation%20in%20the%20River%20Mersey%20estuary%20UK.pdf,yes,researchonline.ljmu.ac.uk,
+R1219,10.1016/j.rama.2026.06.008,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1244,10.1016/j.still.2026.107307,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1265,10.1214/25-STS984,maybe,True,green,https://arxiv.org/pdf/2310.15108,yes,arxiv.org,
+R1267,10.1016/j.jenvman.2026.130969,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1333,10.1016/j.fcr.2026.110730,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1349,10.3390/f17070786,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1369,10.1007/s00704-026-06402-9,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R1378,10.1016/j.ecoinf.2026.103932,include,True,gold,https://www.dora.lib4ri.ch/wsl/dload/wsl:43807/PDF/view,yes,www.dora.lib4ri.ch,HTTPError at www.sciencedirect.com
+R1430,10.1109/JSTARS.2026.3721930,maybe,True,gold,,no,,no OA pdf_url in OpenAlex
+R1440,10.3389/fmars.2026.1875929,include,True,gold,https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1875929/pdf,yes,www.frontiersin.org,
+R1466,10.1007/s11069-025-07842-8,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R1489,10.1109/ACCESS.2026.3734132,include,True,gold,https://arxiv.org/pdf/2510.26383,yes,arxiv.org,
+R1493,10.1109/JSTARS.2026.3695334,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1504,10.3390/w18141761,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R1508,10.1080/01431161.2026.2612902,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1550,10.1016/j.ijdrr.2026.106048,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1574,10.3390/rs18101625,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1592,10.1007/s12665-026-12963-9,include,True,hybrid,https://link.springer.com/content/pdf/10.1007/s12665-026-12963-9.pdf,yes,link.springer.com,
+R1609,10.1007/s10064-026-04911-5,include,True,hybrid,https://link.springer.com/content/pdf/10.1007/s10064-026-04911-5.pdf,yes,link.springer.com,
+R1613,10.3390/app16104935,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1617,10.3390/land15071289,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1621,10.1016/j.agwat.2026.110254,maybe,True,gold,,yes,manual,not a PDF at publications.rwth-aachen.de
+R1623,10.1016/j.gloplacha.2026.105407,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R1633,10.1016/j.rse.2026.115240,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R1658,10.1016/j.rineng.2026.111125,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1662,10.1111/geb.70184,maybe,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R1666,10.1016/j.isci.2026.115346,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1687,10.3390/rs18070980,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R1694,10.1016/j.ecoinf.2026.103634,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1698,10.1007/s00704-026-06372-y,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R1709,10.3390/rs18030465,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1774,10.3390/rs18010058,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R1796,10.1109/JSTARS.2026.3710845,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1858,10.1016/j.scitotenv.2024.175277,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1868,10.1016/j.ecoinf.2025.103426,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1878,10.1016/j.envsoft.2025.106626,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1892,10.1016/j.srs.2025.100227,maybe,True,gold,https://arxiv.org/pdf/2409.00020,yes,arxiv.org,
+R1895,10.1111/1365-2745.70073,maybe,True,bronze,https://orca.cardiff.ac.uk/id/eprint/179158/1/Manuscript.pdf,yes,orca.cardiff.ac.uk,HTTPError at onlinelibrary.wiley.com
+R1907,10.1029/2025WR040478,maybe,True,gold,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R1918,10.3390/agriculture15050505,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R1929,10.1088/2515-7620/ae244a,include,True,gold,,yes,manual,not a PDF at iopscience.iop.org
+R1947,10.1016/j.scitotenv.2025.179695,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1971,10.1007/s11119-024-10212-2,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R1981,10.1109/TGRS.2026.3700045,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R1989,10.3390/rs17233787,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R1997,10.1029/2024JH000460,include,True,gold,,no,,no OA pdf_url in OpenAlex
+R2025,10.3390/app15137462,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2038,10.1111/avsc.70030,maybe,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R2055,10.1038/s41598-024-56066-6,maybe,True,gold,https://www.nature.com/articles/s41598-024-56066-6.pdf,yes,www.nature.com,
+R2066,10.1016/j.geoderma.2025.117397,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2073,10.1016/j.catena.2025.108919,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2078,10.1109/ACCESS.2025.3615739,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2080,10.1016/j.fcr.2024.109619,include,True,hybrid,https://edepot.wur.nl/677870,yes,edepot.wur.nl,
+R2088,10.3390/rs17020291,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2090,10.1016/j.geoderma.2025.117223,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2118,10.1007/s11119-025-10280-y,maybe,True,hybrid,https://link.springer.com/content/pdf/10.1007/s11119-025-10280-y.pdf,yes,link.springer.com,
+R2126,10.1016/j.agwat.2025.109457,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2127,10.3390/rs17071190,maybe,True,gold,https://arxiv.org/pdf/2408.08887,yes,arxiv.org,HTTPError at www.mdpi.com
+R2130,10.1002/agj2.70206,include,True,hybrid,https://edepot.wur.nl/704835,yes,edepot.wur.nl,HTTPError at onlinelibrary.wiley.com
+R2136,10.1016/j.ecoinf.2024.102944,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2147,10.1016/j.agrformet.2024.110213,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2172,10.1007/s00521-025-11267-6,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R2178,10.1016/j.foreco.2024.122360,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2192,10.1016/j.jag.2025.104756,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2211,10.3390/rs16244749,include,True,gold,https://eprints.whiterose.ac.uk/221557/1/remotesensing-16-04749.pdf,yes,eprints.whiterose.ac.uk,HTTPError at www.mdpi.com
+R2228,10.1016/j.compag.2025.110920,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2230,10.1016/j.envres.2025.122881,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2240,10.1080/2150704X.2024.2440667,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R2244,10.1088/2515-7620/aded5a,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2250,10.1016/j.jag.2023.103202,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2274,10.1007/s10980-024-01903-2,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2278,10.1016/j.envres.2023.116901,maybe,True,green,,yes,manual,HTTPError at upcommons.upc.edu
+R2279,10.1016/j.compag.2023.107804,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2281,10.1016/j.hydroa.2023.100165,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2289,10.1016/j.isprsjprs.2023.05.003,maybe,True,hybrid,https://redivia.gva.es/bitstream/20.500.11939/8643/1/2023_Sebasti%c3%a1-Monz%c3%b3_Detecting.pdf,yes,redivia.gva.es,not a PDF at ars.els-cdn.com
+R2325,10.3390/rs15071753,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2344,10.1016/j.ecoinf.2024.102684,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2365,10.1175/JHM-D-23-0073.1,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2391,10.3390/rs16142629,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2416,10.1016/j.jag.2023.103555,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2433,10.1139/cjfas-2022-0212,include,True,green,https://utoronto.scholaris.ca/bitstreams/2965be46-fa21-4ecb-8bdd-749ce62512d2/download,yes,utoronto.scholaris.ca,
+R2455,10.1016/j.envpol.2023.122501,maybe,True,hybrid,,yes,manual,not a PDF at repositori.upf.edu
+R2459,10.3390/f15060975,include,True,gold,,yes,manual,URLError at psasir.upm.edu.my
+R2462,10.1016/j.ecoinf.2023.102181,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2469,10.1029/2024EF004648,maybe,True,gold,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R2484,10.1007/s11069-023-06377-0,include,True,green,https://atrium.lib.uoguelph.ca/bitstreams/11277ce8-58de-48f6-85fa-aa7f0a1ca073/download,yes,atrium.lib.uoguelph.ca,
+R2491,10.3390/rs16162887,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2495,10.3390/rs15112940,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2498,10.1016/j.rsase.2023.101033,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2506,10.6339/24-JDS1123,maybe,True,diamond,https://jds-online.org/journal/JDS/article/1368/file/pdf,yes,jds-online.org,
+R2530,10.1016/j.rse.2024.114310,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2541,10.3390/rs16091493,maybe,True,gold,https://elib.dlr.de/205064/1/remotesensing-16-01493-with-cover.pdf,yes,elib.dlr.de,HTTPError at www.mdpi.com
+R2555,10.3390/rs15040876,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2564,10.1007/s11440-024-02384-y,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R2570,10.1088/2515-7620/ad2e44,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2580,10.1016/j.ecoinf.2023.102240,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2591,10.7717/peerj.16578,include,True,gold,,yes,manual,not a PDF at pmc.ncbi.nlm.nih.gov
+R2596,10.1111/ddi.13784,maybe,True,gold,https://iris.unil.ch/bitstreams/ea51ba3c-2a5f-4268-89eb-746bdc22c80f/download,yes,iris.unil.ch,URLError at repozitorij.uni-lj.si
+R2611,10.1139/cjfas-2023-0168,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2613,10.1111/gcb.17224,maybe,True,hybrid,http://agritrop.cirad.fr/609112/1/Yang2024-GCB.pdf,yes,agritrop.cirad.fr,URLError at hal.inrae.fr
+R2615,10.1002/vzj2.20246,include,True,gold,https://www.osti.gov/servlets/purl/2447476,yes,www.osti.gov,
+R2641,10.3390/rs16173313,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2655,10.1080/02664763.2023.2252208,maybe,True,green,,yes,manual,not a PDF at pmc.ncbi.nlm.nih.gov
+R2660,10.1016/j.rse.2023.113483,maybe,True,bronze,,yes,manual,no OA pdf_url in OpenAlex
+R2667,10.3390/rs16142577,maybe,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R2692,10.1002/saj2.20350,maybe,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R2703,10.1109/TGRS.2020.3012575,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R2706,10.1016/j.compag.2018.09.003,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2716,10.1016/j.geoderma.2022.116192,maybe,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R2730,10.3390/rs14174227,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2747,10.1016/j.envpol.2020.114777,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2759,10.3390/RS12091523,maybe,True,gold,,yes,manual,HTTPError at www.utupub.fi
+R2784,10.1111/jbi.14105,maybe,True,bronze,,no,,HTTPError at conservancy.umn.edu
+R2840,10.1038/s41370-020-0257-8,maybe,True,green,,yes,manual,no OA pdf_url in OpenAlex
+R2848,10.1002/ece3.6859,include,True,gold,,yes,manual,not a PDF at hdl.handle.net
+R2855,10.1016/j.envpol.2019.06.088,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R2880,10.1002/rse2.203,maybe,True,gold,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R2887,10.3390/rs13214466,maybe,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R2906,10.1139/cjfas-2018-0281,include,True,green,https://utoronto.scholaris.ca/bitstreams/7a254e66-b2b8-41b8-85f5-e168f2e373b7/download,yes,utoronto.scholaris.ca,
+R2907,10.1016/j.geoderma.2021.115659,include,True,hybrid,https://edepot.wur.nl/561488,yes,edepot.wur.nl,HTTPError at www.sciencedirect.com
+R2923,10.1016/j.envpol.2022.119883,include,True,hybrid,,yes,manual,HTTPError at www.sciencedirect.com
+R2931,10.1080/10106049.2021.1980619,maybe,True,green,,no,,no OA pdf_url in OpenAlex
+R2934,10.1016/j.rse.2021.112760,maybe,True,hybrid,https://arxiv.org/pdf/2103.03975,yes,arxiv.org,not a PDF at www.zora.uzh.ch
+R2955,10.1016/j.jag.2021.102482,maybe,True,gold,,yes,manual,HTTPError at www.sciencedirect.com
+R2962,10.1111/ddi.13174,maybe,True,gold,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R2993,10.1016/j.isprsjprs.2021.10.022,maybe,True,bronze,,yes,manual,no OA pdf_url in OpenAlex
+R3047,10.1016/j.jhydrol.2022.128150,include,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R3051,10.1186/s40663-021-00297-w,include,True,gold,https://forestecosyst.springeropen.com/counter/pdf/10.1186/s40663-021-00297-w,yes,forestecosyst.springeropen.com,
+R3094,10.1109/TGRS.2020.2989216,maybe,True,green,https://ris.utwente.nl/ws/files/249454743/Rocha_2020_Role_of_sampling_design_when_predic.pdf,yes,ris.utwente.nl,
+R3102,10.3390/ijerph191610098,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R3124,10.1371/journal.pone.0259156,maybe,True,gold,https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0259156&type=printable,yes,journals.plos.org,
+R3129,,include,,,,yes,manual,OpenAlex lookup failed: HTTPError
+R3145,10.1016/j.rse.2018.02.026,include,True,green,https://unsworks.unsw.edu.au/bitstreams/64c422f4-8ea9-4784-8f15-e9e00662487a/download,yes,unsworks.unsw.edu.au,
+R3146,10.1029/2018WR023378,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R3149,10.3390/rs10081263,maybe,True,gold,https://ris.utwente.nl/ws/files/98951972/remotesensing_10_01263_v2.pdf,yes,ris.utwente.nl,HTTPError at www.mdpi.com
+R3162,10.3390/rs10081277,include,True,gold,,yes,manual,HTTPError at www.mdpi.com
+R3167,10.1111/2041-210X.12870,maybe,True,hybrid,http://eprints.whiterose.ac.uk/120509/1/Gavish_et_al-2017-Methods_in_Ecology_and_Evolution.pdf,yes,eprints.whiterose.ac.uk,
+R3169,10.1109/LGRS.2017.2747222,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R3173,,include,,,,yes,manual,OpenAlex lookup failed: HTTPError
+R3177,10.1080/13658816.2026.2729719,include,True,hybrid,,yes,manual,no OA pdf_url in OpenAlex
+R3179,10.1080/2150704X.2026.2734339,maybe,False,closed,,no,,no OA pdf_url in OpenAlex
+R3182,10.5194/essd-16-4793-2024,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R3192,10.1007/s11600-026-02044-7,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R3194,10.1109/ACCESS.2026.3728009,maybe,True,gold,,no,,no OA pdf_url in OpenAlex
+R3197,10.1109/ACCESS.2026.3703440,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
+R3198,10.1093/icesjms/fsz099,maybe,False,closed,,yes,manual,no OA pdf_url in OpenAlex
+R3201,10.1007/s11069-015-1915-3,include,False,closed,,no,,no OA pdf_url in OpenAlex
+R3206,10.1002/saj2.20769,include,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R3209,10.1007/s10994-021-05972-1,include,True,bronze,https://link.springer.com/content/pdf/10.1007/s10994-021-05972-1.pdf,yes,link.springer.com,
+R3210,10.1021/acsestair.6c00218,include,False,closed,,yes,manual,bioRxiv preprint 10.64898/2026.05.14.725192 used as full text
+R3216,10.1111/jvs.70183,include,True,hybrid,,yes,manual,HTTPError at onlinelibrary.wiley.com
+R3219,10.5194/essd-13-4241-2021,include,True,gold,https://essd.copernicus.org/articles/13/4241/2021/essd-13-4241-2021.pdf,yes,essd.copernicus.org,
+R3221,10.1016/j.ecolmodel.2010.11.016,include,True,bronze,http://www.vliz.be/imisdocs/publications/224652.pdf,yes,www.vliz.be,HTTPError at www.sciencedirect.com
+R3226,10.2478/foecol-2026-0018,include,True,diamond,https://reference-global.com/download/article/10.2478/foecol-2026-0018.pdf,yes,reference-global.com,
+R3229,10.5194/nhess-26-4675-2026,include,True,gold,https://egusphere.copernicus.org/preprints/2026/egusphere-2026-579/egusphere-2026-579.pdf,yes,egusphere.copernicus.org,
+R3232,10.1038/s41597-026-07615-3,maybe,True,gold,https://www.nature.com/articles/s41597-026-07615-3_reference.pdf,yes,www.nature.com,
+R3234,10.3390/app16157541,include,True,gold,,yes,manual,no OA pdf_url in OpenAlex
