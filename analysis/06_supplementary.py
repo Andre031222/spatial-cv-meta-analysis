@@ -134,7 +134,7 @@ A(r"""\documentclass[10pt,a4paper]{article}
 \setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
 \begin{document}
 \begin{center}{\Large\bfseries Supplementary Material}\\[4pt]
-How optimistic is random cross-validation for machine-learning maps? A meta-analysis of 266 studies comparing random and spatial validation\\[4pt]
+How much does random cross-validation flatter machine-learning maps? A meta-analysis of 266 studies\\[4pt]
 Richar Andre Vilca-Solorzano, Fred Torres-Cruz\end{center}
 \tableofcontents\newpage
 """)
