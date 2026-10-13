@@ -206,100 +206,153 @@ rain(axs[0], eR2, "dR2", "$\\Delta R^2$ (random − spatial)", (-0.6, 1.2)); pan
 rain(axs[1], eRM, "lnRR_RMSE", "ln(RMSE$_{spatial}$ / RMSE$_{random}$)", (-0.6, 1.3)); panel(axs[1], "b", x=-0.05)
 save(fig, "Fig4_raincloud_sampling")
 
-# ======================== Fig. 5 — calibration: what spatial R2 to expect =========================
-fig, axs = plt.subplots(1, 2, figsize=(180 * MM, 80 * MM), gridspec_kw={"width_ratios": [1.25, 1]})
-ax = axs[0]
-for k in ("clustered", "regular_grid", "probability_random"):
+# ======================== Fig. 7 — calibration: what spatial R2 to expect (small multiples) =======
+SHOW = ["clustered", "regular_grid", "probability_random"]
+fig = plt.figure(figsize=(180 * MM, 112 * MM))
+gs = fig.add_gridspec(2, 3, height_ratios=[1.15, 1], hspace=0.62, wspace=0.12)
+for j, k in enumerate(SHOW):
+    ax = fig.add_subplot(gs[0, j])
     p = calp[calp.sampling_h == k]
-    ax.scatter(p.vr, p.vs, s=4, color=DESIGN[k], alpha=0.35, lw=0)
     c = calc[calc.sampling_h == k]
-    ax.plot(c.vr, c.vr - c.gap, color=DESIGN[k], lw=1.4, label=DLAB[k])
-    ax.fill_between(c.vr, c.vr - c.gap_hi, c.vr - c.gap_lo, color=DESIGN[k], alpha=0.18, lw=0)
-ax.plot([0, 1], [0, 1], ls="--", color="#666", lw=0.6)
-ax.text(0.93, 0.99, "1:1", fontsize=6, color="#666", va="top")
-ax.set_xlim(0.3, 1); ax.set_ylim(-0.2, 1); ax.set_aspect("equal")
-ax.set_xlabel("$R^2$ under random CV"); ax.set_ylabel("Expected $R^2$ under spatial CV")
-ax.legend(frameon=False, loc="lower right", title="Sampling design", title_fontsize=6.5)
-panel(ax, "a")
-ax = axs[1]
-tbl = calc[calc.vr.round(2).isin([0.6, 0.7, 0.8, 0.9]) & calc.sampling_h.isin(["clustered", "regular_grid", "probability_random"])].copy()
-tbl["vr"] = tbl.vr.round(2)
-piv = tbl.pivot(index="sampling_h", columns="vr", values="expected_spatial_r2").reindex(["clustered", "regular_grid", "probability_random"])
-sns.heatmap(piv, annot=True, fmt=".2f", cmap="mako", vmin=0.2, vmax=0.95, cbar_kws={"label": "Expected spatial-CV $R^2$", "shrink": 0.7},
-            linewidths=0.6, linecolor="white", ax=ax, annot_kws={"fontsize": 7})
-ax.set_yticklabels([DLAB[k] for k in piv.index], rotation=0); ax.set_ylabel("")
-ax.set_xlabel("Reported random-CV $R^2$")
-panel(ax, "b", x=-0.45)
+    ax.fill_between(c.vr, c.vr - c.gap_pi_hi, c.vr - c.gap_pi_lo, color=DESIGN[k], alpha=0.10, lw=0, label="95% prediction interval")
+    ax.fill_between(c.vr, c.vr - c.gap_hi, c.vr - c.gap_lo, color=DESIGN[k], alpha=0.32, lw=0, label="95% confidence interval")
+    ax.scatter(p.vr, p.vs, s=5, color=DESIGN[k], alpha=0.55, lw=0)
+    ax.plot(c.vr, c.vr - c.gap, color=DESIGN[k], lw=1.6, label="Expected spatial-CV $R^2$")
+    ax.plot([0, 1], [0, 1], ls="--", color="#555", lw=0.6, label="1:1 (no difference)")
+    ax.set_xlim(0.3, 1); ax.set_ylim(-0.4, 1.02)
+    ax.set_title(f"{DLAB[k]}  ({p.record_id.nunique()} studies)", loc="left", fontsize=7.5, color=DESIGN[k], fontweight="bold")
+    ax.set_xlabel("$R^2$ under random CV")
+    if j == 0:
+        ax.set_ylabel("$R^2$ under spatial CV"); panel(ax, "a", x=-0.28)
+    else:
+        ax.set_yticklabels([])
+h, l = ax.get_legend_handles_labels()
+fig.legend([h[i] for i in (2, 1, 0, 3)], [l[i] for i in (2, 1, 0, 3)], frameon=False, ncol=4, loc="upper center", bbox_to_anchor=(0.5, 0.465), fontsize=6.5)
+ax = fig.add_subplot(gs[1, :])
+pts = [0.6, 0.7, 0.8, 0.9]
+off = {"clustered": -0.018, "regular_grid": 0.0, "probability_random": 0.018}
+for k in SHOW:
+    c = calc[calc.sampling_h == k].copy(); c["vr"] = c.vr.round(2); c = c[c.vr.isin(pts)]
+    ax.errorbar(c.vr + off[k], c.vr - c.gap, yerr=[c.gap_hi - c.gap, c.gap - c.gap_lo], fmt="o", color=DESIGN[k],
+                ms=4, mfc="white", mew=1.1, elinewidth=1.1, capsize=0, label=DLAB[k])
+ax.plot(pts, pts, "k_", ms=14, mew=1.2, label="Reported random-CV $R^2$")
+for x0 in pts:
+    ax.axvline(x0, color="#EEE", lw=6, zorder=0)
+ax.set_xticks(pts); ax.set_xlim(0.55, 0.95); ax.set_ylim(0.3, 0.95)
+ax.set_xlabel("Reported $R^2$ under random CV"); ax.set_ylabel("Expected $R^2$ under spatial CV")
+ax.legend(frameon=False, loc="upper left", ncol=4, fontsize=6.5)
+panel(ax, "b", x=-0.08)
 save(fig, "Fig7_calibration_R2")
 
 # ======================== Fig. 6 — which estimate is closer to an independent test? ==============
+TYPE = {"probability_sample": "Probability sample", "other": "Other hold-out", "temporal": "Later period", "other_region": "Other region"}
 d = ind[ind.metric.isin(["R2", "accuracy", "AUC"])].copy()
-d["type"] = d.ind_type.map({"probability_sample": "Probability sample", "temporal": "Later period",
-                             "other_region": "Other region", "other": "Other hold-out"}).fillna("Other hold-out")
-long = pd.concat([d.assign(scheme="Random CV", opt=d.opt_random), d.assign(scheme="Spatial CV", opt=d.opt_spatial)])
-order_t = ["Probability sample", "Other hold-out", "Later period", "Other region"]
-order_t = [t for t in order_t if t in set(d.type)]
-fig, axs = plt.subplots(1, 2, figsize=(180 * MM, 76 * MM), gridspec_kw={"width_ratios": [1.5, 1]})
-ax = axs[0]
-sns.stripplot(data=long, x="opt", y="type", hue="scheme", order=order_t, dodge=True, size=2.6, alpha=0.6, jitter=0.18,
-              palette={"Random CV": "#000000", "Spatial CV": "#CC79A7"}, ax=ax, legend=False)
-sns.pointplot(data=long, x="opt", y="type", hue="scheme", order=order_t, dodge=0.42, estimator=np.median, errorbar=None,
-              markers="D", markersize=4, linestyles="none", palette={"Random CV": "#000000", "Spatial CV": "#CC79A7"}, ax=ax)
-ax.axvline(0, color="#555", lw=0.6, ls="--")
-ax.set_xlabel("CV estimate − independent estimate\n($R^2$, AUC or accuracy; > 0 = optimistic)"); ax.set_ylabel("")
-ax.legend(frameon=False, loc="lower right", title=None)
-for i, t in enumerate(order_t):
-    sub = d[d.type == t]
-    ax.text(1.0, 1 - (i + 0.15) / len(order_t), f"{sub.record_id.nunique()} studies", transform=ax.transAxes, ha="right", fontsize=6, color="#444")
-panel(ax, "a", x=-0.3)
-ax = axs[1]
-allm = ind.copy()
-allm["closer"] = np.where(allm.abs_gap > 0, "Spatial CV closer", "Random CV closer")
-allm["type"] = allm.ind_type.map({"probability_sample": "Probability sample", "temporal": "Later period",
-                                  "other_region": "Other region", "other": "Other hold-out"}).fillna("Other hold-out")
-sh = allm.groupby("type").closer.apply(lambda v: (v == "Spatial CV closer").mean() * 100).reindex(order_t)
-ax.barh(sh.index, sh.values, color="#CC79A7", height=0.55)
-ax.barh(sh.index, 100 - sh.values, left=sh.values, color="#000000", height=0.55)
-for i, v in enumerate(sh.values):
-    ax.text(v / 2, i, f"{v:.0f}%", ha="center", va="center", color="white", fontsize=6.5)
-ax.axvline(50, color="white", lw=0.6)
-ax.set_xlim(0, 100); ax.invert_yaxis(); ax.set_xlabel("Effect sizes where each CV is closer (%)")
-ax.set_yticklabels([])
-ax.legend(handles=[mpl.patches.Patch(color="#CC79A7", label="Spatial CV closer"), mpl.patches.Patch(color="#000000", label="Random CV closer")],
-          frameon=False, loc="lower center", bbox_to_anchor=(0.5, -0.42), ncol=2)
-panel(ax, "b", x=-0.05)
+d["type"] = d.ind_type.map(TYPE).fillna("Other hold-out")
+sd_ = d.groupby(["type", "record_id"]).agg(r=("opt_random", "median"), s=("opt_spatial", "median"), k=("opt_random", "size")).reset_index()
+order_t = [t for t in TYPE.values() if t in set(sd_.type)]
+sd_["type"] = pd.Categorical(sd_.type, order_t)
+sd_ = sd_.sort_values(["type", "r"]).reset_index(drop=True)
+RC, SC = "#1A1A1A", "#CC79A7"
+fig = plt.figure(figsize=(180 * MM, 92 * MM))
+gs = fig.add_gridspec(1, 2, width_ratios=[1.55, 1], wspace=0.5)
+ax = fig.add_subplot(gs[0, 0])
+ypos, y, ticks, groups = [], 0, [], []
+for t in order_t:
+    sub = sd_[sd_.type == t]
+    ys = np.arange(y, y + len(sub)); ypos.extend(ys); groups.append((t, y, y + len(sub) - 1)); y += len(sub) + 1.2
+ax.axvline(0, color="#555", lw=0.7, ls="--", zorder=0)
+for yy, (_, r) in zip(ypos, sd_.iterrows()):
+    closer_spatial = abs(r.s) < abs(r.r)
+    ax.plot([r.r, r.s], [yy, yy], color=SC if closer_spatial else RC, lw=1.0, alpha=0.6)
+    ax.scatter(r.r, yy, s=14, color=RC, zorder=3)
+    ax.scatter(r.s, yy, s=16, facecolor="white", edgecolor=SC, lw=1.1, zorder=3)
+for t, y0, y1 in groups:
+    ax.axhspan(y0 - 0.6, y1 + 0.6, color="#F4F4F4" if order_t.index(t) % 2 == 0 else "white", zorder=-1, lw=0)
+    ax.text(ax.get_xlim()[0] if False else -0.36, (y0 + y1) / 2, t, ha="right", va="center", fontsize=6.8, fontweight="bold")
+ax.set_xlim(-0.33, 0.62); ax.set_ylim(max(ypos) + 1, -1); ax.set_yticks([])
+ax.spines["left"].set_visible(False)
+ax.set_xlabel("Deviation from the independent test\n($R^2$, AUC or accuracy; > 0 = optimistic, < 0 = pessimistic)")
+ax.text(0.6, -0.6, "optimistic", fontsize=6.3, color="#555", ha="right"); ax.text(-0.31, -0.6, "pessimistic", fontsize=6.3, color="#555")
+ax.legend(handles=[Line2D([], [], marker="o", ls="", color=RC, ms=4, label="Random CV"),
+                   Line2D([], [], marker="o", ls="", mfc="white", mec=SC, mew=1.1, ms=4.5, label="Spatial CV")],
+          frameon=False, loc="upper right", bbox_to_anchor=(1.0, 0.93), fontsize=6.5)
+panel(ax, "a", x=-0.33)
+ax = fig.add_subplot(gs[0, 1])
+allm = ind.copy(); allm["type"] = allm.ind_type.map(TYPE).fillna("Other hold-out")
+sh = allm.groupby("type").agg(sp=("abs_gap", lambda v: (v > 0).mean() * 100), n=("abs_gap", "size"),
+                               st=("record_id", "nunique")).reindex(order_t)
+yb = np.arange(len(order_t))
+ax.barh(yb, sh.sp, color=SC, height=0.58)
+ax.barh(yb, 100 - sh.sp, left=sh.sp, color=RC, height=0.58)
+for i, (v, n, st_) in enumerate(zip(sh.sp, sh.n, sh.st)):
+    ax.text(2, i, f"{v:.0f}%", va="center", color="white", fontsize=6.5, fontweight="bold")
+    ax.text(98, i, f"{100 - v:.0f}%", va="center", ha="right", color="white", fontsize=6.5, fontweight="bold")
+    ax.text(50, i + 0.42, f"{st_} studies, {n} comparisons", ha="center", va="center", fontsize=5.8, color="#444")
+ax.axvline(50, color="white", lw=0.8)
+ax.set_yticks(yb); ax.set_yticklabels(order_t); ax.invert_yaxis(); ax.set_xlim(0, 100)
+ax.set_xlabel("Comparisons in which each design\nwas closer to the independent test (%)")
+ax.legend(handles=[mpl.patches.Patch(color=SC, label="Spatial CV closer"), mpl.patches.Patch(color=RC, label="Random CV closer")],
+          frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=2, fontsize=6.5)
+panel(ax, "b", x=-0.42)
 save(fig, "Fig6_independent_validation")
 
-# ======================== Fig. 7 — moderator heatmap across metrics ===============================
+# ======================== Fig. 5 — moderators: small-multiple forest plots across metrics ==========
 m = mods[mods.moderator.isin(["sampling_h", "model_h", "cv_h", "domain_h"])].copy()
 m["level"] = [l.replace(mo, "") for l, mo in zip(m.level, m.moderator)]
-pretty = {**DLAB, "RF": "Random forest", "boosting": "Boosting", "neural_net": "Neural network", "SVM": "SVM", "other_ML": "Other ML",
-          "block": "Spatial blocks", "cluster": "Clusters", "leave_location_out": "Leave-location-out", "buffer_LOO": "Buffered LOO",
-          "other": "Other", "soil": "Soil", "crop": "Crop", "forest_biomass": "Forest/biomass", "vegetation_landcover": "Vegetation/land cover",
-          "species": "Species", "hydrology": "Hydrology", "climate_air": "Climate/air", "hazards": "Hazards"}
+pretty = {**DLAB, "RF": "Random forest", "boosting": "Gradient boosting", "neural_net": "Neural network", "SVM": "Support vector machine",
+          "other_ML": "Other ML", "block": "Spatial blocks", "cluster": "Clusters", "leave_location_out": "Leave-location-out",
+          "buffer_LOO": "Buffered leave-one-out", "other": "Other", "soil": "Soil", "crop": "Crop", "forest_biomass": "Forest/biomass",
+          "vegetation_landcover": "Vegetation/land cover", "species": "Species", "hydrology": "Hydrology", "climate_air": "Climate/air",
+          "hazards": "Hazards"}
 grp = {"sampling_h": "Sampling design", "model_h": "Model family", "cv_h": "Spatial CV type", "domain_h": "Domain"}
+GCOL = {"Sampling design": "#D55E00", "Model family": "#0072B2", "Spatial CV type": "#009E73", "Domain": "#7F7F7F"}
 m = m[m.k_studies >= 3]
-m["row"] = m.moderator.map(grp) + ": " + m.level.map(pretty).fillna(m.level)
-# express everything as % of the overall effect of that metric, to compare across metrics
-ov = overall.set_index("effect").estimate
-m["rel"] = m.apply(lambda r: r.estimate / ov[r.effect] * 100, axis=1)
-m["txt"] = m.apply(lambda r: f"{r.estimate:.2f}\n({int(r.k_studies)})", axis=1)
-cols = {"dR2": "$\\Delta R^2$", "lnRR_RMSE": "lnRR RMSE", "dAUC": "$\\Delta$AUC", "dAccuracy": "$\\Delta$Accuracy"}
-groups = [g for g in grp.values() if (m.row.str.startswith(g)).any()]
-sizes = [int(m.row.str.startswith(g).sum()) for g in groups]
-fig, axes = plt.subplots(len(groups), 1, figsize=(120 * MM, 160 * MM), gridspec_kw={"height_ratios": sizes, "hspace": 0.12}, sharex=True)
-for ax, g in zip(axes, groups):
-    sub = m[m.row.str.startswith(g)]
-    order_r = sub[sub.effect == "dR2"].sort_values("estimate", ascending=False).row.tolist()
-    order_r += [r for r in sub.row.unique() if r not in order_r]
-    H = sub.pivot(index="row", columns="effect", values="rel").reindex(index=order_r, columns=list(cols))
-    T = sub.pivot(index="row", columns="effect", values="txt").reindex(index=order_r, columns=list(cols))
-    sns.heatmap(H, annot=T, fmt="", cmap="RdBu_r", center=100, vmin=0, vmax=200, linewidths=0.6, linecolor="white",
-                cbar=False, annot_kws={"fontsize": 5.5}, ax=ax)
-    ax.set_yticklabels([r.split(": ", 1)[1] for r in order_r], rotation=0); ax.set_ylabel(g, fontweight="bold", fontsize=7)
-    ax.set_xlabel(""); ax.tick_params(axis="x", length=0)
-axes[-1].set_xticklabels([cols[c] for c in cols], rotation=0)
-cax = fig.add_axes([0.93, 0.35, 0.025, 0.3])
-fig.colorbar(mpl.cm.ScalarMappable(norm=mpl.colors.TwoSlopeNorm(vmin=0, vcenter=100, vmax=200), cmap="RdBu_r"), cax=cax,
-             label="Subgroup effect as % of overall effect")
-save(fig, "Fig5_moderator_heatmap")
+cols = {"dR2": "$\\Delta R^2$", "lnRR_RMSE": "lnRR RMSE", "dAUC": "$\\Delta$AUC", "dAccuracy": "$\\Delta$accuracy"}
+rows = []
+for g in ["sampling_h", "model_h", "cv_h", "domain_h"]:
+    sub = m[(m.moderator == g)]
+    ordr = sub[sub.effect == "dR2"].sort_values("estimate", ascending=False).level.tolist()
+    ordr += [l for l in sub.level.unique() if l not in ordr]
+    rows.append(("header", grp[g], None))
+    rows += [("row", grp[g], l) for l in ordr]
+ny = len(rows)
+fig, axes = plt.subplots(1, 4, figsize=(180 * MM, 150 * MM), sharey=True, gridspec_kw={"wspace": 0.08})
+for ax, (eff, title) in zip(axes, cols.items()):
+    o = overall[overall.effect == eff].iloc[0]
+    ax.axvspan(o.ci_lb, o.ci_ub, color="#E8E8E8", lw=0, zorder=0)
+    ax.axvline(o.estimate, color="#888", lw=0.7, zorder=1)
+    ax.axvline(0, color="black", lw=0.6, ls="--", zorder=1)
+    for i, (kind, g, l) in enumerate(rows):
+        if kind == "header":
+            if eff == "dR2":
+                pval = m[(m.moderator == [k for k, v in grp.items() if v == g][0])].QM_p_heterogeneity_between_levels
+            continue
+        r = m[(m.effect == eff) & (m.moderator == [k for k, v in grp.items() if v == g][0]) & (m.level == l)]
+        if not len(r):
+            continue
+        r = r.iloc[0]
+        ax.plot([r.ci_lb, r.ci_ub], [i, i], color=GCOL[g], lw=1.2)
+        ax.scatter(r.estimate, i, s=7 + 2.2 * np.sqrt(r.k_studies) * 3, color=GCOL[g], edgecolor="white", lw=0.4, zorder=3)
+    ax.set_title(title, fontsize=8)
+    ax.set_ylim(ny - 0.4, -0.8)
+    ax.xaxis.set_major_locator(mpl.ticker.MaxNLocator(4))
+    # moderator p-value per metric
+    for kind, g, l in rows:
+        if kind == "header":
+            i = rows.index((kind, g, l)); mk = [k for k, v in grp.items() if v == g][0]
+            pv = m[(m.effect == eff) & (m.moderator == mk)].QM_p_heterogeneity_between_levels
+            if len(pv):
+                pv = pv.iloc[0]
+                ax.text(0.98, i, "p < 0.001" if pv < 0.001 else f"p = {pv:.2f}", transform=ax.get_yaxis_transform(), ha="right",
+                        va="center", fontsize=5.8, color="#333", fontweight="bold" if pv < 0.05 else "normal")
+axes[0].set_yticks(range(ny))
+axes[0].set_yticklabels([("" if k == "header" else pretty.get(l, l)) for k, g, l in rows])
+for i, (k, g, l) in enumerate(rows):
+    if k == "header":
+        axes[0].text(-0.02, i, g, transform=axes[0].get_yaxis_transform(), ha="right", va="center", fontsize=7, fontweight="bold", color=GCOL[g])
+axes[0].tick_params(axis="y", length=0)
+for ax in axes[1:]:
+    ax.tick_params(axis="y", length=0)
+fig.text(0.5, 0.045, "Subgroup estimate (positive = random CV more favourable); grey band: pooled estimate and 95% CI; point size ∝ number of studies",
+         ha="center", fontsize=6.3, color="#444")
+save(fig, "Fig5_moderators")
