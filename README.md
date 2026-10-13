@@ -3,6 +3,8 @@
 Data and code for a systematic review and multilevel meta-analysis of studies that evaluated the same
 machine-learning model and data with both random and spatial cross-validation (266 studies, 1,102 effect sizes).
 
+Article: *Random cross-validation overestimates the accuracy of machine-learning environmental maps: a meta-analysis of 266 studies* (submitted to Environmental Modelling & Software).
+
 Protocol (OSF registration): <https://doi.org/10.17605/OSF.IO/6P8YM>  
 Archived data and code (OSF): <https://doi.org/10.17605/OSF.IO/S8Y5H>
 
