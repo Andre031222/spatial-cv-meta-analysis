@@ -92,7 +92,7 @@ st <- do.call(rbind, lapply(split(x, x$record_id), function(d) data.frame(record
   sampling_reported = d$sampling_h[1] != "unknown", range_reported = any(!is.na(num(d$autocorrelation_range_m))),
   block_size_reported = any(!is.na(num(d$block_or_buffer_size_m))), sd_reported = any(!is.na(num(d$sd_random))),
   independent_validation = any(d$independent_validation == "yes", na.rm = TRUE),
-  open_data = d$open_data[1] == "yes", open_code = d$open_code[1] == "yes")))
+  open_data = isTRUE(d$open_data[1] == "yes"), open_code = isTRUE(d$open_code[1] == "yes"))))
 write.csv(st, "analysis/results/reporting_audit_studies.csv", row.names = FALSE)
 aud <- colMeans(st[, -(1:2)], na.rm = TRUE)
 write.csv(data.frame(item = names(aud), share = aud, n = nrow(st)), "analysis/results/reporting_audit_summary.csv", row.names = FALSE)
