@@ -1,55 +1,82 @@
-% PRISMA 2020 flow diagram (final, 2026-10-12). Numbers: screening/prisma_counts.md, fulltext/fulltext_decisions.csv
-\documentclass[border=4pt]{standalone}
+% PRISMA 2020 flow diagram, laid out as the official template (Page et al., 2021).
+% Numbers: screening/prisma_counts.md, fulltext/fulltext_decisions.csv
+\documentclass[border=5pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,calc,backgrounds}
-\definecolor{flow}{HTML}{DCEAF7}
+\definecolor{flow}{HTML}{EAF2FA}
 \definecolor{flowline}{HTML}{0072B2}
-\definecolor{excl}{HTML}{F6F6F6}
-\definecolor{exclline}{HTML}{8C8C8C}
-\definecolor{incl}{HTML}{FBE3D6}
+\definecolor{excl}{HTML}{F5F5F5}
+\definecolor{exclline}{HTML}{7F7F7F}
+\definecolor{incl}{HTML}{FCE8DC}
 \definecolor{inclline}{HTML}{D55E00}
 \definecolor{band}{HTML}{0B3C5D}
 \begin{document}
 \begin{tikzpicture}[
   font=\small,
-  box/.style={draw=flowline, fill=flow, rounded corners=3pt, thick, align=left, text width=6.6cm, inner sep=6pt, minimum height=1.15cm},
-  side/.style={draw=exclline, fill=excl, rounded corners=3pt, align=left, text width=7.4cm, inner sep=6pt, font=\footnotesize},
-  fin/.style={draw=inclline, fill=incl, rounded corners=3pt, very thick, align=left, text width=6.6cm, inner sep=6pt},
+  box/.style={draw=flowline, fill=flow, rounded corners=2pt, thick, align=left, text width=7.0cm, inner sep=7pt, minimum height=1.5cm},
+  side/.style={draw=exclline, fill=excl, rounded corners=2pt, align=left, text width=7.0cm, inner sep=7pt, minimum height=1.5cm},
+  fin/.style={draw=inclline, fill=incl, rounded corners=2pt, very thick, align=left, text width=6.6cm, inner sep=7pt},
   arr/.style={-{Stealth[length=2.6mm]}, thick, draw=flowline},
-  sarr/.style={-{Stealth[length=2.2mm]}, draw=exclline}]
+  sarr/.style={-{Stealth[length=2.4mm]}, thick, draw=exclline},
+  num/.style={font=\small\bfseries}]
 
-\node[box] (id) {\textbf{Records identified} ($n = 5{,}531$)\\[2pt]
-  {\footnotesize Scopus keyword searches v1--v3: 1{,}931\\
-  Scopus citation-based search v4 (REF field): 2{,}557\\
-  Web of Science Core Collection: 1{,}043}};
-\node[side, right=1.0cm of id] (rm) {\textbf{Removed before screening} ($n = 2{,}304$)\\
-  Duplicates (DOI, normalised title): 2{,}241\\
-  Language, year or document type: 63};
+% identification
+\node[box, anchor=north west] (id) at (0,0) {%
+  \textbf{Records identified} \hfill\textbf{\textit{n} = 5,531}\\[3pt]
+  Scopus, keyword query \hfill 1,931\\
+  Scopus, citation query \hfill 2,557\\
+  Web of Science Core Collection \hfill 1,043};
+\node[side, right=0.7cm of id] (rm) {%
+  \textbf{Records removed before screening} \hfill\textbf{\textit{n} = 2,304}\\[3pt]
+  Duplicate records \hfill 2,241\\
+  Other type, language or year \hfill 63};
 
-\node[box, below=0.9cm of id] (sc) {\textbf{Records screened} on title and abstract\\ ($n = 3{,}227$)};
-\node[side, right=1.0cm of sc] (ex1) {\textbf{Excluded} ($n = 2{,}780$)\\
-  Only one CV scheme / no comparison: 2{,}004\\
-  Not spatial or off-domain: 723 \quad Not original: 32 \quad No ML: 21};
+% screening
+\node[box, below=0.8cm of id] (sc) {%
+  \textbf{Records screened}\\(title and abstract) \hfill\textbf{\textit{n} = 3,227}};
+\node[side, right=0.7cm of sc] (ex1) {%
+  \textbf{Records excluded} \hfill\textbf{\textit{n} = 2,780}\\[3pt]
+  Only one validation design \hfill 2,004\\
+  Outside the environmental domain \hfill 723\\
+  Not an original article \hfill 32\\
+  No machine learning \hfill 21};
 
-\node[box, below=0.9cm of sc] (sought) {\textbf{Reports sought} for retrieval\\ ($n = 447$)};
-\node[side, right=1.0cm of sought] (nr) {\textbf{Not retrieved} ($n = 57$)\\
-  No access (paywalled): 55 \quad File was not the article: 2};
+\node[box, below=0.8cm of sc] (sought) {%
+  \textbf{Reports sought for retrieval} \hfill\textbf{\textit{n} = 447}};
+\node[side, right=0.7cm of sought] (nr) {%
+  \textbf{Reports not retrieved} \hfill\textbf{\textit{n} = 57}\\[3pt]
+  No access \hfill 55\\
+  File was not the article \hfill 2};
 
-\node[box, below=0.9cm of sought] (el) {\textbf{Full texts assessed} for eligibility\\ ($n = 390$)};
-\node[side, right=1.0cm of el] (ex2) {\textbf{Excluded} ($n = 124$)\\
-  E2 one CV scheme or different data: 90\\
-  E5 metrics not extractable: 23 \quad E4 off-domain: 8\\
-  E3 no machine learning: 2 \quad E1 not original: 1\\
-  \textit{Blind 10\% double check: 90\% agreement, $\kappa = 0.77$}};
+\node[box, below=0.8cm of sought] (el) {%
+  \textbf{Reports assessed for eligibility}\\(full text) \hfill\textbf{\textit{n} = 390}};
+\node[side, right=0.7cm of el] (ex2) {%
+  \textbf{Reports excluded} \hfill\textbf{\textit{n} = 124}\\[3pt]
+  One design, or designs on different data \hfill 90\\
+  Metrics could not be extracted \hfill 23\\
+  Outside the environmental domain \hfill 8\\
+  No machine learning \hfill 2\\
+  Not an original article \hfill 1};
 
-\node[fin, below=0.9cm of el] (inc) {\textbf{Studies included} ($n = 266$)\\[2pt]
-  {\footnotesize Quantitative synthesis: 239 studies, 1{,}102 effect sizes\\
-  ($R^2$ 132 $\cdot$ RMSE 125 $\cdot$ AUC 49 $\cdot$ accuracy 51)\\
-  Independent-validation subset: 25 studies}};
+% included
+\node[fin, below=0.8cm of el] (inc) {%
+  \textbf{Studies included in the review} \hfill\textbf{\textit{n} = 266}\\[3pt]
+  In the meta-analysis \hfill 239\\
+  \quad effect sizes \hfill 1,102\\
+  \quad studies with $R^2$ / RMSE \hfill 132 / 125\\
+  \quad studies with AUC / accuracy \hfill 49 / 51\\
+  With an independent test \hfill 25};
+\node[side, right=0.7cm of inc, draw=flowline, fill=white, dashed] (qc) {%
+  \textbf{Quality control}\\[3pt]
+  Blind second reviewer, 39 records (10\%)\\
+  Eligibility agreement 90\%, Cohen's $\kappa$ = 0.77\\
+  Extracted values agreeing 95\% (63 of 66)};
 
+\fill[band] ($(id.north west)+(0,0.45)$) rectangle ($(rm.north east)+(0,1.25)$);
+\node[text=white, font=\normalsize\bfseries] at ($($(id.north west)!0.5!(rm.north east)$)+(0,0.85)$) {Identification of studies via databases};
 \draw[arr] (id) -- (sc);  \draw[sarr] (id) -- (rm);
 \draw[arr] (sc) -- (sought); \draw[sarr] (sc) -- (ex1);
 \draw[arr] (sought) -- (el); \draw[sarr] (sought) -- (nr);
@@ -57,8 +84,8 @@
 
 \begin{scope}[on background layer]
 \foreach \top/\bot/\lab in {id/id/Identification, sc/el/Screening, inc/inc/Included}{
-  \fill[band, rounded corners=2pt] ([xshift=-0.95cm]\top.north west) rectangle ([xshift=-0.45cm]\bot.south west);
-  \node[rotate=90, text=white, font=\footnotesize\bfseries] at ($([xshift=-0.7cm]\top.north west)!0.5!([xshift=-0.7cm]\bot.south west)$) {\lab};}
+  \fill[band, rounded corners=2pt] ([xshift=-0.9cm]\top.north west) rectangle ([xshift=-0.4cm]\bot.south west);
+  \node[rotate=90, text=white, font=\footnotesize\bfseries] at ($([xshift=-0.65cm]\top.north west)!0.5!([xshift=-0.65cm]\bot.south west)$) {\lab};}
 \end{scope}
 \end{tikzpicture}
 \end{document}

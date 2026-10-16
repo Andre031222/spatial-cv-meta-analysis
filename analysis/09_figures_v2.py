@@ -242,38 +242,35 @@ ax.set_ylim(len(order_t) - 0.5, -0.95)
 panel(ax, "c", x=-0.5)
 save(fig, "Fig6_independent_validation")
 
-# ================================ Fig. 7 — expected spatial R2 (calibration) =====================
+# ================================ Fig. 7 — expected spatial R2 (calibration), one panel =========
+# Each row is a reported random-CV R2; coloured points show the R2 expected under spatial CV.
 calc = pd.read_csv(RES / "calibration_curve.csv")
 SHOW = ["clustered", "regular_grid", "probability_random"]
-fig, axs = plt.subplots(1, 2, figsize=(180 * MM, 80 * MM), gridspec_kw={"width_ratios": [1, 1.15], "wspace": 0.3})
-ax = axs[0]
-for k in SHOW:
-    c = calc[calc.sampling_h == k]
-    ax.fill_between(c.vr, c.vr - c.gap_hi, c.vr - c.gap_lo, color=DESIGN[k], alpha=0.10, lw=0)
-    ax.plot(c.vr, c.vr - c.gap, color=DESIGN[k], lw=1.8, label=DLAB[k])
-ax.plot([0.3, 1], [0.3, 1], color="black", lw=0.8, ls="--")
-ax.text(0.6, 0.66, "no difference (1:1)", rotation=45, fontsize=6, ha="center")
-r08 = {k: float((calc[(calc.sampling_h == k) & (calc.vr.round(2) == 0.8)].vr - calc[(calc.sampling_h == k) & (calc.vr.round(2) == 0.8)].gap).iloc[0]) for k in SHOW}
-ax.annotate("", xy=(0.8, r08["clustered"]), xytext=(0.8, 0.8), arrowprops=dict(arrowstyle="-|>", color="#333", lw=0.7, mutation_scale=6))
-ax.scatter([0.8] * 3, [r08[k] for k in SHOW], s=12, color=[DESIGN[k] for k in SHOW], zorder=5, edgecolor="white", lw=0.4)
-ax.text(0.41, 0.97, f"Reported 0.80 becomes\n{r08['clustered']:.2f} (clustered) or\n{r08['probability_random']:.2f} (probability)", fontsize=6, ha="left", va="top")
-ax.set_xlim(0.4, 1); ax.set_ylim(0.1, 1); ax.set_aspect("equal")
-ax.set_xlabel("$R^2$ reported with random CV"); ax.set_ylabel("Expected $R^2$ with spatial CV")
-ax.legend(frameon=False, loc="lower right", title="Sampling design (band: 95% CI)", title_fontsize=6.2)
-panel(ax, "a", x=-0.2)
-ax = axs[1]
-ptsx = [0.6, 0.7, 0.8, 0.9]
-w = 0.26
-for j, k in enumerate(SHOW):
-    c = calc[(calc.sampling_h == k) & calc.vr.round(2).isin(ptsx)].copy(); c["vr"] = c.vr.round(2)
-    xs = np.arange(len(ptsx)) + (j - 1) * w
-    ax.bar(xs, c.gap, width=w * 0.92, color=DESIGN[k], label=DLAB[k])
-    ax.errorbar(xs, c.gap, yerr=[c.gap - c.gap_lo, c.gap_hi - c.gap], fmt="none", ecolor="black", lw=0.7, capsize=1.5)
-    for x, g in zip(xs, c.gap):
-        ax.text(x, 0.012, f"{g:.2f}", ha="center", va="bottom", fontsize=5.4, rotation=90, color="white", fontweight="bold")
-ax.set_xticks(range(len(ptsx))); ax.set_xticklabels([f"{v:.1f}" for v in ptsx])
-ax.set_xlabel("$R^2$ reported with random CV"); ax.set_ylabel("Expected loss of $R^2$ under spatial CV")
-ax.set_ylim(0, 0.42); ax.axhline(0, color="black", lw=0.5)
-ax.legend(frameon=False, loc="upper left", ncol=3, fontsize=6.2)
-panel(ax, "b", x=-0.17)
+ROWS = [0.9, 0.8, 0.7, 0.6]
+OFF = {"clustered": 0.18, "regular_grid": 0.0, "probability_random": -0.18}
+fig, ax = plt.subplots(figsize=(150 * MM, 88 * MM))
+for i, v in enumerate(ROWS):
+    y = len(ROWS) - 1 - i
+    ax.axhspan(y - 0.42, y + 0.42, color="#F4F4F4" if i % 2 == 0 else "white", lw=0, zorder=0)
+    lo = min(float((calc[(calc.sampling_h == k) & (calc.vr.round(2) == v)].vr - calc[(calc.sampling_h == k) & (calc.vr.round(2) == v)].gap_hi).iloc[0]) for k in SHOW)
+    for k in SHOW:
+        r = calc[(calc.sampling_h == k) & (calc.vr.round(2) == v)].iloc[0]
+        e, a, b = r.vr - r.gap, r.vr - r.gap_hi, r.vr - r.gap_lo
+        yy = y + OFF[k]
+        ax.annotate("", xy=(e, yy), xytext=(v, yy), arrowprops=dict(arrowstyle="-|>", color=DESIGN[k], lw=1.1, mutation_scale=7, shrinkA=3, shrinkB=4))
+        ax.plot([a, b], [yy, yy], color=DESIGN[k], lw=3.2, alpha=0.25, solid_capstyle="butt")
+        ax.scatter(e, yy, s=28, color=DESIGN[k], zorder=4, edgecolor="white", lw=0.5)
+        ax.text(a - 0.008, yy, f"{e:.2f}", ha="right", va="center", fontsize=6.6, color=DESIGN[k], fontweight="bold")
+    ax.scatter(v, y, s=46, color="black", zorder=5, marker="D")
+    ax.text(v + 0.012, y, f"{v:.1f}", ha="left", va="center", fontsize=7, fontweight="bold")
+ax.set_yticks(range(len(ROWS))); ax.set_yticklabels([f"Reported $R^2$ = {v:.1f}" for v in ROWS[::-1]], fontsize=7)
+ax.tick_params(axis="y", length=0)
+ax.set_xlim(0.2, 0.97); ax.set_ylim(-0.6, len(ROWS) - 0.4)
+ax.set_xlabel("$R^2$  (black diamond: reported with random CV; coloured point: expected with spatial CV)")
+ax.spines[["left", "top", "right"]].set_visible(False)
+ax.grid(axis="x", color="#E3E3E3", lw=0.5); ax.set_axisbelow(True)
+from matplotlib.lines import Line2D as _L
+h = [_L([], [], marker="o", ls="-", color=DESIGN[k], ms=4, lw=1.1, label=DLAB[k]) for k in SHOW]
+h.append(mpl.patches.Patch(color="#999999", alpha=0.35, label="95% confidence interval"))
+ax.legend(handles=h, title="Sampling design of the data", frameon=False, loc="upper center", bbox_to_anchor=(0.5, 1.13), ncol=4, fontsize=6.6, title_fontsize=6.8)
 save(fig, "Fig7_calibration_R2")
