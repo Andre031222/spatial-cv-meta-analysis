@@ -1,18 +1,3 @@
-"""Speed up manual full-text retrieval.
-
-Opens, in YOUR normal browser (default browser, your own session/institutional access), the direct
-PDF links of the next N records still missing a PDF, then watches the downloads folder and imports
-every new PDF automatically (matched by DOI/title -> fulltext/pdfs/Rxxxx.pdf).
-
-Usage (from the project folder):
-  .venv/bin/python fulltext/scripts/abrir_pdfs.py                # next 10, any publisher
-  .venv/bin/python fulltext/scripts/abrir_pdfs.py -n 15 -p Elsevier
-  .venv/bin/python fulltext/scripts/abrir_pdfs.py --watch-only    # only import what you download
-Options: -n batch size · -p publisher (Elsevier, Wiley, IEEE, Taylor&Francis, ACS, Springer…)
-         --only-include · --browser "Google Chrome" · --folder ~/Downloads
-Press Ctrl+C to stop watching. Records whose link was already opened are remembered
-(fulltext/opened_links.txt) so the next run continues with new ones.
-"""
 import argparse, json, os, subprocess, sys, time, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -20,7 +5,6 @@ PDF_DIR = os.path.join(ROOT, 'fulltext', 'pdfs')
 OPENED = os.path.join(ROOT, 'fulltext', 'opened_links.txt')
 IMPORTER = os.path.join(ROOT, 'fulltext', 'scripts', 'import_downloads.py')
 PY = os.path.join(ROOT, '.venv', 'bin', 'python')
-
 
 def direct_url(o):
     doi, res = o['doi'], o.get('resolved', '')
@@ -44,14 +28,12 @@ def direct_url(o):
         return f'https://iopscience.iop.org/article/{doi}/pdf'
     return f'https://doi.org/{doi}' if doi else None
 
-
 def run_import(folder):
     out = subprocess.run([PY, '-I', IMPORTER, ROOT, folder], capture_output=True, text=True).stdout.strip()
     lines = [l for l in out.splitlines() if '<-' in l]
     for l in lines:
         print('  ✓', l)
     return len(lines), out.splitlines()[-1] if out else ''
-
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-n', type=int, default=10)
@@ -85,7 +67,7 @@ if not a.watch_only:
             subprocess.run(cmd)
             print(f"  → {o['record_id']}  {o.get('pub', '')}  {url}")
             f.write(o['record_id'] + '\n')
-            time.sleep(2)  # gentle pacing, like a person opening tabs
+            time.sleep(2)
 
 print(f'\nWatching {folder} — save the PDFs there (any name). Ctrl+C to stop.')
 try:

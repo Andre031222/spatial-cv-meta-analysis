@@ -1,12 +1,3 @@
-"""Second-round PDF retrieval for records still missing a full text.
-
-Tries, in order: OpenAlex (all OA locations + landing pages), Semantic Scholar openAccessPdf,
-Europe PMC (PMC render), arXiv, and publisher-specific direct-PDF patterns. Uses a browser-like
-session. Every attempt is appended to fulltext/fulltext_log.csv (source, url, result).
-Writes fulltext/missing_by_host.csv for the remaining records (for browser/Zotero retrieval).
-
-Usage: .venv/bin/python -I fulltext/scripts/get_pdfs_v2.py <project_root>
-"""
 import csv, os, re, sys, time, urllib.parse
 import requests
 
@@ -21,13 +12,11 @@ S.headers.update({
     'Accept-Language': 'en-US,en;q=0.9',
 })
 
-
 def fetch_pdf(url, referer=None):
     try:
         r = S.get(url, timeout=40, allow_redirects=True, headers={'Referer': referer or url})
         if r.status_code == 200 and r.content[:5] == b'%PDF-':
             return r.content, 'ok'
-        # landing page with a citation_pdf_url meta tag
         if r.status_code == 200 and 'html' in r.headers.get('Content-Type', ''):
             m = re.search(r'<meta[^>]+name=["\']citation_pdf_url["\'][^>]+content=["\']([^"\']+)', r.text)
             if m and m.group(1) != url:
@@ -37,7 +26,6 @@ def fetch_pdf(url, referer=None):
         return None, f'HTTP {r.status_code}'
     except Exception as e:
         return None, type(e).__name__
-
 
 def candidates(doi, title):
     out = []
@@ -63,17 +51,17 @@ def candidates(doi, title):
     except Exception:
         pass
     d = doi.lower()
-    if d.startswith('10.3390/'):  # MDPI
+    if d.startswith('10.3390/'):
         out.append(('pattern_mdpi', f'https://www.mdpi.com/{doi}/pdf'))
-    if d.startswith('10.3389/'):  # Frontiers
+    if d.startswith('10.3389/'):
         out.append(('pattern_frontiers', f'https://www.frontiersin.org/articles/{doi}/pdf'))
-    if d.startswith('10.1371/'):  # PLOS
+    if d.startswith('10.1371/'):
         out.append(('pattern_plos', f'https://journals.plos.org/plosone/article/file?id={doi}&type=printable'))
     if d.startswith(('10.1007/', '10.1186/', '10.1140/')):
         out.append(('pattern_springer', f'https://link.springer.com/content/pdf/{doi}.pdf'))
     if d.startswith('10.1038/'):
         out.append(('pattern_nature', f'https://www.nature.com/articles/{doi.split("/", 1)[1]}.pdf'))
-    if d.startswith('10.5194/'):  # Copernicus
+    if d.startswith('10.5194/'):
         out.append(('pattern_copernicus', f'https://doi.org/{doi}'))
     if d.startswith(('10.1002/', '10.1111/', '10.1029/')):
         out.append(('pattern_wiley', f'https://onlinelibrary.wiley.com/doi/pdfdirect/{doi}'))
@@ -85,7 +73,6 @@ def candidates(doi, title):
         if u not in seen:
             seen.add(u); uniq.append((s, u))
     return uniq
-
 
 log = list(csv.DictReader(open(LOG, encoding='utf-8')))
 fields = list(log[0].keys())
@@ -121,7 +108,6 @@ with open(LOG, 'w', newline='', encoding='utf-8') as f:
     for r in log:
         w.writerow({k: r.get(k, '') for k in fields})
 
-# remaining records grouped by publisher prefix, for browser / Zotero retrieval
 miss = [r for r in log if r['got_pdf'] != 'yes']
 with open(os.path.join(root, 'fulltext', 'missing_by_host.csv'), 'w', newline='', encoding='utf-8') as f:
     w = csv.writer(f); w.writerow(['record_id', 'DOI', 'doi_prefix', 'is_oa', 'ta_decision', 'doi_url'])

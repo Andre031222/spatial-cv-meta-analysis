@@ -1,17 +1,12 @@
-# Meta-analysis: random vs spatial cross-validation in ML environmental mapping
-# Run from the project root:  Rscript analysis/01_meta_analysis.R
-# Input : extraction/extraction_template.csv (one row = model x metric x dataset; primary == "yes")
-# Output: analysis/results/*.csv and analysis/results/figures/*.png
 suppressPackageStartupMessages({ library(metafor); library(clubSandwich) })
 
 dir.create("analysis/results/figures", recursive = TRUE, showWarnings = FALSE)
 d <- read.csv("extraction/extraction_template.csv", stringsAsFactors = FALSE, na.strings = c("NA", ""))
 ft <- read.csv("fulltext/fulltext_decisions.csv", stringsAsFactors = FALSE)
-d <- d[d$primary == "yes" & d$record_id %in% ft$record_id[ft$ft_decision == "include"], ]   # only studies included at full text
+d <- d[d$primary == "yes" & d$record_id %in% ft$record_id[ft$ft_decision == "include"], ]
 d$value_random  <- as.numeric(d$value_random)
 d$value_spatial <- as.numeric(d$value_spatial)
-d <- d[!is.na(d$value_random) & !is.na(d$value_spatial), ]   # drop rows missing either value
-# metrics on a 0-1 scale reported in percent -> rescale (flagged)
+d <- d[!is.na(d$value_random) & !is.na(d$value_spatial), ]
 pct <- d$metric %in% c("R2", "AUC", "accuracy", "balanced_accuracy", "F1", "kappa", "TSS", "CCC") &
        (d$value_random > 1.5 | d$value_spatial > 1.5)
 d$rescaled_from_percent <- pct
@@ -19,12 +14,11 @@ d$value_random[pct] <- d$value_random[pct] / 100; d$value_spatial[pct] <- d$valu
 cat("Rows rescaled from percent:", sum(pct), "\n")
 d$n <- suppressWarnings(as.numeric(d$n_samples))
 d$n_imputed <- is.na(d$n) | d$n < 10
-d$n[d$n_imputed] <- median(d$n[!d$n_imputed], na.rm = TRUE)   # sensitivity analysis drops these
+d$n[d$n_imputed] <- median(d$n[!d$n_imputed], na.rm = TRUE)
 d$study <- d$record_id
 d$es_id <- seq_len(nrow(d))
 d$digitised_flag <- !is.na(d$digitised) & d$digitised == "yes"
 
-# ---- harmonise moderators -------------------------------------------------------------
 dom <- tolower(d$domain)
 d$domain_h <- ifelse(grepl("soil", dom), "soil",
               ifelse(grepl("crop|yield|agri", dom), "crop",
@@ -46,13 +40,9 @@ d$cv_h <- ifelse(grepl("block", cvt), "block",
           ifelse(grepl("leave|location|site|region|field", cvt), "leave_location_out",
           ifelse(grepl("cluster", cvt), "cluster", "other"))))
 
-# ---- effect sizes + approximate sampling variances ----------------------------------
-# CV-based metrics rarely come with SDs. Variances are large-sample approximations based on the
-# number of observations; robust variance estimation (CR2) and an unweighted model are reported
-# as sensitivity checks because these variances ignore fold dependence.
 clip <- function(x, lo, hi) pmin(pmax(x, lo), hi)
-var_r2  <- function(r2, n) { r <- clip(r2, 0.001, 0.999); 4 * r * (1 - r)^2 / n }      # Olkin-Finn
-var_auc <- function(a, n) { a <- clip(a, 0.501, 0.999); n1 <- n / 2; n2 <- n / 2       # Hanley-McNeil
+var_r2  <- function(r2, n) { r <- clip(r2, 0.001, 0.999); 4 * r * (1 - r)^2 / n }
+var_auc <- function(a, n) { a <- clip(a, 0.501, 0.999); n1 <- n / 2; n2 <- n / 2
   q1 <- a / (2 - a); q2 <- 2 * a^2 / (1 + a)
   (a * (1 - a) + (n1 - 1) * (q1 - a^2) + (n2 - 1) * (q2 - a^2)) / (n1 * n2) }
 
@@ -63,7 +53,7 @@ r2$vi <- var_r2(r2$value_random, r2$n) + var_r2(r2$value_spatial, r2$n)
 es$dR2 <- r2
 rm <- d[d$metric == "RMSE" & d$value_random > 0 & d$value_spatial > 0, ]
 rm$yi <- log(rm$value_spatial / rm$value_random)
-rm$vi <- 2 / (2 * (rm$n - 1))                                                           # var(ln SD) x 2
+rm$vi <- 2 / (2 * (rm$n - 1))
 es$lnRR_RMSE <- rm
 au <- d[d$metric == "AUC", ]
 au$yi <- au$value_random - au$value_spatial
@@ -75,9 +65,8 @@ ac$vi <- with(ac, clip(value_random, .01, .99) * (1 - clip(value_random, .01, .9
                   clip(value_spatial, .01, .99) * (1 - clip(value_spatial, .01, .99)) / n)
 es$dAccuracy <- ac
 
-# ---- models -----------------------------------------------------------------------------
 fit_ml <- function(x) rma.mv(yi, vi, random = ~ 1 | study / es_id, data = x, method = "REML", sparse = TRUE)
-i2_ml <- function(m, x) {                       # multilevel I2 (Nakagawa & Santos 2012)
+i2_ml <- function(m, x) {
   W <- diag(1 / x$vi); X <- model.matrix(m)
   P <- W - W %*% X %*% solve(t(X) %*% W %*% X) %*% t(X) %*% W
   tot <- sum(m$sigma2) + (m$k - m$p) / sum(diag(P))
@@ -90,7 +79,7 @@ for (nm in names(es)) {
   m <- fit_ml(x)
   rob <- coef_test(m, vcov = "CR2", cluster = x$study)
   pr <- predict(m)
-  un <- rma.mv(yi, 1, random = ~ 1 | study / es_id, data = x, method = "REML")       # unweighted
+  un <- rma.mv(yi, 1, random = ~ 1 | study / es_id, data = x, method = "REML")
   sens_n <- if (sum(!x$n_imputed) > 5 && length(unique(x$study[!x$n_imputed])) >= 3) fit_ml(x[!x$n_imputed, ]) else NULL
   xd <- x[!x$digitised_flag, ]
   sens_d <- if (length(unique(xd$study)) >= 3) fit_ml(xd) else NULL
@@ -126,10 +115,8 @@ for (nm in names(es)) {
   if (!inherits(ln, "try-error")) mods[[paste(nm, "logn")]] <- data.frame(effect = nm, moderator = "log(n)",
     level = "slope", estimate = ln$b[2], ci_lb = ln$ci.lb[2], ci_ub = ln$ci.ub[2], k_effects = ln$k,
     k_studies = length(unique(x$study[!x$n_imputed])), QM_p_heterogeneity_between_levels = ln$QMp)
-  # small-study effects: multilevel Egger (precision as moderator)
   eg <- try(rma.mv(yi, vi, mods = ~ sqrt(vi), random = ~ 1 | study / es_id, data = x, method = "REML", sparse = TRUE), silent = TRUE)
   if (!inherits(eg, "try-error")) overall[[nm]]$egger_slope_p <- eg$pval[2]
-  # figures: study-level forest (effects aggregated within study) + funnel
   agg <- aggregate(cbind(yi, vi) ~ study, data = x, FUN = mean)
   agg <- agg[order(agg$yi), ]
   png(sprintf("analysis/results/figures/forest_%s.png", nm), width = 1600, height = 300 + 28 * nrow(agg), res = 150)

@@ -1,8 +1,3 @@
-"""Publication figures, redesigned (matplotlib + seaborn), 600 dpi PNG/TIFF + vector PDF.
-
-Run after 01_meta_analysis.R and 04_additional_analyses.R:
-    .venv/bin/python analysis/05_figures.py
-"""
 import re
 import warnings
 from pathlib import Path
@@ -20,7 +15,6 @@ ROOT = Path(__file__).resolve().parents[1]
 RES, OUT = ROOT / "analysis/results", ROOT / "figures"
 OUT.mkdir(parents=True, exist_ok=True)
 
-# ---- style ------------------------------------------------------------------------------------
 mpl.rcParams.update({
     "font.family": "Helvetica", "font.size": 7.5, "axes.titlesize": 8, "axes.labelsize": 7.5,
     "xtick.labelsize": 6.5, "ytick.labelsize": 6.5, "legend.fontsize": 6.5, "axes.linewidth": 0.5,
@@ -33,19 +27,15 @@ DESIGN = {"clustered": "#D55E00", "probability_random": "#0072B2", "regular_grid
 DLAB = {"clustered": "Clustered", "probability_random": "Probability", "regular_grid": "Regular grid", "unknown": "Not reported"}
 ORDER = list(DESIGN)
 
-
 def save(fig, name):
     for ext, kw in (("png", {}), ("pdf", {}), ("tiff", {"pil_kwargs": {"compression": "tiff_lzw"}})):
         fig.savefig(OUT / f"{name}.{ext}", bbox_inches="tight", dpi=600, facecolor="white", **kw)
     plt.close(fig)
     print("saved", name)
 
-
 def panel(ax, letter, x=-0.12, y=1.04):
     ax.text(x, y, letter, transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom")
 
-
-# ---- data ---------------------------------------------------------------------------------------
 fd = pd.read_csv(ROOT / "fulltext/fulltext_decisions.csv")
 inc = set(fd.loc[fd.ft_decision == "include", "record_id"])
 ex = pd.read_csv(ROOT / "extraction/extraction_template.csv", low_memory=False)
@@ -63,7 +53,6 @@ st = ex.groupby("record_id").agg(year=("year", "first"), country=("country", "fi
 st["year"] = pd.to_numeric(st.year, errors="coerce")
 st["sd"] = st.sd.where(st.sd.isin(ORDER[:-1]), "unknown")
 
-# ======================== Fig. 3 — every study: random vs spatial R2, grouped by sampling design ===
 r2 = ex[ex.metric == "R2"].copy()
 for c in ("value_random", "value_spatial"):
     r2[c] = pd.to_numeric(r2[c], errors="coerce")
@@ -111,7 +100,6 @@ ax.set_title(f"Spatial lower in {100 * (drop > 0).mean():.0f}% of studies;\nnega
 panel(ax, "b", x=-0.3, y=1.1)
 save(fig, "Fig3_dumbbell_R2")
 
-# ======================== Fig. 5 — moderators: small-multiple forest plots across metrics ==========
 m = mods[mods.moderator.isin(["sampling_h", "model_h", "cv_h", "domain_h"])].copy()
 m["level"] = [l.replace(mo, "") for l, mo in zip(m.level, m.moderator)]
 pretty = {**DLAB, "RF": "Random forest", "boosting": "Gradient boosting", "neural_net": "Neural network", "SVM": "Support vector machine",
@@ -155,7 +143,6 @@ for ax, (eff, title) in zip(axes, cols.items()):
     ax.set_title(title, fontsize=7, fontweight="bold")
     ax.set_ylim(ny - 0.4, -0.8)
     ax.xaxis.set_major_locator(mpl.ticker.MaxNLocator(4))
-    # moderator p-value per metric
     for kind, g, l in rows:
         if kind == "header":
             i = rows.index((kind, g, l)); mk = [k for k, v in grp.items() if v == g][0]

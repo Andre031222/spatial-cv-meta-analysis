@@ -1,9 +1,3 @@
-"""Excel database: raw data (screening, full text, extraction), processed data (effect sizes, models)
-and summary tables built with formulas. Output: data/spatial_cv_meta_analysis_database.xlsx
-
-Run after the R analyses and 07_study_level_moderators.R:
-    .venv/bin/python analysis/11_database_workbook.py
-"""
 from pathlib import Path
 
 import geopandas as gpd
@@ -23,7 +17,6 @@ SUB_FILL = PatternFill("solid", fgColor="DCE6F1")
 NOTE = Font(name=FONT, size=9, italic=True, color="555555")
 THIN = Border(bottom=Side(style="thin", color="BBBBBB"))
 
-# ---------------------------------------------------------------- data
 scr = pd.read_csv(ROOT / "screening/screening_decisions_public.csv", dtype=str)
 ft = pd.read_csv(ROOT / "fulltext/fulltext_decisions.csv", dtype=str)
 ft = ft.merge(scr[["record_id", "Year", "Title", "Source title", "DOI"]], on="record_id", how="left")
@@ -62,9 +55,7 @@ cal = pd.read_csv(RES / "calibration_curve.csv")
 cal = cal[cal.vr.round(2).isin([0.5, 0.6, 0.7, 0.8, 0.9])].copy()
 rob = pd.read_csv(RES / "risk_of_bias_studies.csv") if (RES / "risk_of_bias_studies.csv").exists() else None
 
-# ---------------------------------------------------------------- helpers
 wb = Workbook()
-
 
 def style_header(ws, row=1):
     for c in ws[row]:
@@ -74,12 +65,10 @@ def style_header(ws, row=1):
         c.fill = HEAD_FILL
         c.alignment = Alignment(wrap_text=True, vertical="center")
 
-
 def widths(ws, df=None, default=14, cap=45):
     for i, col in enumerate(ws.iter_cols(min_row=1, max_row=min(ws.max_row, 300)), 1):
         n = max((len(str(c.value)) for c in col if c.value is not None), default=default)
         ws.column_dimensions[get_column_letter(i)].width = max(8, min(cap, n + 2))
-
 
 def data_sheet(name, df, note):
     ws = wb.create_sheet(name)
@@ -97,7 +86,6 @@ def data_sheet(name, df, note):
     notes[name] = note
     return ws
 
-
 notes = {}
 readme = wb.active
 readme.title = "README"
@@ -113,11 +101,9 @@ data_sheet("8_Study_moderators", slm, "Subgroup estimates by study-level variabl
 data_sheet("9_Independent_tests", ind, "Cross-validation estimates compared with independent test data (processed). opt_* > 0: optimistic.")
 data_sheet("10_Calibration", cal, "Expected spatial-CV R2 for a reported random-CV R2 (vr), by sampling design (processed).")
 
-# ---------------------------------------------------------------- summary sheets (formulas)
 col = {c: get_column_letter(i + 1) for i, c in enumerate(studies.columns)}
 N = len(studies) + 1
 rng = lambda c: f"'4_Studies'!${col[c]}$2:${col[c]}${N}"
-
 
 def summary_block(ws, r, title, column, levels, labels=None, note=None):
     ws.cell(r, 1, title).font = Font(name=FONT, bold=True, size=11, color="1F3A5F")
@@ -136,7 +122,6 @@ def summary_block(ws, r, title, column, levels, labels=None, note=None):
         r += 1
         ws.cell(r, 1, note).font = NOTE
     return r + 2
-
 
 ws = wb.create_sheet("S1_Validation_practice", 1)
 ws.sheet_properties.tabColor = "009E73"
@@ -172,7 +157,6 @@ r = summary_block(ws, r, "Independent test reported", "independent_test",
                   ["none", "separate_holdout", "later_period", "other_region", "probability_sample", "other"])
 ws.column_dimensions["A"].width = 38; ws.column_dimensions["B"].width = 10; ws.column_dimensions["C"].width = 10
 
-# countries
 ws = wb.create_sheet("S2_Countries", 2)
 ws.sheet_properties.tabColor = "009E73"
 ws["A1"] = "Where the studies were carried out (counts recalculate from sheet 4_Studies; multi-country studies count once per country)"
@@ -212,7 +196,6 @@ ws.freeze_panes = "A4"
 for c, w in zip("ABCDEF", (7, 8, 30, 16, 10, 10)):
     ws.column_dimensions[c].width = w
 
-# when to use which validation
 ws = wb.create_sheet("S3_When_to_use", 3)
 ws.sheet_properties.tabColor = "D55E00"
 ws["A1"] = "How large is the gap, and which validation to use (values linked to sheets 6, 7, 8 and 9)"
@@ -273,7 +256,6 @@ data_sheet("11_Independent_summary", ind_sum, "Mean optimism of each design rela
 if rob is not None:
     data_sheet("12_Risk_of_bias", rob, "Risk-of-bias and reporting items per study (PROBAST-based).")
 
-# ---------------------------------------------------------------- README
 ws = readme
 ws["A1"] = "Random versus spatial cross-validation in machine-learning environmental maps: database of the systematic review and meta-analysis"
 ws["A1"].font = Font(name=FONT, bold=True, size=13)

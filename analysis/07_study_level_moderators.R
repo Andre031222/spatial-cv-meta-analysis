@@ -1,7 +1,3 @@
-# Study-level moderators from the second extraction pass (extraction/study_level.csv)
-#   data source, geometry, spatial scale, task, random-CV scheme and split, stratification,
-#   block-size justification, sample-size class. Run after 01_meta_analysis.R:
-#   Rscript analysis/07_study_level_moderators.R
 suppressPackageStartupMessages({ library(metafor) })
 sl <- read.csv("extraction/study_level.csv", stringsAsFactors = FALSE, na.strings = c("NA", ""))
 num <- function(v) suppressWarnings(as.numeric(v))
@@ -49,7 +45,6 @@ for (eff in c("dR2", "lnRR_RMSE", "dAUC", "dAccuracy")) {
 res <- do.call(rbind, out)
 write.csv(res, "analysis/results/study_level_moderators.csv", row.names = FALSE)
 
-# descriptive profile of validation practice (study level)
 tab <- function(v, name) { t <- table(v, useNA = "no"); data.frame(variable = name, level = names(t), studies = as.vector(t), share = as.vector(t) / sum(t)) }
 desc <- rbind(tab(sl$task, "Task"), tab(sl$source_h, "Data source"), tab(sl$data_geometry, "Data geometry"), tab(sl$spatial_scale, "Spatial scale"),
               tab(sl$continent, "Continent"), tab(unlist(strsplit(gsub(",", ";", sl$country_iso3[!is.na(sl$country_iso3) & !grepl("GLOBAL|MULTI", sl$country_iso3)]), ";")), "Country (ISO3)"), tab(sl$random_cv_scheme, "Random-CV scheme"), tab(sl$random_k, "Random k"),

@@ -1,9 +1,3 @@
-# Additional analyses that extend the core meta-analysis (run after 01_meta_analysis.R):
-#   A. Which estimate is closer to an independent validation? (random vs spatial CV bias)
-#   B. Calibration ("deflation") model: expected spatial-CV R2 given random-CV R2 and sampling design
-#   C. Block/buffer size and publication year as moderators
-#   D. Reporting audit
-#   Rscript analysis/04_additional_analyses.R
 suppressPackageStartupMessages({ library(metafor); library(clubSandwich) })
 dir.create("analysis/results", showWarnings = FALSE, recursive = TRUE)
 ft <- read.csv("fulltext/fulltext_decisions.csv", stringsAsFactors = FALSE)
@@ -21,13 +15,11 @@ x$sampling_h <- ifelse(x$sampling_design %in% c("clustered", "probability_random
 x$es_id <- seq_len(nrow(x))
 out <- list()
 
-# ---- A. distance of each CV estimate to an independent test set --------------------------------
-# For R2/accuracy/AUC higher = better: optimism = CV - independent. For RMSE/MAE: optimism = ln(independent/CV)
 A <- x[!is.na(x$vi_ind) & !is.na(x$vr) & !is.na(x$vs) & x$metric %in% c("R2", "RMSE", "MAE", "accuracy", "AUC"), ]
 up <- A$metric %in% c("R2", "accuracy", "AUC")
 A$opt_random  <- ifelse(up, A$vr - A$vi_ind, log(A$vi_ind / A$vr))
 A$opt_spatial <- ifelse(up, A$vs - A$vi_ind, log(A$vi_ind / A$vs))
-A$abs_gap <- abs(A$opt_random) - abs(A$opt_spatial)          # > 0: spatial CV closer to independent estimate
+A$abs_gap <- abs(A$opt_random) - abs(A$opt_spatial)
 A$scale <- ifelse(up, "difference", "log ratio")
 A$ind_type <- ifelse(is.na(A$independent_type), "other", A$independent_type)
 write.csv(A[, c("record_id", "metric", "model", "sampling_h", "ind_type", "vr", "vs", "vi_ind", "opt_random", "opt_spatial", "abs_gap")],
@@ -46,7 +38,6 @@ byType <- do.call(rbind, lapply(split(A, A$ind_type), function(d) data.frame(ind
 write.csv(resA, "analysis/results/independent_validation_summary.csv", row.names = FALSE)
 write.csv(byType, "analysis/results/independent_validation_by_type.csv", row.names = FALSE)
 
-# ---- B. calibration model for R2: spatial R2 as a function of random R2 and sampling design --------
 B <- x[x$metric == "R2" & !is.na(x$vr) & !is.na(x$vs) & x$vr > 0 & x$vr <= 1 & x$vs >= -1, ]
 B$yi <- B$vr - B$vs
 var_r2 <- function(r2, n) { r <- pmin(pmax(r2, 0.001), 0.999); 4 * r * (1 - r)^2 / n }
@@ -65,12 +56,10 @@ grid$expected_spatial_r2 <- grid$vr - grid$gap
 write.csv(grid, "analysis/results/calibration_curve.csv", row.names = FALSE)
 write.csv(B[, c("record_id", "sampling_h", "vr", "vs", "yi", "vi", "n")], "analysis/results/calibration_points.csv", row.names = FALSE)
 
-# ---- C. block size and year ---------------------------------------------------------------------
 eR2 <- read.csv("analysis/results/effects_dR2.csv")
 eRM <- read.csv("analysis/results/effects_lnRR_RMSE.csv")
 meta <- x[, c("es_id", "record_id", "year", "block_or_buffer_size_m", "block_size_unit")]
 addmeta <- function(e) {
-  # effects files carry study and value columns; join by study and values
   m <- merge(e, unique(x[, c("record_id", "year")]), by.x = "study", by.y = "record_id", all.x = TRUE)
   bs <- aggregate(num(block_or_buffer_size_m) ~ record_id, data = x[!is.na(num(x$block_or_buffer_size_m)) & x$block_size_unit %in% c("m", "km", NA), ], FUN = median)
   names(bs)[2] <- "block_m"
@@ -87,7 +76,6 @@ for (nm in c("dR2", "lnRR_RMSE")) {
 }
 write.csv(do.call(rbind, modC), "analysis/results/year_blocksize_moderators.csv", row.names = FALSE)
 
-# ---- D. reporting audit (study level) ------------------------------------------------------------
 st <- do.call(rbind, lapply(split(x, x$record_id), function(d) data.frame(record_id = d$record_id[1], year = num(d$year[1]),
   sampling_reported = d$sampling_h[1] != "unknown", range_reported = any(!is.na(num(d$autocorrelation_range_m))),
   block_size_reported = any(!is.na(num(d$block_or_buffer_size_m))), sd_reported = any(!is.na(num(d$sd_random))),

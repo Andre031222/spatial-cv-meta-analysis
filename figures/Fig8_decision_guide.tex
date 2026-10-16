@@ -1,4 +1,3 @@
-% Decision guide for choosing a validation design (numbers from the meta-analysis)
 \documentclass[border=6pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{helvet}
@@ -16,15 +15,12 @@
   ar/.style={-{Stealth[length=2.4mm]}, line width=0.8pt, draw=grey},
   lab/.style={font=\scriptsize\bfseries, text=grey, fill=white, inner sep=1.5pt}]
 
-% start
 \node[rectangle, rounded corners=8pt, fill=black!80, text=white, font=\small\bfseries, inner sep=6pt] (start) {You have a map built with machine learning};
 
-% decisions (left column)
 \node[dec, below=7mm of start] (d1) {\textbf{1} \; Will the map be used\\in new areas or years?};
 \node[dec, below=12mm of d1] (d2) {\textbf{2} \; Were the data a\\probability sample?};
 \node[dec, below=12mm of d2] (d3) {\textbf{3} \; Clustered sample or\\a regular grid?};
 
-% outcome cards (right column)
 \node[card=pink, right=24mm of d1] (c1) {\textbf{Spatial CV that mimics the prediction distances}\\[2pt]
   Leave-location-out, blocks or kNNDM. Do not use random CV as the headline value.};
 \node[card=grey, right=24mm of d2] (c2) {\textbf{Random CV is adequate}\\[2pt]
@@ -34,13 +30,11 @@
 \node[card=grn, below=4mm of c3] (c4) {\textbf{Regular grid}\\[2pt]
   Report both; a moderate gap is expected. Blocks at least as wide as the autocorrelation range.};
 
-% badges with expected gaps
 \node[badge=pink] at ($(c1.north east)+(-3pt,0)$) {$R^2$ about 0.2 lower};
 \node[badge=grey] at ($(c2.north east)+(-3pt,0)$) {RMSE +12\%};
 \node[badge=ver]  at ($(c3.north east)+(-3pt,0)$) {RMSE +40\%};
 \node[badge=grn]  at ($(c4.north east)+(-3pt,0)$) {RMSE +17\%};
 
-% arrows
 \draw[ar] (start) -- (d1);
 \draw[ar] (d1) -- node[lab, above] {yes} (c1);
 \draw[ar] (d1) -- node[lab, right] {no, map of the sampled area} (d2);
@@ -49,7 +43,6 @@
 \draw[ar] (d3.east) -- ++(3mm,0) |- node[lab, pos=0.78, above] {clustered / unknown} (c3.west);
 \draw[ar] (d3.east) -- ++(3mm,0) |- node[lab, pos=0.78, below] {regular grid} (c4.west);
 
-% evidence strip
 \coordinate (mid) at ($(d1.west)!0.5!(c1.east)$);
 \node[rectangle, rounded corners=4pt, draw=blue, line width=0.9pt, fill=white, align=left, text width=13.4cm, inner sep=6pt,
       anchor=north, yshift=-7mm] (ev) at (mid |- c4.south) {%
@@ -59,7 +52,6 @@
   \textbullet\ Blocks sized with the semivariogram range measured a gap about 2.7 times larger (0.40 vs 0.15).\\
   \textbullet\ The number of folds (5 or 10) and the split (70/30 or 80/20) did not change the gap.};
 
-% reporting checklist
 \node[rectangle, rounded corners=4pt, fill=black!80, text=white, align=left, text width=13.4cm, inner sep=6pt,
       below=3mm of ev] (rep) {\raggedright
   \textbf{Always report:} sampling design \;$\cdot$\; block or buffer size and how it was chosen \;$\cdot$\; autocorrelation range \;$\cdot$\;

@@ -1,11 +1,3 @@
-"""Import PDFs saved manually (any filename) into fulltext/pdfs/Rxxxx.pdf.
-
-Scans a folder (default ~/Downloads) for PDFs, reads the first pages, and matches each file to a
-full-text candidate by DOI (preferred) or by normalised title. Matched files are moved and renamed;
-fulltext/fulltext_log.csv is updated (source = manual). Unmatched PDFs are left untouched.
-
-Usage: .venv/bin/python -I fulltext/scripts/import_downloads.py <project_root> [folder]
-"""
 import csv, os, re, shutil, sys
 import pymupdf
 

@@ -1,15 +1,9 @@
-"""Merge Web of Science exports into the screening sheet (dedupe vs Scopus records).
-
-Usage:  python3 -I search/scripts/merge_wos.py <project_root> <export1> [export2 ...]
-Accepts WoS "Plain text" (field tags PT/TI/AB...) or "Tab delimited" exports.
-"""
 import csv, re, sys, collections
 
 csv.field_size_limit(10**9)
 root, files = sys.argv[1], sys.argv[2:]
 SHEET = root + '/screening/screening_title_abstract.csv'
 norm = lambda t: re.sub(r'[^a-z0-9]', '', (t or '').lower())
-
 
 def read_plain(path):
     recs, cur, tag = [], {}, None
@@ -24,10 +18,8 @@ def read_plain(path):
             cur[tag] += sep + line.strip()
     return recs
 
-
 def read_tab(path):
     return list(csv.DictReader(open(path, encoding='utf-8-sig', errors='replace'), delimiter='\t'))
-
 
 rows = list(csv.DictReader(open(SHEET, encoding='utf-8')))
 fields = list(rows[0].keys())
@@ -50,7 +42,7 @@ for r in wos:
     if (doi and doi in seen_doi) or norm(title) in seen_t:
         dup += 1; continue
     if 'Article' not in r.get('DT', 'Article') or 'Review' in r.get('DT', ''):
-        continue  # originals only
+        continue
     seen_doi.add(doi); seen_t.add(norm(title)); n += 1
     txt = title + ' ' + r.get('AB', '') + ' ' + r.get('DE', '')
     pri = 'X_check_review' if REV.search(title) else 'A_both' if SP.search(txt) and RN.search(txt) else 'B_spatial_only' if SP.search(txt) else 'C_low'

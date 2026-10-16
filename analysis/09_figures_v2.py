@@ -1,9 +1,3 @@
-"""Figs 2, 4, 6 and 7 (600 dpi PNG/TIFF + vector PDF).
-
-Run after 01_meta_analysis.R, 04_additional_analyses.R and 07_study_level_moderators.R:
-    .venv/bin/python analysis/09_figures_v2.py
-Flags (data_external/flags/<ISO3>.png) come from flagcdn.com (public domain flag images).
-"""
 import collections
 import warnings
 from pathlib import Path
@@ -27,23 +21,19 @@ DESIGN = {"clustered": "#D55E00", "regular_grid": "#009E73", "probability_random
 DLAB = {"clustered": "Clustered", "regular_grid": "Regular grid", "probability_random": "Probability", "unknown": "Not reported"}
 RC, SC = "#1A1A1A", "#CC79A7"
 
-
 def save(fig, name):
     for ext, kw in (("png", {}), ("pdf", {}), ("tiff", {"pil_kwargs": {"compression": "tiff_lzw"}})):
         fig.savefig(OUT / f"{name}.{ext}", bbox_inches="tight", dpi=600, facecolor="white", **kw)
     plt.close(fig); print("saved", name)
 
-
 def panel(ax, l, x=-0.1, y=1.03):
     ax.text(x, y, l, transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom")
-
 
 overall = pd.read_csv(RES / "overall_effects.csv").set_index("effect")
 mods = pd.read_csv(RES / "moderators.csv")
 sl = pd.read_csv(ROOT / "extraction/study_level.csv", dtype=str)
 audit = pd.read_csv(RES / "reporting_audit_summary.csv")
 
-# ================================ Fig. 2 — where the evidence comes from ===========================
 codes = collections.Counter()
 for v in sl.country_iso3.fillna(""):
     if any(k in v for k in ("GLOBAL", "MULTI")) or not v:
@@ -87,7 +77,6 @@ cb.set_label("Studies per country (circle size proportional)", fontsize=6.2)
 ax.set_title(f"{len(codes)} countries; {n_global} further studies were global or spanned several continents", fontsize=7, color="#444")
 panel(ax, "a", x=0.0, y=0.98)
 
-# (b) top countries with flags
 ax = fig.add_subplot(gs[1, 0])
 top = codes.most_common(15)
 if "PER" not in dict(top):
@@ -109,7 +98,6 @@ ax.set_xlim(0, max(v for _, v in top) * 1.18); ax.set_xlabel("Studies")
 ax.set_title("Most studied countries", loc="left", fontsize=7.5, fontweight="bold")
 panel(ax, "b", x=-0.55)
 
-# (c) continents by sampling design
 ax = fig.add_subplot(gs[1, 1])
 c = sl.continent.replace({"Multiple": "Global", "Antarctica": "Global"}).fillna("Global")
 sd = pd.read_csv(ROOT / "extraction/extraction_template.csv", low_memory=False).groupby("record_id").sampling_design.first()
@@ -126,7 +114,6 @@ ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.45, -0.2), ncol=2
 ax.set_title("Continents", loc="left", fontsize=7.5, fontweight="bold")
 panel(ax, "c", x=-0.5)
 
-# (d) reporting audit
 ax = fig.add_subplot(gs[1, 2])
 lab = {"sampling_reported": "Sampling design", "open_data": "Open data", "open_code": "Open code", "block_size_reported": "Block/buffer size",
        "sd_reported": "CV uncertainty", "independent_validation": "Independent test", "range_reported": "Autocorr. range"}
@@ -139,11 +126,9 @@ ax.set_title("What studies report", loc="left", fontsize=7.5, fontweight="bold")
 panel(ax, "d", x=-0.95)
 save(fig, "Fig2_evidence_map")
 
-# ================================ Fig. 4 — sampling design: distributions + estimates =============
 e2 = pd.read_csv(RES / "effects_dR2.csv")
 em = pd.read_csv(RES / "effects_lnRR_RMSE.csv"); em["yi"] = 100 * (np.exp(em.yi) - 1)
 ORDER = ["clustered", "regular_grid", "unknown", "probability_random"]
-
 
 def half_violin(ax, e, nm, xlab, clip, to_pct=False):
     m = mods[(mods.effect == nm) & (mods.moderator == "sampling_h")].copy()
@@ -174,7 +159,6 @@ def half_violin(ax, e, nm, xlab, clip, to_pct=False):
     p = m.QM_p_heterogeneity_between_levels.iloc[0]
     ax.set_title(f"Test of difference between designs: {'p < 0.001' if p < 0.001 else f'p = {p:.2f}'}", loc="right", fontsize=6.5, color="#444")
 
-
 fig, axs = plt.subplots(1, 2, figsize=(180 * MM, 82 * MM), sharey=True, gridspec_kw={"wspace": 0.08})
 half_violin(axs[0], e2, "dR2", "$R^2$ under random CV minus $R^2$ under spatial CV", (-0.5, 1.0)); panel(axs[0], "a", x=-0.2)
 half_violin(axs[1], em, "lnRR_RMSE", "RMSE under spatial CV relative to random CV (% higher)", (-50, 180), to_pct=True); panel(axs[1], "b", x=-0.03)
@@ -182,7 +166,6 @@ axs[0].legend(handles=[Line2D([], [], marker="o", ls="-", color="black", mfc="wh
                        mpl.patches.Patch(color="#E6E6E6", label="Pooled estimate (95% CI)")], frameon=False, loc="upper center", bbox_to_anchor=(1.0, -0.17), ncol=2, fontsize=6.3)
 save(fig, "Fig4_raincloud_sampling")
 
-# ================================ Fig. 6 — agreement with independent tests =======================
 ind = pd.read_csv(RES / "independent_validation_rows.csv")
 TYPE = {"probability_sample": "Probability\nsample", "other": "Other\nhold-out", "temporal": "Later\nperiod", "other_region": "Other\nregion"}
 ind["type"] = ind.ind_type.map(TYPE).fillna("Other\nhold-out")
@@ -242,8 +225,6 @@ ax.set_ylim(len(order_t) - 0.5, -0.95)
 panel(ax, "c", x=-0.5)
 save(fig, "Fig6_independent_validation")
 
-# ================================ Fig. 7 — expected spatial R2 (calibration), one panel =========
-# Each row is a reported random-CV R2; coloured points show the R2 expected under spatial CV.
 calc = pd.read_csv(RES / "calibration_curve.csv")
 SHOW = ["clustered", "regular_grid", "probability_random"]
 ROWS = [0.9, 0.8, 0.7, 0.6]

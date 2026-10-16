@@ -1,9 +1,3 @@
-"""Download legal open-access PDFs for records sent to full-text review.
-
-Looks up each DOI in OpenAlex (best/any OA location with a pdf_url), downloads the PDF,
-checks it really is a PDF, and logs every attempt in fulltext/fulltext_log.csv.
-Usage: python3 -I fulltext/scripts/get_oa_pdfs.py <project_root>
-"""
 import csv, json, os, sys, time, urllib.parse, urllib.request
 
 csv.field_size_limit(10**9)
@@ -19,10 +13,8 @@ done = {}
 if os.path.exists(log_path):
     done = {r['record_id']: r for r in csv.DictReader(open(log_path, encoding='utf-8'))}
 
-
 def get(url, timeout=40):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout)
-
 
 rows = []
 for i, r in enumerate(recs, 1):

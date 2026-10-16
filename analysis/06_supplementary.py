@@ -1,8 +1,3 @@
-"""Build the Supplementary Material (LaTeX) from the project files.
-
-    .venv/bin/python analysis/06_supplementary.py      -> manuscript/supplementary/supplementary.tex
-Then compile with latexmk in manuscript/supplementary.
-"""
 import json
 import unicodedata
 import re
@@ -14,7 +9,6 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "manuscript/supplementary"
 OUT.mkdir(parents=True, exist_ok=True)
 
-
 def tex(x):
     s = "" if pd.isna(x) else str(x)
     s = unicodedata.normalize("NFKC", s).replace("\u2009", " ").replace("\u202f", " ").replace("\u2013", "--").replace("\u2014", "---")
@@ -24,8 +18,6 @@ def tex(x):
         s = s.replace(a, b)
     return s
 
-
-# ---------------------------------------------------------------- PRISMA 2020 checklist (27 items)
 prisma = [
     ("Title", "1", "Identify the report as a systematic review.", "Title"),
     ("Abstract", "2", "See the PRISMA 2020 for Abstracts checklist (Table S2).", "Abstract"),
@@ -85,7 +77,6 @@ abstract_items = [
     ("Registration", "12", "Register name and number.", "Yes (OSF link)"),
 ]
 
-# ---------------------------------------------------------------- data
 fd = pd.read_csv(ROOT / "fulltext/fulltext_decisions.csv")
 inc_ids = set(fd.loc[fd.ft_decision == "include", "record_id"])
 ex = pd.read_csv(ROOT / "extraction/extraction_template.csv", low_memory=False)
@@ -96,7 +87,6 @@ qc = json.load(open(ROOT / "qc/qc_agreement.json"))
 st = pd.read_csv(ROOT / "manuscript/supplementary/TableS1_included_studies.csv")
 st = st[st.record_id.isin(inc_ids)].sort_values(["first_author", "year"])
 
-# risk of bias / reporting quality per study
 num = lambda v: pd.to_numeric(v, errors="coerce")
 g = ex.groupby("record_id")
 rob = pd.DataFrame({
@@ -122,7 +112,6 @@ searches = [
     ("Web of Science Core Collection", "2026-10-09", "wos_query.txt", "1,043"),
 ]
 
-# ---------------------------------------------------------------- LaTeX
 L = []
 A = L.append
 A(r"""\documentclass[10pt,a4paper]{article}

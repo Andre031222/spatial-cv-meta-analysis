@@ -1,5 +1,3 @@
-% PRISMA 2020 flow diagram, laid out as the official template (Page et al., 2021).
-% Numbers: screening/prisma_counts.md, fulltext/fulltext_decisions.csv
 \documentclass[border=5pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{helvet}
@@ -23,7 +21,6 @@
   sarr/.style={-{Stealth[length=2.4mm]}, thick, draw=exclline},
   num/.style={font=\small\bfseries}]
 
-% identification
 \node[box, anchor=north west] (id) at (0,0) {%
   \textbf{Records identified} \hfill\textbf{\textit{n} = 5,531}\\[3pt]
   Scopus, keyword query \hfill 1,931\\
@@ -34,7 +31,6 @@
   Duplicate records \hfill 2,241\\
   Other type, language or year \hfill 63};
 
-% screening
 \node[box, below=0.8cm of id] (sc) {%
   \textbf{Records screened}\\(title and abstract) \hfill\textbf{\textit{n} = 3,227}};
 \node[side, right=0.7cm of sc] (ex1) {%
@@ -61,7 +57,6 @@
   No machine learning \hfill 2\\
   Not an original article \hfill 1};
 
-% included
 \node[fin, below=0.8cm of el] (inc) {%
   \textbf{Studies included in the review} \hfill\textbf{\textit{n} = 266}\\[3pt]
   In the meta-analysis \hfill 239\\

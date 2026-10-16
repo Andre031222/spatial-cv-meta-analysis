@@ -1,6 +1,3 @@
-"""Fig. S2 — validation practice in the included studies and study-level moderators (600 dpi).
-Run after 07_study_level_moderators.R:  .venv/bin/python analysis/08_fig_practice.py
-"""
 from pathlib import Path
 
 import matplotlib as mpl
@@ -18,12 +15,9 @@ sl = pd.read_csv(ROOT / "extraction/study_level.csv", dtype=str)
 mods = pd.read_csv(ROOT / "analysis/results/study_level_moderators.csv")
 num = lambda s: pd.to_numeric(s, errors="coerce")
 
-
 def panel(ax, l, x=-0.3, y=1.03):
     ax.text(x, y, l, transform=ax.transAxes, fontsize=9, fontweight="bold")
 
-
-# random-CV scheme detail
 def rscheme(r):
     s, k, tr = r.random_cv_scheme, num(pd.Series([r.random_k]))[0], num(pd.Series([r.random_train_pct]))[0]
     if s in ("kfold", "nested_kfold"):
@@ -35,7 +29,6 @@ def rscheme(r):
     if s in ("LOO", "OOB"):
         return "LOO / OOB"
     return "Other"
-
 
 sl["rs"] = sl.apply(rscheme, axis=1)
 order_rs = ["10-fold", "5-fold", "Other k-fold", "Repeated k-fold", "80/20 split", "70/30 split", "75/25 split", "Other split", "LOO / OOB", "Other"]
@@ -50,7 +43,6 @@ sl["src"] = sl.data_source.map(src)
 fig = plt.figure(figsize=(180 * MM, 178 * MM))
 gs = fig.add_gridspec(2, 2, height_ratios=[1, 1.6], hspace=0.35, wspace=0.75)
 
-# (a) random-CV schemes
 ax = fig.add_subplot(gs[0, 0])
 c = sl.rs.value_counts().reindex(order_rs).fillna(0)
 ax.barh(c.index, c.values, color=[col_rs[k] for k in c.index], height=0.65)
@@ -60,7 +52,6 @@ ax.invert_yaxis(); ax.set_xlabel("Studies"); ax.set_xlim(0, c.max() * 1.35)
 ax.set_title("Random CV used as baseline", loc="left", fontsize=7.5, fontweight="bold")
 panel(ax, "a", x=-0.38)
 
-# (b) data source by task
 ax = fig.add_subplot(gs[0, 1])
 t = sl.assign(task=sl.task.replace({"both": "regression"})).pivot_table(index="src", columns="task", values="record_id", aggfunc="count").fillna(0)
 t = t.loc[t.sum(axis=1).sort_values().index]
@@ -70,7 +61,6 @@ ax.set_xlabel("Studies"); ax.legend(frameon=False, loc="lower right")
 ax.set_title("Response data source and task", loc="left", fontsize=7.5, fontweight="bold")
 panel(ax, "b", x=-0.62)
 
-# (c) study-level moderators of the R2 gap
 ax = fig.add_subplot(gs[1, :])
 keep = {"Block size justified by": {"autocorrelation_range": "Autocorrelation range", "expert_choice": "Expert choice", "not_justified": "Not justified"},
         "Random-CV scheme": {"LOO/OOB": "LOO / OOB", "Hold-out split": "Hold-out split", "k-fold": "k-fold"},

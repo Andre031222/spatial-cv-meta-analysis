@@ -1,4 +1,3 @@
-"""QC: agreement between first extraction and blind second reviewer (qc/qc_part*.csv)."""
 import csv, glob, json, collections
 csv.field_size_limit(10**9)
 S = json.load(open('qc/qc_sample.json'))
@@ -15,7 +14,6 @@ p1 = collections.Counter(x for x, _ in a); p2 = collections.Counter(y for _, y i
 pe = sum(p1[k] * p2[k] for k in set(p1) | set(p2)) / n**2
 kappa = (agree / n - pe) / (1 - pe)
 dis = [(i, x, y) for i, (x, y) in zip(ids, a) if x != y]
-# value agreement: QC pair matches ANY first-reviewer row of same study+metric within tolerance
 def f(v):
     try: return float(v)
     except: return None

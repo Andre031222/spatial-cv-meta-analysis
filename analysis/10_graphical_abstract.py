@@ -1,6 +1,3 @@
-"""Graphical abstract (Elsevier: 1328 x 531 px minimum, read at 13 x 5 cm). 600 dpi PNG/TIFF + PDF.
-Run after 01_meta_analysis.R and 04_additional_analyses.R:  .venv/bin/python analysis/10_graphical_abstract.py
-"""
 from pathlib import Path
 
 import matplotlib as mpl
@@ -24,14 +21,12 @@ fig = plt.figure(figsize=(13 / 2.54 * 1.6, 5 / 2.54 * 1.6))
 gs = fig.add_gridspec(1, 3, width_ratios=[0.8, 1.25, 1.0], wspace=0.5, left=0.02, right=0.98, top=0.78, bottom=0.27)
 fig.text(0.5, 0.94, "Random versus spatial cross-validation in machine-learning environmental maps", ha="center", fontsize=11, fontweight="bold")
 
-# 1. evidence base
 ax = fig.add_subplot(gs[0]); ax.set_axis_off()
 for y, big, small in ((0.86, "266", "studies, 86 countries"), (0.55, "1,102", "paired effect sizes"), (0.24, "25", "studies with an\nindependent test")):
     ax.text(0.05, y, big, fontsize=17, fontweight="bold", color="#333", va="center")
     ax.text(0.05, y - 0.15, small, fontsize=7.5, color="#555", va="center")
 ax.set_title("Same model, same data,\nrandom vs spatial CV", fontsize=8, loc="left", color="#333")
 
-# 2. RMSE gap by sampling design
 ax = fig.add_subplot(gs[1])
 for i, (k, (c, lab)) in enumerate(DESIGN.items()):
     r = m[m.lvl == k].iloc[0]
@@ -44,7 +39,6 @@ ax.spines[["top", "right"]].set_visible(False); ax.tick_params(labelsize=7)
 ax.set_xlabel("RMSE higher under spatial CV (%)", fontsize=7.5)
 ax.set_title(f"Gap depends on sampling design\n(overall $R^2$ {overall.loc['dR2', 'estimate']:.2f} higher with random CV)", fontsize=8, loc="left", color="#333")
 
-# 3. against independent tests
 ax = fig.add_subplot(gs[2])
 for i, (q, c, lab) in enumerate((("optimism_random", "#1A1A1A", "Random CV"), ("optimism_spatial", "#CC79A7", "Spatial CV"))):
     r = summ.loc[q]
