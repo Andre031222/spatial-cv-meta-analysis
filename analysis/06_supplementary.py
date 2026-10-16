@@ -37,18 +37,18 @@ prisma = [
     ("", "13c", "Methods used to tabulate or display results.", "Sections 2.7--2.9; Figs. 3--7"),
     ("", "13d", "Methods used to synthesize results and rationale.", "Section 2.7"),
     ("", "13e", "Methods used to explore heterogeneity.", "Section 2.7 (meta-regression)"),
-    ("", "13f", "Sensitivity analyses.", "Section 2.10; Table S6"),
+    ("", "13f", "Sensitivity analyses.", "Section 2.10; Tables S6 and S7"),
     ("", "14", "Methods used to assess risk of bias due to missing results (reporting biases).", "Section 2.10"),
     ("", "15", "Methods used to assess certainty (or confidence) in the body of evidence.", "Sections 2.10 and 4.6 (GRADE, adapted to methodological outcomes)"),
     ("Results", "16a", "Results of the search and selection process, with a flow diagram.", "Section 3.1; Fig. 1"),
-    ("", "16b", "Studies that appeared to meet the criteria but were excluded, and why.", "Table S10"),
-    ("", "17", "Cite each included study and present its characteristics.", "Table 2; Fig. 2; Tables S7 and S9"),
+    ("", "16b", "Studies that appeared to meet the criteria but were excluded, and why.", "Table S11"),
+    ("", "17", "Cite each included study and present its characteristics.", "Table 2; Fig. 2; Tables S8 and S10"),
     ("", "18", "Risk of bias for each included study.", "Section S5; file TableS5\\_risk\\_of\\_bias.csv"),
     ("", "19", "For all outcomes, summary statistics and effect estimates for each study.", "Fig. 3; database workbook, sheet 5\\_Effect\\_sizes"),
     ("", "20a", "Characteristics and risk of bias among contributing studies for each synthesis.", "Table 2; Section S5"),
     ("", "20b", "Results of all statistical syntheses (estimate, CI, heterogeneity).", "Section 3.3; Table 3"),
     ("", "20c", "Results of investigations of possible causes of heterogeneity.", "Section 3.4; Figs. 4--5; Fig. S2"),
-    ("", "20d", "Results of sensitivity analyses.", "Section 3.7; Table S6"),
+    ("", "20d", "Results of sensitivity analyses.", "Sections 3.5 and 3.7; Tables S6 and S7"),
     ("", "21", "Assessments of risk of bias due to missing results.", "Section 3.7; Fig. S1"),
     ("", "22", "Assessments of certainty in the body of evidence.", "Section 4.6 (GRADE)"),
     ("Discussion", "23a", "General interpretation of the results in the context of other evidence.", "Sections 4.1--4.4"),
@@ -180,6 +180,20 @@ for _, r in ov.iterrows():
     A(f"{lab[r.effect]} & {r.estimate:.3f} ({r.ci_lb:.3f}, {r.ci_ub:.3f}) & {r.unweighted_estimate:.3f} & {r.estimate_without_imputed_n:.3f} & "
       f"{r.estimate_without_digitised:.3f} ({r.ci_lb_without_digitised:.3f}, {r.ci_ub_without_digitised:.3f}); {int(r.k_studies_without_digitised)} studies & "
       f"{'$<$0.001' if r.robust_p < 0.001 else f'{r.robust_p:.3f}'} \\\\")
+A(r"\bottomrule\end{tabular}\end{table}")
+rp = pd.read_csv(ROOT / "analysis/results/robustness_pooled.csv").set_index("analysis")
+ri = pd.read_csv(ROOT / "analysis/results/robustness_independent_tests.csv").set_index("quantity")
+A(r"\begin{table}[h]\centering\small\caption{Robustness checks. Higher-quality studies: sampling design described, all values from text or tables, sample size reported. Leave-one-out: range of the estimate when each study is left out in turn.}\begin{tabular}{lccc}\toprule Quantity & All studies & Higher-quality studies & Leave-one-out range \\\midrule")
+for k, l in (("dR2", r"$\Delta R^2$"), ("lnRR_RMSE", "lnRR RMSE")):
+    r = rp.loc[k]
+    A(f"{l} & {r.full_estimate:.3f} & {r.hq_estimate:.3f} ({r.hq_lo:.3f}, {r.hq_hi:.3f}); {int(r.hq_studies)} studies & {r.loso_min:.3f}--{r.loso_max:.3f} \\\\")
+ivs = pd.read_csv(ROOT / "analysis/results/independent_validation_summary.csv")
+ivs = ivs[ivs.scale == "difference"].set_index("quantity")
+for k, l in (("optimism_random", "Optimism of random CV vs independent test"), ("optimism_spatial", "Optimism of spatial CV vs independent test"),
+             ("share_spatial_closer", "Share of comparisons with spatial CV closer")):
+    r = ri.loc[k]
+    extra = "" if pd.isna(r.max_p) else (f" (largest $p$ = {r.max_p:.3f})" if k == "optimism_random" else f" (smallest $p$ = {r.min_p:.3f})")
+    A(f"{l} & {ivs.loc[k, 'mean']:.3f} & -- & {r.loso_min:.3f}--{r.loso_max:.3f}{extra} \\\\")
 A(r"\bottomrule\end{tabular}\end{table}")
 A(r"Egger-type regression slopes for small-study effects: " + ", ".join(f"{lab[r.effect]} $p = {r.egger_slope_p:.2f}$" for _, r in ov.iterrows()) + ". Funnel plots are shown in Fig.~S1.")
 A(r"\begin{figure}[h]\centering")

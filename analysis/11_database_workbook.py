@@ -253,6 +253,7 @@ for c, w in zip("ABCDE", (44, 14, 16, 12, 70)):
     ws.column_dimensions[c].width = w
 ws.freeze_panes = "A4"
 data_sheet("11_Independent_summary", ind_sum, "Mean optimism of each design relative to independent tests, and share of comparisons where spatial CV was closer.")
+data_sheet("13_Robustness", pd.concat([pd.read_csv(RES / "robustness_pooled.csv"), pd.read_csv(RES / "robustness_independent_tests.csv").rename(columns={"quantity": "analysis"})], ignore_index=True), "Leave-one-study-out ranges and estimates restricted to higher-quality studies (processed).")
 if rob is not None:
     data_sheet("12_Risk_of_bias", rob, "Risk-of-bias and reporting items per study (PROBAST-based).")
 
