@@ -1,6 +1,9 @@
 suppressPackageStartupMessages({ library(metafor); library(clubSandwich) })
-rob <- read.csv("manuscript/supplementary/TableS5_risk_of_bias.csv", stringsAsFactors = FALSE)
-hq <- rob$record_id[rob$sampling_design_reported == "True" & rob$values_from_text_or_tables == "True"]
+x <- read.csv("extraction/extraction_template.csv", stringsAsFactors = FALSE, na.strings = c("NA", ""))
+x <- x[x$primary == "yes", ]
+dig <- tapply(x$digitised == "yes", x$record_id, function(v) any(v, na.rm = TRUE))
+smp <- tapply(x$sampling_design, x$record_id, function(v) v[1] != "unknown")
+hq <- intersect(names(dig)[!dig], names(smp)[smp %in% TRUE])
 fit <- function(e) {
   m <- rma.mv(yi, vi, random = ~ 1 | study / es_id, data = e, method = "REML", sparse = TRUE)
   r <- coef_test(m, vcov = "CR2", cluster = e$study)

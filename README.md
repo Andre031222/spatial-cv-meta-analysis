@@ -43,7 +43,6 @@ mkdir -p data_external/flags
 for c in cn:CHN us:USA de:DEU ca:CAN au:AUS br:BRA es:ESP fr:FRA pe:PER in:IND tw:TWN jp:JPN id:IDN at:AUT vn:VNM; do
   curl -sL -o data_external/flags/${c#*:}.png https://flagcdn.com/w80/${c%%:*}.png; done
 Rscript analysis/07_study_level_moderators.R      # study-level moderators and validation-practice profile
-.venv/bin/python analysis/06_supplementary.py     # supplementary tables (writes TableS5_risk_of_bias.csv)
 Rscript analysis/12_robustness.R                  # leave-one-study-out and higher-quality subsets
 .venv/bin/python analysis/05_figures.py           # Figs 3 and 5
 .venv/bin/python analysis/08_fig_practice.py      # Fig. S2
