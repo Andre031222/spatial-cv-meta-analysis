@@ -43,12 +43,13 @@ mkdir -p data_external/flags
 for c in cn:CHN us:USA de:DEU ca:CAN au:AUS br:BRA es:ESP fr:FRA pe:PER in:IND tw:TWN jp:JPN id:IDN at:AUT vn:VNM; do
   curl -sL -o data_external/flags/${c#*:}.png https://flagcdn.com/w80/${c%%:*}.png; done
 Rscript analysis/07_study_level_moderators.R      # study-level moderators and validation-practice profile
-.venv/bin/python analysis/05_figures.py           # Figs 4 and 6
-.venv/bin/python analysis/08_fig_practice.py      # Fig. 3
-.venv/bin/python analysis/09_figures_v2.py        # Figs 2, 5, 7 and 8
+.venv/bin/python analysis/05_figures.py           # Figs 3 and 5
+.venv/bin/python analysis/08_fig_practice.py      # Fig. S2
+.venv/bin/python analysis/09_figures_v2.py        # Figs 2, 4, 6 and 7
 .venv/bin/python analysis/10_graphical_abstract.py # graphical abstract
+.venv/bin/python analysis/11_database_workbook.py  # Excel database (data/spatial_cv_meta_analysis_database.xlsx)
 ```
-Figs 1 and 9 are TikZ diagrams (`figures/prisma_flow.tex`, `figures/Fig9_decision_guide.tex`).
+Figs 1 and 8 are TikZ diagrams (`figures/prisma_flow.tex`, `figures/Fig8_decision_guide.tex`). Fig. S2 is in the supplementary material.
 
 Tested with R 4.6.1 (metafor 5.2.1, clubSandwich 0.7.0) and the Python versions in `requirements.txt`.
 

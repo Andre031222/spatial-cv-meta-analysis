@@ -32,8 +32,8 @@ prisma = [
     ("Introduction", "3", "Rationale for the review in the context of existing knowledge.", "Section 1, paragraphs 1--5"),
     ("", "4", "Explicit statement of the objectives or questions.", "Section 1, last paragraph (questions i--iii, H1--H4)"),
     ("Methods", "5", "Inclusion and exclusion criteria and how studies were grouped for the syntheses.", "Section 2.2; groups by metric in 2.6"),
-    ("", "6", "Information sources and the date each was last searched.", "Section 2.3; Table S3"),
-    ("", "7", "Full search strategies for all databases, including filters and limits.", "Table S3"),
+    ("", "6", "Information sources and the date each was last searched.", "Section 2.3; Table 1; Table S3"),
+    ("", "7", "Full search strategies for all databases, including filters and limits.", "Table 1; Section S2"),
     ("", "8", "Methods used to decide whether a study met the inclusion criteria.", "Section 2.4"),
     ("", "9", "Methods used to collect data from reports.", "Section 2.5; Section S4"),
     ("", "10a", "Outcomes for which data were sought.", "Sections 2.5--2.6"),
@@ -47,22 +47,22 @@ prisma = [
     ("", "13e", "Methods used to explore heterogeneity.", "Section 2.7 (meta-regression)"),
     ("", "13f", "Sensitivity analyses.", "Section 2.10; Table S6"),
     ("", "14", "Methods used to assess risk of bias due to missing results (reporting biases).", "Section 2.10"),
-    ("", "15", "Methods used to assess certainty (or confidence) in the body of evidence.", "Not assessed with GRADE (methodological outcomes); confidence discussed in Section 4.5"),
+    ("", "15", "Methods used to assess certainty (or confidence) in the body of evidence.", "Not assessed with GRADE (methodological outcomes); confidence discussed in Section 4.6"),
     ("Results", "16a", "Results of the search and selection process, with a flow diagram.", "Section 3.1; Fig. 1"),
     ("", "16b", "Studies that appeared to meet the criteria but were excluded, and why.", "Table S10"),
-    ("", "17", "Cite each included study and present its characteristics.", "Table 1; Tables S7 and S9"),
+    ("", "17", "Cite each included study and present its characteristics.", "Table 2; Fig. 2; Tables S7 and S9"),
     ("", "18", "Risk of bias for each included study.", "Section S5; file TableS5\\_risk\\_of\\_bias.csv"),
-    ("", "19", "For all outcomes, summary statistics and effect estimates for each study.", "Fig. 3; files effects\\_*.csv in repository"),
+    ("", "19", "For all outcomes, summary statistics and effect estimates for each study.", "Fig. 3; database workbook, sheet 5\\_Effect\\_sizes"),
     ("", "20a", "Characteristics and risk of bias among contributing studies for each synthesis.", "Table 2; Section S5"),
-    ("", "20b", "Results of all statistical syntheses (estimate, CI, heterogeneity).", "Section 3.2; Table 2"),
-    ("", "20c", "Results of investigations of possible causes of heterogeneity.", "Section 3.3; Figs. 4--5"),
-    ("", "20d", "Results of sensitivity analyses.", "Section 3.6; Table S6"),
-    ("", "21", "Assessments of risk of bias due to missing results.", "Section 3.6; Fig. S1"),
-    ("", "22", "Assessments of certainty in the body of evidence.", "Section 4.5"),
-    ("Discussion", "23a", "General interpretation of the results in the context of other evidence.", "Sections 4.1--4.3"),
-    ("", "23b", "Limitations of the evidence included in the review.", "Section 4.5"),
-    ("", "23c", "Limitations of the review processes used.", "Section 4.5"),
-    ("", "23d", "Implications for practice, policy and future research.", "Section 4.4"),
+    ("", "20b", "Results of all statistical syntheses (estimate, CI, heterogeneity).", "Section 3.3; Table 3"),
+    ("", "20c", "Results of investigations of possible causes of heterogeneity.", "Section 3.4; Figs. 4--5; Fig. S2"),
+    ("", "20d", "Results of sensitivity analyses.", "Section 3.7; Table S6"),
+    ("", "21", "Assessments of risk of bias due to missing results.", "Section 3.7; Fig. S1"),
+    ("", "22", "Assessments of certainty in the body of evidence.", "Section 4.6"),
+    ("Discussion", "23a", "General interpretation of the results in the context of other evidence.", "Sections 4.1--4.4"),
+    ("", "23b", "Limitations of the evidence included in the review.", "Section 4.6"),
+    ("", "23c", "Limitations of the review processes used.", "Section 4.6"),
+    ("", "23d", "Implications for practice, policy and future research.", "Sections 4.4--4.5; Fig. 8"),
     ("Other information", "24a", "Registration information (name and number).", "Section 2.1 (OSF, osf.io/6p8ym)"),
     ("", "24b", "Where the protocol can be accessed.", "Section 2.1 (OSF registration)"),
     ("", "24c", "Amendments to the protocol.", "Section 2.11"),
@@ -199,6 +199,7 @@ for e in ["dR2", "lnRR_RMSE", "dAUC", "dAccuracy"]:
 A(r"\caption{Funnel plots for (top left to bottom right) $\Delta R^2$, lnRR RMSE, $\Delta$AUC and $\Delta$accuracy.}\end{figure}")
 
 A(r"\section{Validation practice and study-level moderators}")
+A(r"\begin{figure}[h]\centering\includegraphics[width=\textwidth]{../../figures/FigS2_validation_practice.pdf}\caption{How validation was applied in the included studies. (a) Random cross-validation used as baseline. (b) Source of the response data by task. (c) Study-level moderators of $\Delta R^2$: estimates and 95\% confidence intervals, number of studies, and test of differences between subgroups; grey band, pooled estimate.}\end{figure}")
 prof = pd.read_csv(ROOT / "analysis/results/validation_practice_profile.csv")
 A(r"\small\begin{longtable}{p{4cm}p{6cm}rr}\caption{Validation practice in the 266 included studies (second, study-level extraction).}\\\toprule Variable & Level & Studies & \% \\\midrule\endfirsthead\toprule Variable & Level & Studies & \% \\\midrule\endhead")
 for v, g in prof.groupby("variable", sort=False):

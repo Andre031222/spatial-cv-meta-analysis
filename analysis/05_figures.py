@@ -63,7 +63,7 @@ st = ex.groupby("record_id").agg(year=("year", "first"), country=("country", "fi
 st["year"] = pd.to_numeric(st.year, errors="coerce")
 st["sd"] = st.sd.where(st.sd.isin(ORDER[:-1]), "unknown")
 
-# ======================== Fig. 4 — every study: random vs spatial R2, grouped by sampling design ===
+# ======================== Fig. 3 — every study: random vs spatial R2, grouped by sampling design ===
 r2 = ex[ex.metric == "R2"].copy()
 for c in ("value_random", "value_spatial"):
     r2[c] = pd.to_numeric(r2[c], errors="coerce")
@@ -109,9 +109,9 @@ ax.set_xlabel("$R^2$ under random CV"); ax.set_ylabel("$R^2$ under spatial CV")
 drop = s.rand - s.spat
 ax.set_title(f"Spatial lower in {100 * (drop > 0).mean():.0f}% of studies;\nnegative in {int((s.spat < 0).sum())}", fontsize=6.5, loc="left", color="#444")
 panel(ax, "b", x=-0.3, y=1.1)
-save(fig, "Fig4_dumbbell_R2")
+save(fig, "Fig3_dumbbell_R2")
 
-# ======================== Fig. 6 — moderators: small-multiple forest plots across metrics ==========
+# ======================== Fig. 5 — moderators: small-multiple forest plots across metrics ==========
 m = mods[mods.moderator.isin(["sampling_h", "model_h", "cv_h", "domain_h"])].copy()
 m["level"] = [l.replace(mo, "") for l, mo in zip(m.level, m.moderator)]
 pretty = {**DLAB, "RF": "Random forest", "boosting": "Gradient boosting", "neural_net": "Neural network", "SVM": "Support vector machine",
@@ -174,4 +174,4 @@ for ax in axes[1:]:
     ax.tick_params(axis="y", length=0)
 fig.text(0.5, 0.045, "Subgroup estimate (positive = random CV more favourable); grey band: pooled estimate and 95% CI; point size proportional to the number of studies",
          ha="center", fontsize=6.3, color="#444")
-save(fig, "Fig6_moderators")
+save(fig, "Fig5_moderators")

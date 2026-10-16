@@ -1,4 +1,4 @@
-"""Figs 2, 5, 7 and 8 (600 dpi PNG/TIFF + vector PDF).
+"""Figs 2, 4, 6 and 7 (600 dpi PNG/TIFF + vector PDF).
 
 Run after 01_meta_analysis.R, 04_additional_analyses.R and 07_study_level_moderators.R:
     .venv/bin/python analysis/09_figures_v2.py
@@ -139,7 +139,7 @@ ax.set_title("What studies report", loc="left", fontsize=7.5, fontweight="bold")
 panel(ax, "d", x=-0.95)
 save(fig, "Fig2_evidence_map")
 
-# ================================ Fig. 5 — sampling design: distributions + estimates =============
+# ================================ Fig. 4 — sampling design: distributions + estimates =============
 e2 = pd.read_csv(RES / "effects_dR2.csv")
 em = pd.read_csv(RES / "effects_lnRR_RMSE.csv"); em["yi"] = 100 * (np.exp(em.yi) - 1)
 ORDER = ["clustered", "regular_grid", "unknown", "probability_random"]
@@ -180,9 +180,9 @@ half_violin(axs[0], e2, "dR2", "$R^2$ under random CV minus $R^2$ under spatial 
 half_violin(axs[1], em, "lnRR_RMSE", "RMSE under spatial CV relative to random CV (% higher)", (-50, 180), to_pct=True); panel(axs[1], "b", x=-0.03)
 axs[0].legend(handles=[Line2D([], [], marker="o", ls="-", color="black", mfc="white", ms=4, label="Estimate and 95% CI"),
                        mpl.patches.Patch(color="#E6E6E6", label="Pooled estimate (95% CI)")], frameon=False, loc="upper center", bbox_to_anchor=(1.0, -0.17), ncol=2, fontsize=6.3)
-save(fig, "Fig5_raincloud_sampling")
+save(fig, "Fig4_raincloud_sampling")
 
-# ================================ Fig. 7 — agreement with independent tests =======================
+# ================================ Fig. 6 — agreement with independent tests =======================
 ind = pd.read_csv(RES / "independent_validation_rows.csv")
 TYPE = {"probability_sample": "Probability\nsample", "other": "Other\nhold-out", "temporal": "Later\nperiod", "other_region": "Other\nregion"}
 ind["type"] = ind.ind_type.map(TYPE).fillna("Other\nhold-out")
@@ -240,9 +240,9 @@ ax.text(25, -0.75, "Spatial", ha="center", fontsize=6, color=SC, fontweight="bol
 ax.text(75, -0.75, "Random", ha="center", fontsize=6, color=RC, fontweight="bold")
 ax.set_ylim(len(order_t) - 0.5, -0.95)
 panel(ax, "c", x=-0.5)
-save(fig, "Fig7_independent_validation")
+save(fig, "Fig6_independent_validation")
 
-# ================================ Fig. 8 — expected spatial R2 (calibration) =====================
+# ================================ Fig. 7 — expected spatial R2 (calibration) =====================
 calc = pd.read_csv(RES / "calibration_curve.csv")
 SHOW = ["clustered", "regular_grid", "probability_random"]
 fig, axs = plt.subplots(1, 2, figsize=(180 * MM, 80 * MM), gridspec_kw={"width_ratios": [1, 1.15], "wspace": 0.3})
@@ -276,4 +276,4 @@ ax.set_xlabel("$R^2$ reported with random CV"); ax.set_ylabel("Expected loss of 
 ax.set_ylim(0, 0.42); ax.axhline(0, color="black", lw=0.5)
 ax.legend(frameon=False, loc="upper left", ncol=3, fontsize=6.2)
 panel(ax, "b", x=-0.17)
-save(fig, "Fig8_calibration_R2")
+save(fig, "Fig7_calibration_R2")
